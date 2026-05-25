@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – AIDS APAANA Foundation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:        #C8102E;
+      --red-deep:   #8B0A1E;
+      --red-light:  #F5C6CC;
+      --red-pale:   #FFF0F2;
+      --white:      #FFFFFF;
+      --off-white:  #FAF7F7;
+      --gray-100:   #F4F4F4;
+      --gray-400:   #9A9A9A;
+      --gray-700:   #3D3D3D;
+      --black:      #1A1A1A;
+      --shadow-sm:  0 2px 8px rgba(200,16,46,.12);
+      --shadow-md:  0 8px 30px rgba(200,16,46,.18);
+      --shadow-lg:  0 20px 60px rgba(200,16,46,.22);
+      --radius:     16px;
+      --radius-sm:  8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ─── SKIP LINK ─── */
+    .skip-link {
+      position: absolute; top: -100px; left: 1rem;
+      background: var(--red); color: var(--white);
+      padding: .5rem 1rem; border-radius: var(--radius-sm);
+      font-weight: 600; text-decoration: none;
+      transition: top .2s;
+      z-index: 9999;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--red-light);
+      padding: .9rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: .7rem;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 40px; height: 40px; background: var(--red);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon svg { width: 22px; height: 22px; fill: white; }
+    .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--red-deep); line-height: 1.2; }
+    .nav-logo-sub { font-size: .72rem; color: var(--gray-400); letter-spacing: .06em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--gray-700); font-weight: 500; font-size: .92rem; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--red); }
+    .nav-cta {
+      background: var(--red); color: white; padding: .5rem 1.25rem;
+      border-radius: 50px; font-weight: 600; font-size: .88rem;
+      text-decoration: none; transition: background .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--red-deep); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--red); border-radius: 2px; transition: all .3s; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--red-deep) 0%, var(--red) 55%, #E8415A 100%);
+      padding: 7rem 1.5rem 5rem;
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-ribbon {
+      display: inline-block; background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.35);
+      color: white; font-size: .8rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .35rem 1.1rem; border-radius: 50px; margin-bottom: 1.4rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      color: white; line-height: 1.15; margin-bottom: 1.2rem;
+      font-weight: 900;
+    }
+    .hero h1 em { font-style: italic; color: var(--red-light); }
+    .hero p {
+      color: rgba(255,255,255,.88); font-size: clamp(.97rem, 2vw, 1.18rem);
+      max-width: 640px; margin: 0 auto 2rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      background: white; color: var(--red); font-weight: 700;
+      padding: .8rem 2rem; border-radius: 50px; text-decoration: none;
+      font-size: .95rem; transition: transform .2s, box-shadow .2s;
+      box-shadow: var(--shadow-md);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .btn-outline-white {
+      border: 2px solid rgba(255,255,255,.7); color: white;
+      font-weight: 600; padding: .8rem 2rem; border-radius: 50px;
+      text-decoration: none; font-size: .95rem; transition: background .2s;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,.15); }
+    .hero-scroll {
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .3rem;
+      color: rgba(255,255,255,.6); font-size: .75rem; letter-spacing: .08em;
+    }
+    .hero-scroll-dot {
+      width: 6px; height: 6px; background: white; border-radius: 50%;
+      animation: bounce 1.4s infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--red-pale); color: var(--red);
+      font-size: .78rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; padding: .35rem .9rem;
+      border-radius: 50px; margin-bottom: 1rem;
+      border: 1px solid var(--red-light);
+    }
+    .section-tag::before { content: ''; width: 7px; height: 7px; background: var(--red); border-radius: 50%; }
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.9rem);
+      color: var(--black); line-height: 1.2; margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    h2.section-title span { color: var(--red); }
+    .section-lead { font-size: 1.05rem; color: var(--gray-700); max-width: 620px; margin-bottom: 2.5rem; }
+
+    /* ─── WHO WE ARE ─── */
+    .who-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center;
+    }
+    .who-visual {
+      position: relative; border-radius: var(--radius); overflow: hidden;
+    }
+    .who-card {
+      background: linear-gradient(145deg, var(--red) 0%, var(--red-deep) 100%);
+      border-radius: var(--radius); padding: 3rem 2.5rem;
+      color: white; position: relative; overflow: hidden;
+    }
+    .who-card::after {
+      content: '♥'; position: absolute; right: -10px; bottom: -20px;
+      font-size: 9rem; opacity: .08; line-height: 1;
+    }
+    .who-card-stat { margin-bottom: 1.5rem; }
+    .who-card-stat .number {
+      font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 900;
+      color: white; line-height: 1;
+    }
+    .who-card-stat .label { font-size: .9rem; color: rgba(255,255,255,.75); margin-top: .2rem; }
+    .who-card-divider { border: none; border-top: 1px solid rgba(255,255,255,.2); margin: 1.5rem 0; }
+    .who-card p { font-size: .93rem; color: rgba(255,255,255,.85); line-height: 1.7; }
+
+    /* ─── FOUNDER ─── */
+    .founder-section { background: var(--red-pale); }
+    .founder-card {
+      background: white; border-radius: var(--radius); padding: 3rem;
+      display: grid; grid-template-columns: auto 1fr; gap: 2.5rem;
+      align-items: start; box-shadow: var(--shadow-sm);
+      border-left: 5px solid var(--red);
+    }
+    .founder-avatar {
+      width: 110px; height: 110px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Playfair Display', serif; font-size: 2.5rem;
+      color: white; font-weight: 700;
+    }
+    .founder-quote {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem); color: var(--black);
+      line-height: 1.55; margin-bottom: 1.2rem;
+    }
+    .founder-quote::before { content: '\201C'; color: var(--red); font-size: 2.5rem; line-height: 0; vertical-align: -.5rem; margin-right: .2rem; }
+    .founder-name { font-weight: 700; color: var(--red); font-size: 1rem; }
+    .founder-title { color: var(--gray-400); font-size: .88rem; }
+
+    /* ─── TIMELINE ─── */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 7px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--red), var(--red-light));
+      border-radius: 2px;
+    }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; padding-left: 1.5rem; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute; left: -2rem; top: .35rem;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--red); border: 3px solid white;
+      box-shadow: 0 0 0 3px var(--red-light);
+    }
+    .timeline-year {
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      color: var(--red); font-size: 1.1rem; margin-bottom: .25rem;
+    }
+    .timeline-title { font-weight: 600; color: var(--black); margin-bottom: .3rem; }
+    .timeline-desc { color: var(--gray-700); font-size: .93rem; }
+
+    /* ─── MVV ─── */
+    .mvv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .mvv-card {
+      padding: 2rem 1.75rem; border-radius: var(--radius);
+      border: 1.5px solid var(--red-light); background: var(--white);
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      position: relative; overflow: hidden;
+    }
+    .mvv-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--red-pale) 0%, transparent 60%);
+      opacity: 0; transition: opacity .25s;
+    }
+    .mvv-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--red); }
+    .mvv-card:hover::before { opacity: 1; }
+    .mvv-icon {
+      width: 52px; height: 52px; border-radius: var(--radius-sm);
+      background: var(--red-pale); display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.2rem;
+    }
+    .mvv-card h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--red); margin-bottom: .6rem; }
+    .mvv-card p { color: var(--gray-700); font-size: .92rem; line-height: 1.65; }
+    .values-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .values-list li {
+      display: flex; align-items: center; gap: .55rem;
+      color: var(--gray-700); font-size: .92rem;
+    }
+    .values-list li::before { content: '✦'; color: var(--red); font-size: .75rem; flex-shrink: 0; }
+
+    /* ─── TEAM ─── */
+    .team-section { background: var(--off-white); }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+    .team-card {
+      background: white; border-radius: var(--radius); padding: 1.75rem 1.5rem;
+      text-align: center; box-shadow: var(--shadow-sm); transition: transform .25s, box-shadow .25s;
+      border-top: 4px solid var(--red-light);
+    }
+    .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-top-color: var(--red); }
+    .team-avatar {
+      width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1rem;
+      background: linear-gradient(135deg, var(--red-light) 0%, var(--red) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: 1.6rem;
+      color: white; font-weight: 700;
+    }
+    .team-name { font-weight: 700; font-size: 1rem; color: var(--black); margin-bottom: .2rem; }
+    .team-role { color: var(--red); font-size: .83rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .6rem; }
+    .team-bio { color: var(--gray-400); font-size: .85rem; line-height: 1.5; }
+
+    /* ─── PROGRAMS ─── */
+    .programs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    .program-card {
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow-sm); transition: transform .25s, box-shadow .25s;
+    }
+    .program-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .program-header {
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%);
+      padding: 1.5rem; display: flex; align-items: center; gap: .9rem;
+    }
+    .program-icon { font-size: 1.8rem; }
+    .program-header h3 { font-family: 'Playfair Display', serif; color: white; font-size: 1.1rem; font-weight: 700; }
+    .program-body { background: white; padding: 1.5rem; }
+    .program-body p { color: var(--gray-700); font-size: .91rem; line-height: 1.6; }
+
+    /* ─── TRANSPARENCY ─── */
+    .transparency-section { background: var(--red-pale); }
+    .transparency-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+    .trans-card {
+      background: white; border-radius: var(--radius); padding: 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      box-shadow: var(--shadow-sm);
+    }
+    .trans-icon {
+      width: 46px; height: 46px; border-radius: var(--radius-sm); flex-shrink: 0;
+      background: var(--red-pale); display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+    }
+    .trans-card h4 { font-weight: 700; color: var(--black); margin-bottom: .25rem; font-size: .95rem; }
+    .trans-card p { color: var(--gray-700); font-size: .85rem; line-height: 1.55; }
+
+    /* ─── IMPACT STORIES ─── */
+    .stories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .story-card {
+      background: white; border-radius: var(--radius); padding: 2rem;
+      box-shadow: var(--shadow-sm); position: relative;
+      border-bottom: 4px solid var(--red-light);
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .story-card:hover { border-bottom-color: var(--red); box-shadow: var(--shadow-md); }
+    .story-quote-mark {
+      font-family: 'Playfair Display', serif; font-size: 5rem;
+      color: var(--red-light); line-height: 1; margin-bottom: -.5rem;
+    }
+    .story-text { color: var(--gray-700); font-size: .93rem; line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; }
+    .story-author { display: flex; align-items: center; gap: .75rem; }
+    .story-dot { width: 38px; height: 38px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: .9rem; flex-shrink: 0; }
+    .story-name { font-weight: 700; font-size: .9rem; color: var(--black); }
+    .story-detail { font-size: .8rem; color: var(--gray-400); }
+
+    /* ─── PARTNERS ─── */
+    .partners-section { background: var(--off-white); }
+    .partners-row { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    .partner-chip {
+      background: white; border: 1.5px solid var(--red-light);
+      border-radius: 50px; padding: .6rem 1.4rem;
+      font-weight: 600; font-size: .88rem; color: var(--gray-700);
+      transition: border-color .2s, color .2s, transform .2s;
+    }
+    .partner-chip:hover { border-color: var(--red); color: var(--red); transform: translateY(-2px); }
+
+    /* ─── FAQ ─── */
+    .faq-list { display: flex; flex-direction: column; gap: .75rem; max-width: 780px; margin: 0 auto; }
+    .faq-item { border-radius: var(--radius-sm); border: 1.5px solid var(--red-light); overflow: hidden; }
+    .faq-btn {
+      width: 100%; text-align: left; background: white; border: none; cursor: pointer;
+      padding: 1.15rem 1.5rem; display: flex; justify-content: space-between; align-items: center;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: .97rem; color: var(--black);
+      transition: background .2s;
+    }
+    .faq-btn:hover { background: var(--red-pale); }
+    .faq-btn.open { background: var(--red); color: white; }
+    .faq-icon { font-size: 1.2rem; transition: transform .3s; flex-shrink: 0; margin-left: .5rem; }
+    .faq-btn.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s;
+      background: white; padding: 0 1.5rem; color: var(--gray-700); font-size: .93rem; line-height: 1.65;
+    }
+    .faq-answer.open { max-height: 300px; padding: 1rem 1.5rem 1.25rem; }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--red-deep) 0%, var(--red) 100%);
+      text-align: center; padding: 5rem 1.5rem;
+      position: relative; overflow: hidden;
+    }
+    .cta-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255,255,255,.08) 0%, transparent 60%),
+                  radial-gradient(circle at 80% 50%, rgba(255,255,255,.06) 0%, transparent 55%);
+    }
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif; color: white;
+      font-size: clamp(2rem, 4vw, 3rem); margin-bottom: .75rem; position: relative;
+    }
+    .cta-banner p { color: rgba(255,255,255,.85); font-size: 1.05rem; margin-bottom: 2rem; position: relative; }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+    .btn-red-outline {
+      border: 2px solid rgba(255,255,255,.7); color: white;
+      padding: .8rem 2rem; border-radius: 50px; text-decoration: none;
+      font-weight: 600; font-size: .95rem; transition: background .2s;
+    }
+    .btn-red-outline:hover { background: rgba(255,255,255,.15); }
+
+    /* ─── CONTACT ─── */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
+    .contact-card {
+      background: var(--red-pale); border-radius: var(--radius); padding: 1.75rem;
+      text-align: center; border: 1.5px solid var(--red-light);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .contact-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+    .contact-card .icon { font-size: 2rem; margin-bottom: .75rem; }
+    .contact-card h4 { font-weight: 700; color: var(--black); margin-bottom: .35rem; }
+    .contact-card a, .contact-card p { color: var(--red); font-size: .93rem; text-decoration: none; font-weight: 500; }
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black); color: rgba(255,255,255,.7);
+      text-align: center; padding: 1.8rem 1.5rem;
+      font-size: .88rem;
+    }
+    footer strong { color: var(--red-light); }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .stagger .fade-up:nth-child(1){transition-delay:.05s}
+    .stagger .fade-up:nth-child(2){transition-delay:.15s}
+    .stagger .fade-up:nth-child(3){transition-delay:.25s}
+    .stagger .fade-up:nth-child(4){transition-delay:.35s}
+    .stagger .fade-up:nth-child(5){transition-delay:.45s}
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:900px){
+      .who-grid { grid-template-columns: 1fr; }
+      .mvv-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width:680px){
+      .nav-links { display: none; flex-direction: column; position: fixed; inset: 0 0 0 30%; background: white; padding: 5rem 2rem 2rem; box-shadow: -10px 0 40px rgba(0,0,0,.15); z-index: 200; gap: 1.25rem; }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 1.1rem; }
+      .nav-cta { font-size: .85rem; padding: .45rem 1rem; }
+      .hamburger { display: flex; z-index: 300; }
+      .founder-card { grid-template-columns: 1fr; text-align: center; }
+      .founder-avatar { margin: 0 auto; }
+      .mvv-grid { grid-template-columns: 1fr; }
+      section { padding: 3.5rem 1.25rem; }
+      .who-card { padding: 2rem 1.5rem; }
+    }
+    @media(max-width:480px){
+      .hero { padding: 5rem 1.25rem 4rem; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-white, .btn-outline-white { width: 100%; max-width: 280px; text-align: center; }
+      .cta-actions { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ─── NAV ─── -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo" aria-label="AIDS APAANA Foundation home">
+    <div class="nav-logo-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+    </div>
+    <div>
+      <div class="nav-logo-text">AIDS APAANA</div>
+      <div class="nav-logo-sub">Foundation</div>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks" role="list">
+    <li><a href="#">Home</a></li>
+    <li><a href="#" class="active" aria-current="page">About</a></li>
+    <li><a href="#">Programs</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#donate" class="nav-cta">Donate Now</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ─── HERO ─── -->
+<header class="hero" role="banner">
+  <div class="hero-ribbon">AIDS APAANA Foundation</div>
+  <h1>Bringing <em>Hope</em> &amp; Dignity to<br>Vulnerable Communities</h1>
+  <p>A registered non-profit dedicated to supporting individuals and families affected by HIV/AIDS through care, awareness, and empowerment.</p>
+  <div class="hero-actions">
+    <a href="#donate" class="btn-white">Donate Today</a>
+    <a href="#volunteer" class="btn-outline-white">Volunteer With Us</a>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span style="letter-spacing:.1em;font-size:.7rem">SCROLL</span>
+    <div class="hero-scroll-dot"></div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ─── WHO WE ARE ─── -->
+  <section id="who-we-are" aria-labelledby="who-title">
+    <div class="container">
+      <div class="who-grid">
+        <div>
+          <div class="section-tag">Who We Are</div>
+          <h2 class="section-title" id="who-title">Fighting HIV/AIDS with <span>Compassion</span></h2>
+          <p class="section-lead">AIDS APAANA Foundation is a community-driven non-profit organization working tirelessly to reduce stigma, provide support, and empower those most affected by HIV/AIDS across multiple districts.</p>
+          <p style="color:var(--gray-700);font-size:.95rem;line-height:1.75;margin-bottom:1.25rem;">We believe every person deserves dignity, access to healthcare, and a community that cares. Our work spans awareness campaigns, direct patient support, counseling services, and advocacy for policy change.</p>
+          <p style="color:var(--gray-700);font-size:.95rem;line-height:1.75;">We help <strong style="color:var(--black)">individuals living with HIV/AIDS</strong>, their families, orphaned children, sex workers, and other vulnerable populations who face compounded social and health challenges.</p>
+        </div>
+        <div class="who-visual fade-up">
+          <div class="who-card">
+            <div class="who-card-stat">
+              <div class="number">2,500+</div>
+              <div class="label">Lives Directly Impacted</div>
+            </div>
+            <hr class="who-card-divider">
+            <div class="who-card-stat">
+              <div class="number">12+</div>
+              <div class="label">Districts Reached</div>
+            </div>
+            <hr class="who-card-divider">
+            <div class="who-card-stat">
+              <div class="number">3 Yrs</div>
+              <div class="label">Of Dedicated Service</div>
+            </div>
+            <hr class="who-card-divider">
+            <p>"We don't just treat illness — we restore belonging, purpose, and hope to people who need it most."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOUNDER'S MESSAGE ─── -->
+  <section class="founder-section" aria-labelledby="founder-title">
+    <div class="container">
+      <div class="section-tag">Founder's Message</div>
+      <h2 class="section-title" id="founder-title">A Message From <span>Our Founder</span></h2>
+      <div class="founder-card fade-up">
+        <div class="founder-avatar" aria-hidden="true">A</div>
+        <div>
+          <p class="founder-quote">We created AIDS APAANA Foundation to bring hope, support, and dignity to vulnerable communities affected by HIV/AIDS. I have seen firsthand how stigma can be more devastating than the illness itself. Our mission is to break those barriers — one community at a time — and ensure that no one walks this journey alone.</p>
+          <div class="founder-name">Founder, AIDS APAANA Foundation</div>
+          <div class="founder-title">Community Health Advocate &amp; Social Entrepreneur</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── JOURNEY / TIMELINE ─── -->
+  <section aria-labelledby="timeline-title">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start;">
+        <div>
+          <div class="section-tag">Our Journey</div>
+          <h2 class="section-title" id="timeline-title">How We <span>Grew</span></h2>
+          <p class="section-lead">From a small grassroots idea to a recognised foundation — here are the milestones that define our story.</p>
+        </div>
+        <div class="timeline fade-up" role="list">
+          <div class="timeline-item" role="listitem">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-year">2023</div>
+            <div class="timeline-title">Foundation Established</div>
+            <div class="timeline-desc">AIDS APAANA Foundation was officially registered as an NGO, with a vision to serve communities affected by HIV/AIDS.</div>
+          </div>
+          <div class="timeline-item" role="listitem">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-year">2024</div>
+            <div class="timeline-title">First Community Outreach</div>
+            <div class="timeline-desc">Launched our first health camps, awareness drives, and counseling sessions reaching over 500 individuals across 3 districts.</div>
+          </div>
+          <div class="timeline-item" role="listitem">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-year">2024 Q4</div>
+            <div class="timeline-title">Medical Partnership</div>
+            <div class="timeline-desc">Established partnerships with local clinics and health departments to provide free ART (antiretroviral therapy) support.</div>
+          </div>
+          <div class="timeline-item" role="listitem">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-year">2025</div>
+            <div class="timeline-title">Multi-District Expansion</div>
+            <div class="timeline-desc">Expanded operations to 12+ districts, launched a scholarship program for children affected by HIV/AIDS, and reached 2,500+ beneficiaries.</div>
+          </div>
+          <div class="timeline-item" role="listitem">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-year">2026</div>
+            <div class="timeline-title">Growing Impact</div>
+            <div class="timeline-desc">Continuing to scale operations, strengthen community networks, and advocate for policy changes at district and state levels.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MISSION / VISION / VALUES ─── -->
+  <section style="background:var(--off-white)" aria-labelledby="mvv-title">
+    <div class="container">
+      <div class="section-tag">Core Beliefs</div>
+      <h2 class="section-title" id="mvv-title">Our Mission, Vision <span>&amp; Values</span></h2>
+      <div class="mvv-grid stagger">
+        <div class="mvv-card fade-up">
+          <div class="mvv-icon" aria-hidden="true">🎯</div>
+          <h3>Our Mission</h3>
+          <p>To reduce HIV/AIDS-related stigma, provide holistic support to affected individuals and families, and promote awareness, prevention, and dignified access to care across communities.</p>
+        </div>
+        <div class="mvv-card fade-up">
+          <div class="mvv-icon" aria-hidden="true">🔭</div>
+          <h3>Our Vision</h3>
+          <p>A world where every person living with HIV/AIDS is treated with dignity, has access to quality healthcare, and is supported by a compassionate, informed community.</p>
+        </div>
+        <div class="mvv-card fade-up">
+          <div class="mvv-icon" aria-hidden="true">💠</div>
+          <h3>Our Values</h3>
+          <ul class="values-list">
+            <li>Compassion for every individual</li>
+            <li>Dignity and non-discrimination</li>
+            <li>Community-first approach</li>
+            <li>Transparency &amp; accountability</li>
+            <li>Inclusive, evidence-based care</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── KEY PROGRAMS ─── -->
+  <section aria-labelledby="programs-title">
+    <div class="container">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title" id="programs-title">Our Key <span>Programs</span></h2>
+      <p class="section-lead">Each program is designed to address a specific need — from prevention to long-term care and social support.</p>
+      <div class="programs-grid stagger">
+        <div class="program-card fade-up">
+          <div class="program-header">
+            <div class="program-icon" aria-hidden="true">🏥</div>
+            <h3>Medical Support</h3>
+          </div>
+          <div class="program-body"><p>Free ART assistance, regular health check-ups, and referrals to government hospitals for people living with HIV/AIDS.</p></div>
+        </div>
+        <div class="program-card fade-up">
+          <div class="program-header">
+            <div class="program-icon" aria-hidden="true">📢</div>
+            <h3>Awareness &amp; Prevention</h3>
+          </div>
+          <div class="program-body"><p>Community campaigns, school sensitisation drives, and workshops to educate people about HIV/AIDS prevention and reduce stigma.</p></div>
+        </div>
+        <div class="program-card fade-up">
+          <div class="program-header">
+            <div class="program-icon" aria-hidden="true">🧠</div>
+            <h3>Counseling Services</h3>
+          </div>
+          <div class="program-body"><p>One-on-one and group counseling sessions by trained professionals for patients and their caregivers.</p></div>
+        </div>
+        <div class="program-card fade-up">
+          <div class="program-header">
+            <div class="program-icon" aria-hidden="true">🎓</div>
+            <h3>Children's Scholarship</h3>
+          </div>
+          <div class="program-body"><p>Educational sponsorship for children orphaned or affected by HIV/AIDS, helping break the cycle of poverty and exclusion.</p></div>
+        </div>
+        <div class="program-card fade-up">
+          <div class="program-header">
+            <div class="program-icon" aria-hidden="true">💼</div>
+            <h3>Livelihood Training</h3>
+          </div>
+          <div class="program-body"><p>Vocational skills and micro-enterprise support for affected women and youth to become financially independent.</p></div>
+        </div>
+        <div class="program-card fade-up">
+          <div class="program-header">
+            <div class="program-icon" aria-hidden="true">🤝</div>
+            <h3>Community Networks</h3>
+          </div>
+          <div class="program-body"><p>Building peer-support groups and community networks so no one faces HIV/AIDS alone.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TEAM ─── -->
+  <section class="team-section" aria-labelledby="team-title">
+    <div class="container">
+      <div class="section-tag">The People Behind It</div>
+      <h2 class="section-title" id="team-title">Meet Our <span>Team</span></h2>
+      <p class="section-lead">Our foundation is powered by dedicated professionals, community workers, and volunteers who give their best every day.</p>
+      <div class="team-grid stagger">
+        <div class="team-card fade-up">
+          <div class="team-avatar" aria-hidden="true">F</div>
+          <div class="team-name">Founder</div>
+          <div class="team-role">Executive Director</div>
+          <div class="team-bio">Visionary leader and community health advocate with years of grassroots experience.</div>
+        </div>
+        <div class="team-card fade-up">
+          <div class="team-avatar" aria-hidden="true">P</div>
+          <div class="team-name">Programs Director</div>
+          <div class="team-role">Programs &amp; Operations</div>
+          <div class="team-bio">Oversees all outreach programs and ensures quality delivery across all districts.</div>
+        </div>
+        <div class="team-card fade-up">
+          <div class="team-avatar" aria-hidden="true">M</div>
+          <div class="team-name">Medical Advisor</div>
+          <div class="team-role">Clinical Guidance</div>
+          <div class="team-bio">Provides expert medical guidance and ensures our health programs meet the highest standards.</div>
+        </div>
+        <div class="team-card fade-up">
+          <div class="team-avatar" aria-hidden="true">C</div>
+          <div class="team-name">Community Coordinator</div>
+          <div class="team-role">Field Operations</div>
+          <div class="team-bio">Builds and maintains relationships with community leaders, volunteers, and partner organisations.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TRANSPARENCY ─── -->
+  <section class="transparency-section" aria-labelledby="transparency-title">
+    <div class="container">
+      <div class="section-tag">Our Commitment</div>
+      <h2 class="section-title" id="transparency-title">Transparency &amp; <span>Accountability</span></h2>
+      <p class="section-lead">We believe donors and the public deserve to know exactly how resources are used. Here is our commitment to you.</p>
+      <div class="transparency-grid stagger">
+        <div class="trans-card fade-up">
+          <div class="trans-icon" aria-hidden="true">📜</div>
+          <div>
+            <h4>Registered NGO</h4>
+            <p>AIDS APAANA Foundation is officially registered under the Societies Registration Act. Registration documents are available upon request.</p>
+          </div>
+        </div>
+        <div class="trans-card fade-up">
+          <div class="trans-icon" aria-hidden="true">💰</div>
+          <div>
+            <h4>Donation Usage</h4>
+            <p>Every rupee donated goes towards programs, medical support, and community outreach. Administrative costs are kept minimal and reported publicly.</p>
+          </div>
+        </div>
+        <div class="trans-card fade-up">
+          <div class="trans-icon" aria-hidden="true">📊</div>
+          <div>
+            <h4>Annual Reports</h4>
+            <p>We publish annual activity and financial reports detailing our impact, expenditure, and program outcomes for full public accountability.</p>
+          </div>
+        </div>
+        <div class="trans-card fade-up">
+          <div class="trans-icon" aria-hidden="true">🔍</div>
+          <div>
+            <h4>Audited Accounts</h4>
+            <p>All our financial accounts are independently audited each year to ensure the highest standards of financial integrity and donor trust.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── IMPACT STORIES ─── -->
+  <section aria-labelledby="stories-title">
+    <div class="container">
+      <div class="section-tag">Real Lives, Real Change</div>
+      <h2 class="section-title" id="stories-title">Impact <span>Stories</span></h2>
+      <p class="section-lead">Behind every number is a human life transformed. Here are some of the stories that inspire us to keep going.</p>
+      <div class="stories-grid stagger">
+        <div class="story-card fade-up">
+          <div class="story-quote-mark" aria-hidden="true">"</div>
+          <p class="story-text">Before AIDS APAANA found me, I had given up. Today I have my medication, a support group, and my children are back in school. I feel human again.</p>
+          <div class="story-author">
+            <div class="story-dot" aria-hidden="true">R</div>
+            <div>
+              <div class="story-name">Rekha (name changed)</div>
+              <div class="story-detail">Beneficiary, District Program</div>
+            </div>
+          </div>
+        </div>
+        <div class="story-card fade-up">
+          <div class="story-quote-mark" aria-hidden="true">"</div>
+          <p class="story-text">The counseling sessions helped me accept my status and talk to my family. The scholarship means my son has a future now. I am grateful every day.</p>
+          <div class="story-author">
+            <div class="story-dot" aria-hidden="true">S</div>
+            <div>
+              <div class="story-name">Suresh (name changed)</div>
+              <div class="story-detail">Father of scholarship recipient</div>
+            </div>
+          </div>
+        </div>
+        <div class="story-card fade-up">
+          <div class="story-quote-mark" aria-hidden="true">"</div>
+          <p class="story-text">I was scared to get tested. After the awareness camp, I got tested, got on treatment, and now I volunteer to help others do the same. This foundation saved my life.</p>
+          <div class="story-author">
+            <div class="story-dot" aria-hidden="true">M</div>
+            <div>
+              <div class="story-name">Meena (name changed)</div>
+              <div class="story-detail">Volunteer &amp; Beneficiary</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PARTNERS ─── -->
+  <section class="partners-section" aria-labelledby="partners-title">
+    <div class="container" style="text-align:center">
+      <div class="section-tag" style="margin:0 auto 1rem">Our Partners</div>
+      <h2 class="section-title" id="partners-title" style="text-align:center">Organizations <span>We Work With</span></h2>
+      <p style="color:var(--gray-700);margin-bottom:2.5rem;max-width:580px;margin-left:auto;margin-right:auto;">We collaborate with government bodies, health organizations, and fellow NGOs to amplify our reach and impact.</p>
+      <div class="partners-row">
+        <div class="partner-chip">State AIDS Control Society</div>
+        <div class="partner-chip">District Health Department</div>
+        <div class="partner-chip">NACO Partner Network</div>
+        <div class="partner-chip">Local Hospitals &amp; Clinics</div>
+        <div class="partner-chip">Women &amp; Child Welfare Dept.</div>
+        <div class="partner-chip">Community Radio Partners</div>
+        <div class="partner-chip">Youth Volunteer Networks</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-tag" style="margin:0 auto 1rem;display:block;text-align:center;width:fit-content">FAQs</div>
+      <h2 class="section-title" id="faq-title" style="text-align:center">Common <span>Questions</span></h2>
+      <p style="text-align:center;color:var(--gray-700);margin-bottom:2.5rem;max-width:500px;margin-left:auto;margin-right:auto;">Everything you might want to know about AIDS APAANA Foundation.</p>
+      <div class="faq-list" role="list">
+        <div class="faq-item" role="listitem">
+          <button class="faq-btn" aria-expanded="false" aria-controls="faq1">
+            Is AIDS APAANA Foundation officially registered?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq1" role="region">
+            Yes, AIDS APAANA Foundation is registered as a non-governmental organisation (NGO) under the Societies Registration Act. Our registration certificate and legal documents are available upon request. We operate with full legal compliance and transparency.
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-btn" aria-expanded="false" aria-controls="faq2">
+            How are donations used?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq2" role="region">
+            Donations are used directly for program delivery — including medical support, counseling, awareness campaigns, and scholarships. We keep administrative costs minimal. A detailed breakdown of fund usage is published in our annual report. You can also request an expenditure summary at any time.
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-btn" aria-expanded="false" aria-controls="faq3">
+            How can I volunteer with the foundation?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq3" role="region">
+            We welcome volunteers from all backgrounds — healthcare professionals, students, social workers, and community advocates. You can apply through our website or contact us directly. We offer orientation training and connect you with the most suitable program for your skills.
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-btn" aria-expanded="false" aria-controls="faq4">
+            Who does the foundation help?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq4" role="region">
+            We serve individuals living with HIV/AIDS, their families and caregivers, children orphaned by AIDS, sex workers, and other vulnerable groups facing health and social challenges. Our programs are free of charge for all beneficiaries.
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-btn" aria-expanded="false" aria-controls="faq5">
+            Can I donate in kind (not money)?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq5" role="region">
+            Yes! We accept in-kind donations such as medicines, nutritional supplements, stationery for children, and household essentials. Please contact us first so we can guide you on what is needed most and arrange collection or drop-off.
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-btn" aria-expanded="false" aria-controls="faq6">
+            Is my donation tax-deductible?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq6" role="region">
+            We are working towards 80G certification which would make donations eligible for tax deduction under Indian law. Please contact us for the latest status of our tax exemption certification.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA BANNER ─── -->
+  <section class="cta-banner" id="donate" aria-labelledby="cta-title">
+    <h2 id="cta-title">Make a Difference Today</h2>
+    <p>Your support — big or small — brings hope to someone who needs it. Join us in building a healthier, more compassionate world.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn-white">Donate Now</a>
+      <a href="#volunteer" class="btn-red-outline">Become a Volunteer</a>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title" id="contact-title">Contact <span>&amp; Location</span></h2>
+      <p class="section-lead">Have a question, want to partner with us, or need support? We'd love to hear from you.</p>
+      <div class="contact-grid stagger">
+        <div class="contact-card fade-up">
+          <div class="icon" aria-hidden="true">📧</div>
+          <h4>Email Us</h4>
+          <a href="mailto:info@aidsapaana.org">info@aidsapaana.org</a>
+        </div>
+        <div class="contact-card fade-up">
+          <div class="icon" aria-hidden="true">📞</div>
+          <h4>Call Us</h4>
+          <a href="tel:+911234567890">+91 12345 67890</a>
+        </div>
+        <div class="contact-card fade-up">
+          <div class="icon" aria-hidden="true">📍</div>
+          <h4>Office Location</h4>
+          <p>AIDS APAANA Foundation,<br>District Office, India</p>
+        </div>
+        <div class="contact-card fade-up">
+          <div class="icon" aria-hidden="true">🌐</div>
+          <h4>Follow Us</h4>
+          <a href="#">Facebook · Instagram · Twitter</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer role="contentinfo">
+  <p>© 2026 <strong>AIDS APAANA Foundation</strong>. All rights reserved. Registered NGO. Built with ❤️ for the communities we serve.</p>
+</footer>
+
+<script>
+  // ─── HAMBURGER MENU ───
+  const ham = document.getElementById('hamburger');
+  const nav = document.getElementById('navLinks');
+  ham.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    ham.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!nav.contains(e.target) && !ham.contains(e.target)) {
+      nav.classList.remove('open');
+      ham.setAttribute('aria-expanded', false);
+    }
+  });
+
+  // ─── FAQ ACCORDION ───
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      // close all
+      document.querySelectorAll('.faq-btn').forEach(b => {
+        b.classList.remove('open');
+        b.setAttribute('aria-expanded', 'false');
+      });
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+      // open clicked if it was closed
+      if (!expanded) {
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        document.getElementById(btn.getAttribute('aria-controls')).classList.add('open');
+      }
+    });
+  });
+
+  // ─── SCROLL ANIMATIONS ───
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
