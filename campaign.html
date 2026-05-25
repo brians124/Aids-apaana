@@ -1,0 +1,2509 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HopeForward — Campaign Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+/* =============================================
+   CSS CUSTOM PROPERTIES
+   ============================================= */
+:root {
+  --red: #E8192C;
+  --red-dark: #B8101E;
+  --red-light: #FF4D5E;
+  --red-glow: rgba(232,25,44,0.18);
+  --white: #FFFFFF;
+  --off-white: #FDF8F8;
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-400: #9CA3AF;
+  --gray-600: #4B5563;
+  --gray-800: #1F2937;
+  --dark: #0D0D0D;
+  --dark-2: #161618;
+  --dark-3: #1E1E22;
+  --text: #111111;
+  --text-muted: #6B7280;
+  --border: #E5E7EB;
+  --card-bg: #FFFFFF;
+  --hero-bg: #0D0D0D;
+  --nav-bg: rgba(13,13,13,0.95);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.14);
+  --shadow-red: 0 4px 24px rgba(232,25,44,0.25);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 100px;
+  --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+[data-theme="dark"] {
+  --text: #F3F4F6;
+  --text-muted: #9CA3AF;
+  --border: #2D2D35;
+  --card-bg: #1E1E22;
+  --off-white: #161618;
+  --gray-50: #1A1A1F;
+  --gray-100: #232329;
+  --gray-200: #2D2D35;
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--off-white);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background var(--transition), color var(--transition);
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; }
+ul { list-style: none; }
+
+/* =============================================
+   TYPOGRAPHY
+   ============================================= */
+.serif { font-family: 'Playfair Display', serif; }
+.mono  { font-family: 'DM Mono', monospace; }
+
+/* =============================================
+   UTILITIES
+   ============================================= */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.section { padding: 80px 0; }
+.section-sm { padding: 48px 0; }
+.text-center { text-align: center; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.gap-2 { gap: 8px; }
+.gap-4 { gap: 16px; }
+.hidden { display: none !important; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: var(--radius-pill);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+}
+.badge-red   { background: var(--red); color: #fff; }
+.badge-green { background: #10B981; color: #fff; }
+.badge-gold  { background: #F59E0B; color: #fff; }
+.badge-blue  { background: #3B82F6; color: #fff; }
+.badge-outline { background: transparent; border: 1.5px solid var(--border); color: var(--text-muted); }
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 24px; border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 600; letter-spacing: 0.01em;
+  border: none; outline: none;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--red); color: #fff;
+  box-shadow: var(--shadow-red);
+}
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); box-shadow: 0 6px 28px rgba(232,25,44,0.35); }
+.btn-outline {
+  background: transparent; color: var(--text);
+  border: 1.5px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--red); color: var(--red); }
+.btn-white { background: #fff; color: var(--red); }
+.btn-white:hover { background: var(--off-white); transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--text-muted); padding: 8px 16px; }
+.btn-ghost:hover { color: var(--red); }
+.btn-sm { padding: 8px 18px; font-size: 13px; }
+.btn-lg { padding: 16px 36px; font-size: 16px; }
+
+/* =============================================
+   SECTION HEADINGS
+   ============================================= */
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 12px;
+}
+.section-label::before {
+  content: ''; display: block; width: 24px; height: 2px; background: var(--red);
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700; line-height: 1.2;
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 16px; color: var(--text-muted); max-width: 520px; line-height: 1.7;
+}
+
+/* =============================================
+   NAVBAR
+   ============================================= */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: all var(--transition);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700;
+  color: #fff;
+}
+.nav-logo span { color: var(--red); }
+.nav-logo-icon {
+  width: 36px; height: 36px; background: var(--red);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: #fff;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 4px;
+}
+.nav-links a {
+  font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.7);
+  padding: 8px 14px; border-radius: 8px;
+  transition: all var(--transition);
+}
+.nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(255,255,255,0.08); }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+#darkToggle {
+  width: 38px; height: 38px; border-radius: 8px;
+  background: rgba(255,255,255,0.08); border: none;
+  color: rgba(255,255,255,0.7); font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition);
+}
+#darkToggle:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.live-counter-pill {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(232,25,44,0.15); border: 1px solid rgba(232,25,44,0.3);
+  border-radius: var(--radius-pill); padding: 5px 12px;
+  font-size: 12px; color: var(--red-light); font-weight: 600;
+}
+.live-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--red);
+  animation: pulse-dot 1.4s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; padding: 8px; cursor: pointer;
+}
+.hamburger span { width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: all var(--transition); }
+@media (max-width: 860px) {
+  .hamburger { display: flex; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--nav-bg); padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .nav-links.open { display: flex; }
+  .live-counter-pill { display: none; }
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+#hero {
+  min-height: 100vh;
+  background: var(--hero-bg);
+  position: relative; overflow: hidden;
+  display: flex; align-items: center;
+  padding-top: 64px;
+}
+.hero-bg-grid {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: linear-gradient(rgba(232,25,44,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(232,25,44,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-glow {
+  position: absolute; top: -200px; left: -200px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,25,44,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-glow-2 {
+  position: absolute; bottom: -150px; right: -100px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,25,44,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+  padding: 80px 0;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(232,25,44,0.12); border: 1px solid rgba(232,25,44,0.25);
+  border-radius: var(--radius-pill); padding: 6px 14px;
+  font-size: 12px; font-weight: 600; color: var(--red-light);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5.5vw, 68px);
+  font-weight: 900; line-height: 1.08;
+  color: #fff; margin-bottom: 20px;
+}
+.hero-title em { color: var(--red); font-style: normal; }
+.hero-sub {
+  font-size: 17px; color: rgba(255,255,255,0.55);
+  line-height: 1.8; margin-bottom: 36px; max-width: 480px;
+}
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+.hero-stats {
+  display: flex; gap: 32px; flex-wrap: wrap;
+  padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08);
+}
+.hstat-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 700; color: #fff;
+}
+.hstat-val span { color: var(--red); }
+.hstat-lbl { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+.hero-visual { position: relative; }
+.hero-card-stack { position: relative; }
+.hero-main-img {
+  width: 100%; border-radius: var(--radius-lg);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+  aspect-ratio: 4/3; object-fit: cover;
+  background: linear-gradient(135deg, #1a0a0a 0%, #2d1515 40%, #3d0f0f 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 80px;
+}
+.hero-float-card {
+  position: absolute;
+  background: var(--dark-2); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius); padding: 14px 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+}
+.hfc-1 { bottom: -20px; left: -24px; min-width: 180px; }
+.hfc-2 { top: 20px; right: -20px; min-width: 160px; }
+.hfc-label { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+.hfc-val { font-size: 22px; font-weight: 700; color: #fff; }
+.hfc-val span { color: var(--red); }
+.hfc-bar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-top: 8px; }
+.hfc-bar-fill { height: 100%; background: var(--red); border-radius: 2px; transition: width 1.5s ease; }
+.urgency-badge {
+  position: absolute; top: 16px; left: 16px;
+  background: var(--red); color: #fff;
+  border-radius: var(--radius-pill); padding: 6px 14px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+  display: flex; align-items: center; gap: 6px;
+  animation: urgent-pulse 2s infinite;
+}
+@keyframes urgent-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232,25,44,0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(232,25,44,0); }
+}
+@media (max-width: 860px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { display: none; }
+}
+
+/* =============================================
+   SEARCH & FILTER BAR
+   ============================================= */
+#search-bar {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+  position: sticky; top: 64px; z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+.search-inner {
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+}
+.search-field {
+  flex: 1; min-width: 220px;
+  display: flex; align-items: center; gap: 10px;
+  background: var(--gray-100); border: 1.5px solid transparent;
+  border-radius: var(--radius-pill); padding: 10px 18px;
+  transition: all var(--transition);
+}
+.search-field:focus-within { border-color: var(--red); background: var(--card-bg); box-shadow: 0 0 0 3px var(--red-glow); }
+.search-field i { color: var(--text-muted); font-size: 14px; }
+.search-field input {
+  flex: 1; background: none; border: none; outline: none;
+  font-size: 14px; color: var(--text); font-family: inherit;
+}
+.search-field input::placeholder { color: var(--text-muted); }
+.filter-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  padding: 8px 16px; border-radius: var(--radius-pill);
+  font-size: 13px; font-weight: 500; border: 1.5px solid var(--border);
+  background: transparent; color: var(--text-muted);
+  cursor: pointer; transition: all var(--transition); white-space: nowrap;
+}
+.chip:hover { border-color: var(--red); color: var(--red); }
+.chip.active { background: var(--red); border-color: var(--red); color: #fff; }
+
+/* =============================================
+   STATS BAR
+   ============================================= */
+#stats-bar {
+  background: var(--red);
+  padding: 24px 0;
+}
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 700; color: #fff;
+}
+.stat-lbl { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+@media (max-width: 640px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* =============================================
+   FEATURED CAMPAIGN
+   ============================================= */
+#featured {
+  background: var(--off-white);
+}
+.featured-card {
+  display: grid; grid-template-columns: 1.1fr 0.9fr;
+  background: var(--card-bg); border-radius: var(--radius-lg);
+  overflow: hidden; box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+}
+.featured-img {
+  position: relative; min-height: 420px;
+  background: linear-gradient(135deg, #3d0f0f 0%, #1a0505 100%);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.featured-img-bg {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=800&q=80') center/cover no-repeat;
+  opacity: 0.5;
+}
+.featured-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(13,13,13,0) 60%, var(--card-bg));
+}
+.featured-badges {
+  position: absolute; top: 20px; left: 20px;
+  display: flex; gap: 8px;
+}
+.featured-content {
+  padding: 48px 40px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.featured-org {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--text-muted); margin-bottom: 12px;
+}
+.org-avatar {
+  width: 28px; height: 28px; background: var(--red);
+  border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: #fff; font-weight: 700;
+}
+.featured-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 3vw, 32px); font-weight: 700;
+  line-height: 1.25; margin-bottom: 14px;
+}
+.featured-desc {
+  font-size: 15px; color: var(--text-muted);
+  line-height: 1.75; margin-bottom: 24px;
+}
+.progress-section { margin-bottom: 28px; }
+.progress-meta {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 8px;
+}
+.prog-raised {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700; color: var(--text);
+}
+.prog-goal { font-size: 14px; color: var(--text-muted); }
+.prog-pct { font-size: 14px; font-weight: 600; color: var(--red); }
+.progress-bar {
+  height: 8px; background: var(--gray-200); border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%; background: linear-gradient(90deg, var(--red-dark), var(--red-light));
+  border-radius: var(--radius-pill);
+  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+.progress-fill::after {
+  content: '';
+  position: absolute; right: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--red-light); box-shadow: 0 0 8px var(--red);
+}
+.prog-extras {
+  display: flex; gap: 20px; margin-top: 10px;
+}
+.prog-extra { font-size: 13px; color: var(--text-muted); }
+.prog-extra strong { color: var(--text); font-weight: 600; }
+.featured-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.countdown-section { margin-bottom: 20px; }
+.countdown-label { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+.countdown-timer { display: flex; gap: 10px; }
+.cd-unit {
+  text-align: center;
+  background: var(--gray-100); border-radius: var(--radius);
+  padding: 8px 12px; min-width: 52px;
+}
+.cd-val { font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 500; color: var(--red); }
+.cd-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+@media (max-width: 860px) {
+  .featured-card { grid-template-columns: 1fr; }
+  .featured-img { min-height: 240px; }
+  .featured-img-overlay { background: linear-gradient(to bottom, rgba(13,13,13,0) 60%, var(--card-bg)); }
+  .featured-content { padding: 28px 24px; }
+}
+
+/* =============================================
+   CAMPAIGN CARDS GRID
+   ============================================= */
+#campaigns { background: var(--off-white); }
+.campaigns-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 36px; gap: 20px; flex-wrap: wrap;
+}
+.campaigns-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+.campaign-card {
+  background: var(--card-bg); border-radius: var(--radius-lg);
+  overflow: hidden; border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+  position: relative;
+  display: flex; flex-direction: column;
+}
+.campaign-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(232,25,44,0.2);
+}
+.card-img-wrap {
+  position: relative; overflow: hidden; aspect-ratio: 16/10;
+  background: var(--gray-200);
+}
+.card-img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 60px;
+}
+.campaign-card:hover .card-img { transform: scale(1.04); }
+.card-badges {
+  position: absolute; top: 12px; left: 12px;
+  display: flex; gap: 6px;
+}
+.card-share-btn {
+  position: absolute; top: 12px; right: 12px;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(0,0,0,0.45); backdrop-filter: blur(8px);
+  border: none; color: #fff; font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; opacity: 0; transition: all var(--transition);
+}
+.campaign-card:hover .card-share-btn { opacity: 1; }
+.card-share-btn:hover { background: var(--red); }
+.card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+.card-category {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 8px;
+}
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700; line-height: 1.35;
+  margin-bottom: 8px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-desc {
+  font-size: 14px; color: var(--text-muted); line-height: 1.6;
+  margin-bottom: 16px; flex: 1;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-progress { margin-bottom: 14px; }
+.card-prog-bar {
+  height: 6px; background: var(--gray-200); border-radius: 3px; overflow: hidden; margin-bottom: 6px;
+}
+.card-prog-fill {
+  height: 100%; background: linear-gradient(90deg, var(--red-dark), var(--red-light));
+  border-radius: 3px; transition: width 1.5s ease;
+}
+.card-prog-meta {
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: var(--text-muted);
+}
+.card-prog-meta strong { color: var(--text); font-weight: 600; }
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px; border-top: 1px solid var(--border);
+  gap: 8px;
+}
+.card-org {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--text-muted);
+}
+.card-org-dot {
+  width: 24px; height: 24px; background: var(--gray-200);
+  border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+}
+.verified-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 12px; color: #3B82F6; font-weight: 500;
+}
+
+/* =============================================
+   VIDEO CAMPAIGN SECTION
+   ============================================= */
+#video-section {
+  background: var(--dark);
+  position: relative; overflow: hidden;
+  padding: 80px 0;
+}
+.video-bg-blur {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(232,25,44,0.08) 0%, transparent 60%);
+}
+.video-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+}
+.video-text .section-label { color: var(--red-light); }
+.video-text .section-title { color: #fff; }
+.video-text .section-sub { color: rgba(255,255,255,0.5); }
+.video-list { margin-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+.video-list-item {
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.vli-icon {
+  width: 36px; height: 36px; background: rgba(232,25,44,0.15);
+  border: 1px solid rgba(232,25,44,0.25); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--red-light); font-size: 14px; flex-shrink: 0; margin-top: 2px;
+}
+.vli-text h4 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.vli-text p  { font-size: 13px; color: rgba(255,255,255,0.45); }
+.video-player {
+  border-radius: var(--radius-lg); overflow: hidden;
+  position: relative; aspect-ratio: 16/9;
+  background: #1a0505; box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+  cursor: pointer;
+}
+.video-thumb {
+  width: 100%; height: 100%; object-fit: cover; opacity: 0.6;
+  background: linear-gradient(135deg, #2d0a0a, #0d0d0d);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 80px;
+}
+.play-btn {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+}
+.play-circle {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--red); box-shadow: 0 0 0 16px rgba(232,25,44,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; color: #fff;
+  transition: all var(--transition);
+}
+.video-player:hover .play-circle {
+  transform: scale(1.1); box-shadow: 0 0 0 24px rgba(232,25,44,0.1);
+}
+.play-label { font-size: 14px; color: rgba(255,255,255,0.7); font-weight: 500; }
+@media (max-width: 860px) {
+  .video-inner { grid-template-columns: 1fr; }
+}
+
+/* =============================================
+   SUCCESS STORIES
+   ============================================= */
+#success { background: var(--gray-50); }
+.stories-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.story-card {
+  background: var(--card-bg); border-radius: var(--radius-lg);
+  overflow: hidden; border: 1px solid var(--border);
+  transition: all var(--transition);
+}
+.story-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.story-img {
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #fce4e4, #f9d4d4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 60px; position: relative; overflow: hidden;
+}
+.story-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+.story-body { padding: 20px; }
+.story-tag { font-size: 11px; font-weight: 600; color: var(--red); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.story-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; margin-bottom: 8px; line-height: 1.35; }
+.story-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+.story-person { display: flex; align-items: center; gap: 10px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+.story-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-size: 14px; color: #fff; font-weight: 700; }
+.story-name { font-size: 13px; font-weight: 600; }
+.story-loc { font-size: 12px; color: var(--text-muted); }
+@media (max-width: 860px) { .stories-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .stories-grid { grid-template-columns: 1fr; } }
+
+/* =============================================
+   TESTIMONIALS
+   ============================================= */
+#testimonials { background: var(--dark); padding: 80px 0; }
+.testimonials-wrap { overflow: hidden; }
+.testi-track {
+  display: flex; gap: 24px;
+  animation: scroll-testi 30s linear infinite;
+  width: max-content;
+}
+.testi-track:hover { animation-play-state: paused; }
+@keyframes scroll-testi {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.testi-card {
+  width: 320px; flex-shrink: 0;
+  background: var(--dark-3); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-lg); padding: 24px;
+}
+.testi-stars { color: #F59E0B; font-size: 13px; margin-bottom: 12px; }
+.testi-text {
+  font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7;
+  margin-bottom: 16px; font-style: italic;
+}
+.testi-person { display: flex; align-items: center; gap: 10px; }
+.testi-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--red); display: flex; align-items: center; justify-content: center;
+  font-size: 15px; color: #fff; font-weight: 700;
+}
+.testi-name { font-size: 14px; font-weight: 600; color: #fff; }
+.testi-role { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+/* =============================================
+   DONATION SECTION (PAYMENT)
+   ============================================= */
+#donate-section {
+  background: var(--off-white);
+}
+.donate-grid {
+  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: start;
+}
+.donate-box {
+  background: var(--card-bg); border-radius: var(--radius-lg);
+  border: 1px solid var(--border); padding: 40px;
+  box-shadow: var(--shadow-md);
+}
+.donate-box h3 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+.donate-box .sub { font-size: 15px; color: var(--text-muted); margin-bottom: 28px; }
+.amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+.amt-btn {
+  padding: 14px; border-radius: var(--radius);
+  border: 1.5px solid var(--border); background: transparent;
+  font-size: 16px; font-weight: 600; color: var(--text);
+  cursor: pointer; transition: all var(--transition); text-align: center;
+}
+.amt-btn:hover, .amt-btn.active {
+  border-color: var(--red); color: var(--red);
+  background: var(--red-glow);
+}
+.custom-amount {
+  display: flex; align-items: center; gap: 0;
+  border: 1.5px solid var(--border); border-radius: var(--radius);
+  overflow: hidden; margin-bottom: 24px;
+  transition: border-color var(--transition);
+}
+.custom-amount:focus-within { border-color: var(--red); }
+.custom-amount .curr {
+  padding: 14px 16px; background: var(--gray-100);
+  font-size: 16px; font-weight: 600; color: var(--text-muted);
+  border-right: 1px solid var(--border);
+}
+.custom-amount input {
+  flex: 1; padding: 14px 16px; border: none; outline: none;
+  font-size: 16px; font-family: inherit; color: var(--text);
+  background: transparent;
+}
+.payment-methods { margin-bottom: 24px; }
+.pm-label { font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+.pm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.pm-btn {
+  padding: 12px; border-radius: var(--radius);
+  border: 1.5px solid var(--border); background: transparent;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  cursor: pointer; transition: all var(--transition);
+}
+.pm-btn:hover, .pm-btn.active {
+  border-color: var(--red); background: var(--red-glow);
+}
+.pm-icon { font-size: 22px; }
+.pm-name { font-size: 11px; font-weight: 600; color: var(--text-muted); }
+.pm-btn.active .pm-name { color: var(--red); }
+.secure-note {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--text-muted); margin-top: 12px;
+}
+.donate-sidebar { display: flex; flex-direction: column; gap: 20px; }
+.donors-box {
+  background: var(--card-bg); border-radius: var(--radius-lg);
+  border: 1px solid var(--border); padding: 24px;
+}
+.donors-box h4 { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+.donor-list { display: flex; flex-direction: column; gap: 12px; }
+.donor-item { display: flex; align-items: center; gap: 10px; }
+.donor-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--gray-200); display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; color: var(--text-muted); flex-shrink: 0;
+}
+.donor-info { flex: 1; }
+.donor-name { font-size: 14px; font-weight: 600; }
+.donor-time { font-size: 12px; color: var(--text-muted); }
+.donor-amount { font-size: 14px; font-weight: 600; color: var(--red); }
+.qr-box {
+  background: var(--card-bg); border-radius: var(--radius-lg);
+  border: 1px solid var(--border); padding: 24px; text-align: center;
+}
+.qr-box h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.qr-box p { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+.qr-code {
+  width: 160px; height: 160px; margin: 0 auto;
+  background: var(--gray-100); border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 70px; border: 1px solid var(--border);
+}
+@media (max-width: 860px) { .donate-grid { grid-template-columns: 1fr; } }
+
+/* =============================================
+   CAMPAIGN GALLERY
+   ============================================= */
+#gallery { background: var(--gray-50); }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 12px;
+}
+.gallery-item {
+  border-radius: var(--radius); overflow: hidden;
+  position: relative; cursor: pointer;
+  background: var(--gray-200);
+}
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-img {
+  width: 100%; height: 100%; object-fit: cover;
+  aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
+  font-size: 48px; transition: transform 0.4s ease;
+}
+.gallery-item:nth-child(1) .gallery-img { aspect-ratio: 1/1; font-size: 80px; }
+.gallery-item:hover .gallery-img { transform: scale(1.06); }
+.gallery-overlay {
+  position: absolute; inset: 0; background: rgba(0,0,0,0);
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--transition);
+}
+.gallery-item:hover .gallery-overlay { background: rgba(0,0,0,0.3); }
+.gallery-overlay i { font-size: 24px; color: #fff; opacity: 0; transition: opacity var(--transition); }
+.gallery-item:hover .gallery-overlay i { opacity: 1; }
+@media (max-width: 640px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } .gallery-item:nth-child(1) { grid-column: span 2; } }
+
+/* =============================================
+   UPDATES SECTION
+   ============================================= */
+#updates { background: var(--off-white); }
+.updates-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+}
+.update-timeline { display: flex; flex-direction: column; gap: 0; }
+.update-item {
+  display: flex; gap: 16px; position: relative;
+  padding-bottom: 28px;
+}
+.update-item::before {
+  content: ''; position: absolute;
+  left: 14px; top: 28px; bottom: 0;
+  width: 1px; background: var(--border);
+}
+.update-item:last-child::before { display: none; }
+.update-dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--card-bg); border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; flex-shrink: 0; margin-top: 2px;
+}
+.update-dot.active { border-color: var(--red); color: var(--red); }
+.update-body {}
+.update-date { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; font-family: 'DM Mono', monospace; }
+.update-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.update-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+.comment-section {}
+.comment-section h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 20px; }
+.comment-form {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-bottom: 24px;
+}
+.comment-form input, .comment-form textarea {
+  padding: 12px 16px; border-radius: var(--radius);
+  border: 1.5px solid var(--border); background: var(--card-bg);
+  font-family: inherit; font-size: 14px; color: var(--text);
+  outline: none; transition: border-color var(--transition);
+}
+.comment-form input:focus, .comment-form textarea:focus { border-color: var(--red); }
+.comment-form textarea { resize: vertical; min-height: 80px; }
+.comment-list { display: flex; flex-direction: column; gap: 16px; }
+.comment-item { display: flex; gap: 12px; }
+.comment-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--gray-200); display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; flex-shrink: 0;
+}
+.comment-body { background: var(--card-bg); border-radius: 0 var(--radius) var(--radius) var(--radius); padding: 12px 16px; flex: 1; border: 1px solid var(--border); }
+.comment-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.comment-text { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+@media (max-width: 740px) { .updates-grid { grid-template-columns: 1fr; } }
+
+/* =============================================
+   NEWSLETTER
+   ============================================= */
+#newsletter {
+  background: var(--red);
+  padding: 64px 0;
+}
+.newsletter-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 40px; flex-wrap: wrap;
+}
+.newsletter-text h2 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #fff; }
+.newsletter-text p { font-size: 16px; color: rgba(255,255,255,0.7); margin-top: 8px; }
+.newsletter-form { display: flex; gap: 0; max-width: 420px; width: 100%; }
+.newsletter-form input {
+  flex: 1; padding: 14px 20px; border-radius: var(--radius-pill) 0 0 var(--radius-pill);
+  border: none; outline: none; font-family: inherit; font-size: 15px;
+}
+.newsletter-form button {
+  padding: 14px 24px; border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
+  background: var(--dark); color: #fff; border: none; font-family: inherit;
+  font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap;
+  transition: background var(--transition);
+}
+.newsletter-form button:hover { background: #000; }
+
+/* =============================================
+   PARTNERS
+   ============================================= */
+#partners { background: var(--gray-50); padding: 48px 0; }
+.partners-inner { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; justify-content: center; }
+.partner-logo {
+  opacity: 0.45; transition: opacity var(--transition);
+  font-size: 15px; font-weight: 700; letter-spacing: 0.05em; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+}
+.partner-logo:hover { opacity: 0.9; }
+.partner-logo i { font-size: 20px; }
+
+/* =============================================
+   CTA
+   ============================================= */
+#cta {
+  background: var(--dark);
+  padding: 100px 0;
+  position: relative; overflow: hidden;
+  text-align: center;
+}
+.cta-glow {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 600px; height: 300px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(232,25,44,0.12) 0%, transparent 70%);
+}
+.cta-inner { position: relative; z-index: 1; }
+.cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 58px); font-weight: 900;
+  color: #fff; line-height: 1.1; margin-bottom: 20px;
+}
+.cta-title em { color: var(--red); font-style: normal; }
+.cta-sub { font-size: 17px; color: rgba(255,255,255,0.5); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  background: #090909; color: rgba(255,255,255,0.55);
+  padding: 64px 0 32px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-brand .nav-logo { margin-bottom: 14px; }
+.footer-desc { font-size: 14px; line-height: 1.75; max-width: 280px; }
+.footer-reg { font-size: 12px; margin-top: 12px; color: rgba(255,255,255,0.3); }
+.footer-reg strong { color: rgba(255,255,255,0.55); }
+.footer-socials { display: flex; gap: 10px; margin-top: 16px; }
+.social-btn {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: rgba(255,255,255,0.5); cursor: pointer;
+  transition: all var(--transition);
+}
+.social-btn:hover { background: var(--red); color: #fff; border-color: var(--red); }
+.footer-col h4 { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 16px; letter-spacing: 0.06em; text-transform: uppercase; }
+.footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a { font-size: 14px; transition: color var(--transition); }
+.footer-col ul li a:hover { color: var(--red-light); }
+.footer-contact { display: flex; flex-direction: column; gap: 10px; }
+.fc-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; }
+.fc-item i { color: var(--red); margin-top: 3px; font-size: 13px; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+  font-size: 13px;
+}
+.footer-bottom a { transition: color var(--transition); }
+.footer-bottom a:hover { color: var(--red-light); }
+@media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .footer-grid { grid-template-columns: 1fr; } }
+
+/* =============================================
+   MODAL (SHARE / PAYMENT)
+   ============================================= */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity var(--transition);
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: var(--card-bg); border-radius: var(--radius-lg);
+  padding: 36px; max-width: 460px; width: 90%;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(20px); transition: transform var(--transition);
+  position: relative;
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+.modal h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+.modal p { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--gray-100); border: none;
+  font-size: 16px; cursor: pointer; color: var(--text-muted);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-close:hover { background: var(--gray-200); }
+.share-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.share-item {
+  padding: 14px; border-radius: var(--radius); text-align: center;
+  border: 1.5px solid var(--border); cursor: pointer;
+  transition: all var(--transition);
+}
+.share-item:hover { border-color: var(--red); background: var(--red-glow); }
+.share-item i { font-size: 22px; display: block; margin-bottom: 6px; }
+.share-item.facebook i { color: #1877F2; }
+.share-item.twitter  i { color: #1DA1F2; }
+.share-item.whatsapp i { color: #25D366; }
+.share-item.telegram i { color: #0088CC; }
+.share-item.copy     i { color: var(--text-muted); }
+.share-item.email    i { color: var(--text-muted); }
+.share-item span { font-size: 12px; font-weight: 500; }
+.copy-link-box {
+  display: flex; margin-top: 16px; gap: 0;
+  border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden;
+}
+.copy-link-box input {
+  flex: 1; padding: 10px 14px; border: none; outline: none;
+  font-size: 13px; background: var(--gray-100); color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+}
+.copy-link-box button { padding: 10px 16px; background: var(--red); border: none; color: #fff; font-size: 13px; font-weight: 600; cursor: pointer; }
+
+/* =============================================
+   PAGINATION
+   ============================================= */
+.pagination {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; margin-top: 48px;
+}
+.pg-btn {
+  width: 40px; height: 40px; border-radius: var(--radius);
+  border: 1.5px solid var(--border); background: transparent;
+  font-size: 14px; font-weight: 500; cursor: pointer;
+  transition: all var(--transition); color: var(--text);
+}
+.pg-btn:hover, .pg-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+.pg-arrow { background: transparent; }
+
+/* =============================================
+   VOLUNTEER SECTION
+   ============================================= */
+.volunteer-bar {
+  background: var(--gray-100); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 28px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap; margin-top: 32px;
+}
+.vb-text h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.vb-text p { font-size: 14px; color: var(--text-muted); }
+.vb-actions { display: flex; gap: 10px; }
+
+/* =============================================
+   TOAST NOTIFICATION
+   ============================================= */
+.toast {
+  position: fixed; bottom: 24px; right: 24px; z-index: 3000;
+  background: var(--dark); color: #fff;
+  border-radius: var(--radius); padding: 14px 20px;
+  font-size: 14px; font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  display: flex; align-items: center; gap: 10px;
+  transform: translateY(20px); opacity: 0;
+  transition: all var(--transition);
+  max-width: 320px;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast i { color: var(--red); }
+
+/* =============================================
+   SCROLL TO TOP
+   ============================================= */
+#scrollTop {
+  position: fixed; bottom: 24px; left: 24px; z-index: 999;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--red); color: #fff; border: none;
+  font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-red);
+  opacity: 0; pointer-events: none;
+  transition: all var(--transition);
+}
+#scrollTop.show { opacity: 1; pointer-events: all; }
+#scrollTop:hover { background: var(--red-dark); transform: translateY(-2px); }
+
+/* =============================================
+   ANIMATED COUNTER
+   ============================================= */
+.count-up { transition: all 0.05s; }
+
+/* =============================================
+   TRANSPARENCY BOX
+   ============================================= */
+.transparency-box {
+  background: linear-gradient(135deg, rgba(232,25,44,0.04), rgba(232,25,44,0.02));
+  border: 1px solid rgba(232,25,44,0.15);
+  border-radius: var(--radius-lg); padding: 24px;
+  margin-top: 16px;
+}
+.tb-title { font-size: 14px; font-weight: 600; color: var(--red); margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+.tb-rows { display: flex; flex-direction: column; gap: 8px; }
+.tb-row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+.tb-row span:first-child { color: var(--text-muted); }
+.tb-row span:last-child { font-weight: 600; color: var(--text); }
+
+</style>
+</head>
+<body>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast">
+  <i class="fas fa-check-circle"></i>
+  <span id="toast-msg">Done!</span>
+</div>
+
+<!-- ===== SCROLL TOP ===== -->
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- ===== SHARE MODAL ===== -->
+<div class="modal-overlay" id="shareModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('shareModal')"><i class="fas fa-times"></i></button>
+    <h3>Share This Campaign</h3>
+    <p>Help spread the word and reach more people</p>
+    <div class="share-grid">
+      <div class="share-item facebook" onclick="shareTo('facebook')">
+        <i class="fab fa-facebook"></i><span>Facebook</span>
+      </div>
+      <div class="share-item twitter" onclick="shareTo('twitter')">
+        <i class="fab fa-twitter"></i><span>Twitter</span>
+      </div>
+      <div class="share-item whatsapp" onclick="shareTo('whatsapp')">
+        <i class="fab fa-whatsapp"></i><span>WhatsApp</span>
+      </div>
+      <div class="share-item telegram" onclick="shareTo('telegram')">
+        <i class="fab fa-telegram"></i><span>Telegram</span>
+      </div>
+      <div class="share-item email" onclick="shareTo('email')">
+        <i class="fas fa-envelope"></i><span>Email</span>
+      </div>
+      <div class="share-item copy" onclick="copyLink()">
+        <i class="fas fa-link"></i><span>Copy Link</span>
+      </div>
+    </div>
+    <div class="copy-link-box">
+      <input type="text" id="shareLink" value="https://hopeforward.org/campaigns/featured" readonly />
+      <button onclick="copyLink()">Copy</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">❤</div>
+      Hope<span>Forward</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#campaigns">Campaigns</a></li>
+      <li><a href="#donate-section">Donate</a></li>
+      <li><a href="#success">Stories</a></li>
+      <li><a href="#updates">Updates</a></li>
+      <li><a href="#newsletter">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="live-counter-pill">
+        <div class="live-dot"></div>
+        <span><span id="liveCount">247</span> donating now</span>
+      </div>
+      <button id="darkToggle" onclick="toggleDark()" title="Toggle dark mode">
+        <i class="fas fa-moon" id="darkIcon"></i>
+      </button>
+      <button class="btn btn-primary btn-sm" onclick="document.getElementById('donate-section').scrollIntoView({behavior:'smooth'})">
+        <i class="fas fa-heart"></i> Donate
+      </button>
+      <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-tag">
+          <div class="live-dot"></div>
+          12 Active Campaigns · Verified NGO
+        </div>
+        <h1 class="hero-title">
+          Give Hope.<br>Change <em>Lives.</em><br>Make History.
+        </h1>
+        <p class="hero-sub">
+          Join thousands of compassionate donors funding life-changing campaigns across health, education, and emergency relief across Africa.
+        </p>
+        <div class="hero-cta">
+          <button class="btn btn-primary btn-lg" onclick="document.getElementById('campaigns').scrollIntoView({behavior:'smooth'})">
+            <i class="fas fa-rocket"></i> View Campaigns
+          </button>
+          <button class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.2);color:#fff;" onclick="document.getElementById('donate-section').scrollIntoView({behavior:'smooth'})">
+            <i class="fas fa-hand-holding-heart"></i> Donate Now
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hstat-val"><span class="count-up" data-target="2.4">0</span>M<span>+</span></div>
+            <div class="hstat-lbl">Total Raised (USD)</div>
+          </div>
+          <div>
+            <div class="hstat-val"><span class="count-up" data-target="48">0</span>K<span>+</span></div>
+            <div class="hstat-lbl">Lives Impacted</div>
+          </div>
+          <div>
+            <div class="hstat-val"><span class="count-up" data-target="12">0</span></div>
+            <div class="hstat-lbl">Active Campaigns</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+          <div class="hero-main-img">🌍</div>
+          <div class="urgency-badge">
+            <i class="fas fa-fire"></i> URGENT NEED
+          </div>
+          <div class="hero-float-card hfc-1">
+            <div class="hfc-label">Emergency Fund</div>
+            <div class="hfc-val">$<span>84,320</span></div>
+            <div class="hfc-bar"><div class="hfc-bar-fill" style="width:78%"></div></div>
+          </div>
+          <div class="hero-float-card hfc-2">
+            <div class="hfc-label">Donors Today</div>
+            <div class="hfc-val"><span style="color:#10B981">↑</span> 347</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEARCH & FILTER ===== -->
+<div id="search-bar">
+  <div class="container">
+    <div class="search-inner">
+      <div class="search-field">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search campaigns…" id="searchInput" oninput="filterCampaigns()" />
+      </div>
+      <div class="filter-chips" id="filterChips">
+        <button class="chip active" onclick="setFilter(this,'all')">All</button>
+        <button class="chip" onclick="setFilter(this,'health')">Health</button>
+        <button class="chip" onclick="setFilter(this,'education')">Education</button>
+        <button class="chip" onclick="setFilter(this,'emergency')">Emergency</button>
+        <button class="chip" onclick="setFilter(this,'orphan')">Orphan Support</button>
+        <button class="chip" onclick="setFilter(this,'women')">Women</button>
+        <button class="chip" onclick="setFilter(this,'food')">Food</button>
+        <button class="chip" onclick="setFilter(this,'community')">Community</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STATS BAR ===== -->
+<section id="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num"><span class="count-up" data-target="2400000" data-prefix="$" data-suffix="">0</span></div>
+        <div class="stat-lbl">Total Donations Raised</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span class="count-up" data-target="48291" data-prefix="" data-suffix="">0</span></div>
+        <div class="stat-lbl">Beneficiaries Reached</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span class="count-up" data-target="12847" data-prefix="" data-suffix="">0</span></div>
+        <div class="stat-lbl">Total Donors</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span class="count-up" data-target="94" data-prefix="" data-suffix="%">0</span></div>
+        <div class="stat-lbl">Funds Directly Used</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURED CAMPAIGN ===== -->
+<section id="featured" class="section">
+  <div class="container">
+    <div class="section-label">Featured Campaign</div>
+    <div class="featured-card">
+      <div class="featured-img">
+        <div class="featured-img-bg"></div>
+        <div class="featured-img-overlay"></div>
+        <div class="featured-badges">
+          <span class="badge badge-red"><i class="fas fa-fire"></i> Urgent</span>
+          <span class="badge badge-green"><i class="fas fa-check-circle"></i> Verified</span>
+        </div>
+      </div>
+      <div class="featured-content">
+        <div class="featured-org">
+          <div class="org-avatar">H</div>
+          HopeForward Foundation
+          <span class="verified-badge"><i class="fas fa-shield-alt"></i> Certified NGO</span>
+        </div>
+        <h2 class="featured-title">Emergency Medical Relief for Children in Rural Communities</h2>
+        <p class="featured-desc">
+          Thousands of children in remote villages lack access to basic healthcare. Your donation provides medicine, vaccines, and mobile clinic services that can save young lives today.
+        </p>
+        <div class="countdown-section">
+          <div class="countdown-label"><i class="fas fa-clock"></i> Campaign ends in</div>
+          <div class="countdown-timer" id="countdown">
+            <div class="cd-unit"><div class="cd-val" id="cd-days">14</div><div class="cd-lbl">Days</div></div>
+            <div class="cd-unit"><div class="cd-val" id="cd-hours">07</div><div class="cd-lbl">Hrs</div></div>
+            <div class="cd-unit"><div class="cd-val" id="cd-mins">32</div><div class="cd-lbl">Min</div></div>
+            <div class="cd-unit"><div class="cd-val" id="cd-secs">45</div><div class="cd-lbl">Sec</div></div>
+          </div>
+        </div>
+        <div class="progress-section">
+          <div class="progress-meta">
+            <div>
+              <div class="prog-raised">$84,320</div>
+              <div class="prog-goal">of $120,000 goal</div>
+            </div>
+            <div class="prog-pct">70.3%</div>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="featured-bar" style="width:0%"></div>
+          </div>
+          <div class="prog-extras">
+            <span class="prog-extra"><strong>1,247</strong> donors</span>
+            <span class="prog-extra"><strong>14</strong> days left</span>
+            <span class="prog-extra"><strong>$35,680</strong> still needed</span>
+          </div>
+        </div>
+        <div class="featured-actions">
+          <button class="btn btn-primary btn-lg" onclick="document.getElementById('donate-section').scrollIntoView({behavior:'smooth'})">
+            <i class="fas fa-heart"></i> Donate Now
+          </button>
+          <button class="btn btn-outline" onclick="openModal('shareModal')">
+            <i class="fas fa-share-alt"></i> Share
+          </button>
+          <button class="btn btn-ghost" onclick="showToast('Added to volunteer list!')">
+            <i class="fas fa-hands-helping"></i> Volunteer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ACTIVE CAMPAIGNS GRID ===== -->
+<section id="campaigns" class="section" style="background:var(--gray-50)">
+  <div class="container">
+    <div class="campaigns-header">
+      <div>
+        <div class="section-label">Active Campaigns</div>
+        <h2 class="section-title">Choose a Cause to Support</h2>
+        <p class="section-sub">Every donation, big or small, creates a ripple of hope.</p>
+      </div>
+      <button class="btn btn-outline" onclick="showToast('Showing all campaigns')">
+        View All <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+
+    <div class="campaigns-grid" id="campaignGrid">
+
+      <!-- Card 1 -->
+      <div class="campaign-card" data-category="orphan" data-title="orphan support safe haven">
+        <div class="card-img-wrap">
+          <div class="card-img" style="background:linear-gradient(135deg,#fce4e4,#ffd4d4)">🏠</div>
+          <div class="card-badges">
+            <span class="badge badge-gold"><i class="fas fa-star"></i> Featured</span>
+          </div>
+          <button class="card-share-btn" onclick="openModal('shareModal')" title="Share"><i class="fas fa-share-alt"></i></button>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Orphan Support</div>
+          <h3 class="card-title">Safe Haven Home for 500 Orphaned Children</h3>
+          <p class="card-desc">Building a safe, nurturing residential facility that provides shelter, meals, education, and psychological support for orphaned children.</p>
+          <div class="card-progress">
+            <div class="card-prog-bar"><div class="card-prog-fill" style="width:65%"></div></div>
+            <div class="card-prog-meta">
+              <span><strong>$32,500</strong> raised</span>
+              <span>65% of $50,000</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-org">
+            <div class="card-org-dot">🏠</div>
+            SafeHaven NGO
+            <span class="verified-badge"><i class="fas fa-check-circle"></i></span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('donate-section').scrollIntoView({behavior:'smooth'})">Donate</button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="campaign-card" data-category="health" data-title="hiv aids awareness">
+        <div class="card-img-wrap">
+          <div class="card-img" style="background:linear-gradient(135deg,#ffe4e4,#ffcccc)">🎗️</div>
+          <div class="card-badges">
+            <span class="badge badge-red"><i class="fas fa-fire"></i> Urgent</span>
+          </div>
+          <button class="card-share-btn" onclick="openModal('shareModal')" title="Share"><i class="fas fa-share-alt"></i></button>
+        </div>
+        <div class="card-body">
+          <div class="card-category">HIV/AIDS Awareness</div>
+          <h3 class="card-title">HIV/AIDS Education & Testing Campaign</h3>
+          <p class="card-desc">Free testing kits, awareness workshops, and antiretroviral therapy support for 10,000 at-risk individuals in underserved regions.</p>
+          <div class="card-progress">
+            <div class="card-prog-bar"><div class="card-prog-fill" style="width:82%"></div></div>
+            <div class="card-prog-meta">
+              <span><strong>$41,000</strong> raised</span>
+              <span>82% of $50,000</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-org">
+            <div class="card-org-dot">🎗️</div>
+            HealthBridge Africa
+            <span class="verified-badge"><i class="fas fa-check-circle"></i></span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('donate-section').scrollIntoView({behavior:'smooth'})">Donate</button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="campaign-card" data-category="women" data-title="women empowerment skills">
+        <div class="card-img-wrap">
+          <div class="card-img" style="background:linear-gradient(135deg,#e4f0ff,#d4e8ff)">👩‍💼</div>
+          <div class="card-badges">
+            <span class="badge badge-blue">Women</span>
+          </div>
+          <button class="card-share-btn" onclick="openModal('shareModal')" title="Share"><i class="fas fa-share-alt"></i></button>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Women Empowerment</div>
+          <h3 class="card-title">Skills Training for 1,000 Rural Women</h3>
+          <p class="card-desc">Vocational training, microloans, and business mentorship equipping rural women with sustainable income pathways and independence.</p>
+          <div class="card-progress">
+            <div class="card-prog-bar"><div class="card-prog-fill" style="width:54%"></div></div>
+            <div class="card-prog-meta">
+              <span><strong>$27,000</strong> raised</span>
+              <span>54% of $50,000</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-org">
+            <div class="card-org-dot">👩</div>
+            EmpowerHer Initiative
+            <span class="verified-badge"><i class="fas fa-check-circle"></i></span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('donate-section').scrollIntoView({behavior:'smooth'})">Donate</button>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="campaign-card" data-category="education" data-title="education school books scholarship">
+        <div class="card-img-wrap">
+          <div class="card-img" style="background:linear-gradient(135deg,#e4ffe4,#d4f0d4)">📚</div>
+          <div class="card-badges">
+            <span class="badge badge-green">Education</span>
+          </div>
+          <button class="card-share-btn" onclick="openModal('shareModal')" title="Share"><i class="fas fa-share-alt"></i></button>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Education Support</div>
+          <h3 class="card-title">Scholarships for 500 Bright But Needy Students</h3>
+          <p class="card-desc">Full scholarships covering tuition, books, uniforms, and meals for underprivileged students with academic potential across 3 countries.</p>
+          <div class="card-progress">
+            <div class="card-prog-bar"><div class="card-prog-fill" style="width:71%"></div></div>
+            <div class="card-prog-meta">
+              <span><strong>$35,500</strong> raised</span>
+              <span>71% of $50,000</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-org">
+            <div class="card-org-dot">📚</div>
+            BrightFutures Edu
+            <span class="verified-badge"><i class="fas fa-check-circle"></i></span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('donate-section').scrollIntoView({behavior:'smooth'})">Donate</button>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="campaign-card" data-category="food" data-title="food hunger feeding children">
+        <div class="card-img-wrap">
+          <div class="card-img" style="background:linear-gradient(135deg,#fff4e4,#ffe8cc)">🍲</div>
+          <div class="card-badges">
+            <span class="badge badge-red"><i class="fas fa-fire"></i> Urgent</span>
+          </div>
+          <button class="card-share-btn" onclick="openModal('shareModal')" title="Share"><i class="fas fa-share-alt"></i></button>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Food Donation</div>
+          <h3 class="card-title">Feed 10,000 Malnourished Children Monthly</h3>
+          <p class="card-desc">Providing daily nutritious meals to severely malnourished children in conflict zones and drought-affected communities across 5 regions.</p>
+          <div class="card-progress">
+            <div class="card-prog-bar"><div class="card-prog-fill" style="width:38%"></div></div>
+            <div class="card-prog-meta">
+              <span><strong>$19,000</strong> raised</span>
+              <span>38% of $50,000</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-org">
+            <div class="card-org-dot">🍲</div>
+            FeedHope Africa
+            <span class="verified-badge"><i class="fas fa-check-circle"></i></span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('donate-section').scrollIntoView({behavior:'smooth'})">Donate</button>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="campaign-card" data-category="emergency" data-title="emergency relief flood disaster">
+        <div class="card-img-wrap">
+          <div class="card-img" style="background:linear-gradient(135deg,#e4eeff,#d4e0ff)">🆘</div>
+          <div class="card-badges">
+            <span class="badge badge-red"><i class="fas fa-fire"></i> Critical</span>
+          </div>
+          <button class="card-share-btn" onclick="openModal('shareModal')" title="Share"><i class="fas fa-share-alt"></i></button>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Emergency Relief</div>
+          <h3 class="card-title">Flood Disaster Response — Northern Region</h3>
+          <p class="card-desc">Emergency supplies, clean water, temporary shelter, and evacuation support for 20,000+ families displaced by catastrophic flooding.</p>
+          <div class="card-progress">
+            <div class="card-prog-bar"><div class="card-prog-fill" style="width:91%"></div></div>
+            <div class="card-prog-meta">
+              <span><strong>$45,500</strong> raised</span>
+              <span>91% of $50,000</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-org">
+            <div class="card-org-dot">🆘</div>
+            RapidRelief Team
+            <span class="verified-badge"><i class="fas fa-check-circle"></i></span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('donate-section').scrollIntoView({behavior:'smooth'})">Donate</button>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="campaign-card" data-category="community" data-title="community outreach clean water well">
+        <div class="card-img-wrap">
+          <div class="card-img" style="background:linear-gradient(135deg,#e4fff4,#ccf0e4)">💧</div>
+          <button class="card-share-btn" onclick="openModal('shareModal')" title="Share"><i class="fas fa-share-alt"></i></button>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Community Outreach</div>
+          <h3 class="card-title">Clean Water Wells for 50 Villages</h3>
+          <p class="card-desc">Drilling and installing clean borehole water systems in villages where women and children walk hours daily just to fetch unsafe water.</p>
+          <div class="card-progress">
+            <div class="card-prog-bar"><div class="card-prog-fill" style="width:45%"></div></div>
+            <div class="card-prog-meta">
+              <span><strong>$22,500</strong> raised</span>
+              <span>45% of $50,000</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-org">
+            <div class="card-org-dot">💧</div>
+            WaterForLife Org
+            <span class="verified-badge"><i class="fas fa-check-circle"></i></span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('donate-section').scrollIntoView({behavior:'smooth'})">Donate</button>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="campaign-card" data-category="health" data-title="medical assistance hospital surgery">
+        <div class="card-img-wrap">
+          <div class="card-img" style="background:linear-gradient(135deg,#ffeae4,#ffd8cc)">🏥</div>
+          <div class="card-badges">
+            <span class="badge badge-gold"><i class="fas fa-star"></i> Top</span>
+          </div>
+          <button class="card-share-btn" onclick="openModal('shareModal')" title="Share"><i class="fas fa-share-alt"></i></button>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Medical Assistance</div>
+          <h3 class="card-title">Life-Saving Surgeries for the Poorest Patients</h3>
+          <p class="card-desc">Funding complex surgeries — cardiac, orthopaedic, cancer-related — for patients who cannot afford care and face life-threatening conditions.</p>
+          <div class="card-progress">
+            <div class="card-prog-bar"><div class="card-prog-fill" style="width:59%"></div></div>
+            <div class="card-prog-meta">
+              <span><strong>$29,500</strong> raised</span>
+              <span>59% of $50,000</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-org">
+            <div class="card-org-dot">🏥</div>
+            HealingHands Med
+            <span class="verified-badge"><i class="fas fa-check-circle"></i></span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('donate-section').scrollIntoView({behavior:'smooth'})">Donate</button>
+        </div>
+      </div>
+
+    </div><!-- end grid -->
+
+    <div id="noResults" class="hidden text-center" style="padding:48px 0;color:var(--text-muted);">
+      <i class="fas fa-search" style="font-size:48px;opacity:0.3;display:block;margin-bottom:16px;"></i>
+      No campaigns match your search. Try a different keyword.
+    </div>
+
+    <!-- Volunteer Bar -->
+    <div class="volunteer-bar">
+      <div class="vb-text">
+        <h3><i class="fas fa-hands-helping" style="color:var(--red);margin-right:8px;"></i>Want to Volunteer?</h3>
+        <p>Join our ground teams and make a direct difference in communities that need it most.</p>
+      </div>
+      <div class="vb-actions">
+        <button class="btn btn-primary" onclick="showToast('Volunteer form opening…')"><i class="fas fa-user-plus"></i> Register as Volunteer</button>
+        <button class="btn btn-outline" onclick="showToast('Learn more page coming soon!')">Learn More</button>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <button class="btn pg-btn pg-arrow"><i class="fas fa-chevron-left"></i></button>
+      <button class="btn pg-btn active">1</button>
+      <button class="btn pg-btn" onclick="showToast('Loading page 2…')">2</button>
+      <button class="btn pg-btn" onclick="showToast('Loading page 3…')">3</button>
+      <span style="color:var(--text-muted);padding:0 4px;">…</span>
+      <button class="btn pg-btn" onclick="showToast('Loading page 8…')">8</button>
+      <button class="btn pg-btn pg-arrow" onclick="showToast('Loading next page…')"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIDEO SECTION ===== -->
+<section id="video-section">
+  <div class="video-bg-blur"></div>
+  <div class="container">
+    <div class="video-inner">
+      <div class="video-text">
+        <div class="section-label">Watch Our Story</div>
+        <h2 class="section-title" style="color:#fff">See the Change You Make Possible</h2>
+        <p class="section-sub">Real stories. Real lives transformed by the generosity of donors like you.</p>
+        <div class="video-list">
+          <div class="video-list-item">
+            <div class="vli-icon"><i class="fas fa-heart"></i></div>
+            <div class="vli-text">
+              <h4>Transparent Impact</h4>
+              <p>See exactly how every dollar reaches those who need it most.</p>
+            </div>
+          </div>
+          <div class="video-list-item">
+            <div class="vli-icon"><i class="fas fa-users"></i></div>
+            <div class="vli-text">
+              <h4>Community Led</h4>
+              <p>Local teams on the ground ensuring aid reaches the right hands.</p>
+            </div>
+          </div>
+          <div class="video-list-item">
+            <div class="vli-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="vli-text">
+              <h4>Measurable Results</h4>
+              <p>Every campaign tracked, reported, and verified by third parties.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="showToast('Opening full report…')"><i class="fas fa-file-alt"></i> Transparency Report</button>
+          <button class="btn btn-outline" style="border-color:rgba(255,255,255,0.2);color:#fff;" onclick="openModal('shareModal')"><i class="fas fa-share-alt"></i> Share Mission</button>
+        </div>
+      </div>
+      <div class="video-player" onclick="showToast('Video player opening… 🎬')">
+        <div class="video-thumb">🌍</div>
+        <div class="play-btn">
+          <div class="play-circle"><i class="fas fa-play"></i></div>
+          <div class="play-label">Watch Campaign Stories</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SUCCESS STORIES ===== -->
+<section id="success" class="section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:40px;">
+      <div class="section-label" style="justify-content:center">Success Stories</div>
+      <h2 class="section-title">Lives We've Changed Together</h2>
+      <p class="section-sub" style="margin:0 auto;">Real stories of hope from beneficiaries of your generosity.</p>
+    </div>
+    <div class="stories-grid">
+      <div class="story-card">
+        <div class="story-img">
+          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&q=80" alt="Story" />
+        </div>
+        <div class="story-body">
+          <div class="story-tag">Education · 2024</div>
+          <h3 class="story-title">"I passed my exams because strangers believed in me"</h3>
+          <p class="story-desc">Amara, 16, was about to drop out due to school fees. A scholarship campaign changed her trajectory — she now tops her class.</p>
+          <div class="story-person">
+            <div class="story-avatar">A</div>
+            <div>
+              <div class="story-name">Amara Kofi</div>
+              <div class="story-loc">📍 Accra, Ghana</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-img">
+          <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=400&q=80" alt="Story" />
+        </div>
+        <div class="story-body">
+          <div class="story-tag">Medical · 2024</div>
+          <h3 class="story-title">"The surgery saved my life — I can hold my children again"</h3>
+          <p class="story-desc">Fatima, 34, was paralyzed after an accident. Donors funded her spinal surgery. Today she runs a small business from home.</p>
+          <div class="story-person">
+            <div class="story-avatar">F</div>
+            <div>
+              <div class="story-name">Fatima Bello</div>
+              <div class="story-loc">📍 Lagos, Nigeria</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-img">
+          <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=400&q=80" alt="Story" />
+        </div>
+        <div class="story-body">
+          <div class="story-tag">Community · 2025</div>
+          <h3 class="story-title">"We finally have clean water — no more cholera outbreaks"</h3>
+          <p class="story-desc">A borehole drilled in Kpando village ended 20 years of waterborne disease. The entire community of 2,000 now thrives.</p>
+          <div class="story-person">
+            <div class="story-avatar">K</div>
+            <div>
+              <div class="story-name">Chief Kwame Osei</div>
+              <div class="story-loc">📍 Kpando, Ghana</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials">
+  <div class="container" style="margin-bottom:36px;">
+    <div class="section-label" style="color:var(--red-light)">What Donors Say</div>
+    <h2 class="section-title" style="color:#fff">Trusted by Thousands</h2>
+  </div>
+  <div class="testimonials-wrap">
+    <div class="testi-track" id="testiTrack">
+      <!-- Duplicated for infinite scroll -->
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I've donated to many organizations but HopeForward's transparency is unmatched. I can see exactly what my money does."</p>
+        <div class="testi-person">
+          <div class="testi-avatar">S</div>
+          <div><div class="testi-name">Sarah M.</div><div class="testi-role">Monthly Donor, UK</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The donation receipt and impact report they sent was so detailed. I feel like a real partner in their mission."</p>
+        <div class="testi-person">
+          <div class="testi-avatar">D</div>
+          <div><div class="testi-name">David A.</div><div class="testi-role">Corporate Donor, USA</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I sponsored a child's education three years ago. I now get updates and she's about to graduate. This organization delivers."</p>
+        <div class="testi-person">
+          <div class="testi-avatar">L</div>
+          <div><div class="testi-name">Lena K.</div><div class="testi-role">Sponsor Donor, Germany</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The Momo payment integration made it incredibly easy for me to donate right from my phone. No hassle at all."</p>
+        <div class="testi-person">
+          <div class="testi-avatar">K</div>
+          <div><div class="testi-name">Kweku T.</div><div class="testi-role">Local Donor, Ghana</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I volunteered with their flood relief team. The organization, the impact, the people — everything was exceptional."</p>
+        <div class="testi-person">
+          <div class="testi-avatar">P</div>
+          <div><div class="testi-name">Priya N.</div><div class="testi-role">Volunteer, India</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Donating via PayPal was seamless and secure. My company now does a quarterly donation match with HopeForward."</p>
+        <div class="testi-person">
+          <div class="testi-avatar">M</div>
+          <div><div class="testi-name">Marcus O.</div><div class="testi-role">Business Donor, Canada</div></div>
+        </div>
+      </div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I've donated to many organizations but HopeForward's transparency is unmatched. I can see exactly what my money does."</p>
+        <div class="testi-person">
+          <div class="testi-avatar">S</div>
+          <div><div class="testi-name">Sarah M.</div><div class="testi-role">Monthly Donor, UK</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The donation receipt and impact report they sent was so detailed. I feel like a real partner in their mission."</p>
+        <div class="testi-person">
+          <div class="testi-avatar">D</div>
+          <div><div class="testi-name">David A.</div><div class="testi-role">Corporate Donor, USA</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I sponsored a child's education three years ago. I now get updates and she's about to graduate. This organization delivers."</p>
+        <div class="testi-person">
+          <div class="testi-avatar">L</div>
+          <div><div class="testi-name">Lena K.</div><div class="testi-role">Sponsor Donor, Germany</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The Momo payment integration made it incredibly easy for me to donate right from my phone. No hassle at all."</p>
+        <div class="testi-person">
+          <div class="testi-avatar">K</div>
+          <div><div class="testi-name">Kweku T.</div><div class="testi-role">Local Donor, Ghana</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I volunteered with their flood relief team. The organization, the impact, the people — everything was exceptional."</p>
+        <div class="testi-person">
+          <div class="testi-avatar">P</div>
+          <div><div class="testi-name">Priya N.</div><div class="testi-role">Volunteer, India</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Donating via PayPal was seamless and secure. My company now does a quarterly donation match with HopeForward."</p>
+        <div class="testi-person">
+          <div class="testi-avatar">M</div>
+          <div><div class="testi-name">Marcus O.</div><div class="testi-role">Business Donor, Canada</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DONATE / PAYMENT SECTION ===== -->
+<section id="donate-section" class="section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="section-label" style="justify-content:center">Make a Donation</div>
+      <h2 class="section-title">Your Gift Saves Lives</h2>
+      <p class="section-sub" style="margin:0 auto;">Choose your amount and payment method. 100% secure. 94% goes directly to beneficiaries.</p>
+    </div>
+    <div class="donate-grid">
+      <div>
+        <div class="donate-box">
+          <h3>Choose Your Donation</h3>
+          <p class="sub">Select or enter a custom amount</p>
+          <div class="amount-grid">
+            <button class="amt-btn" onclick="setAmount(this, 10)">$10</button>
+            <button class="amt-btn" onclick="setAmount(this, 25)">$25</button>
+            <button class="amt-btn active" onclick="setAmount(this, 50)">$50</button>
+            <button class="amt-btn" onclick="setAmount(this, 100)">$100</button>
+            <button class="amt-btn" onclick="setAmount(this, 250)">$250</button>
+            <button class="amt-btn" onclick="setAmount(this, 500)">$500</button>
+          </div>
+          <div class="custom-amount">
+            <div class="curr">$</div>
+            <input type="number" id="customAmt" placeholder="Enter custom amount" min="1" oninput="clearAmtBtns()" />
+          </div>
+          <div class="payment-methods">
+            <div class="pm-label">Payment Method</div>
+            <div class="pm-grid">
+              <button class="pm-btn active" onclick="setPM(this)">
+                <div class="pm-icon">📱</div>
+                <div class="pm-name">Momo</div>
+              </button>
+              <button class="pm-btn" onclick="setPM(this)">
+                <div class="pm-icon">🅿️</div>
+                <div class="pm-name">PayPal</div>
+              </button>
+              <button class="pm-btn" onclick="setPM(this)">
+                <div class="pm-icon">⚡</div>
+                <div class="pm-name">Flutterwave</div>
+              </button>
+              <button class="pm-btn" onclick="setPM(this)">
+                <div class="pm-icon">💳</div>
+                <div class="pm-name">Card</div>
+              </button>
+              <button class="pm-btn" onclick="setPM(this)">
+                <div class="pm-icon">🏦</div>
+                <div class="pm-name">Bank</div>
+              </button>
+              <button class="pm-btn" onclick="setPM(this)">
+                <div class="pm-icon">₿</div>
+                <div class="pm-name">Crypto</div>
+              </button>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-lg" style="width:100%;" onclick="processDonation()">
+            <i class="fas fa-heart"></i> Donate Now — Make an Impact
+          </button>
+          <div class="secure-note">
+            <i class="fas fa-lock" style="color:var(--red)"></i>
+            256-bit SSL encrypted · Verified by Stripe · Instant receipt via email
+          </div>
+
+          <div class="transparency-box">
+            <div class="tb-title"><i class="fas fa-chart-pie"></i> Where Your Money Goes</div>
+            <div class="tb-rows">
+              <div class="tb-row"><span>Direct Aid to Beneficiaries</span><span>94%</span></div>
+              <div class="tb-row"><span>Operations & Admin</span><span>4%</span></div>
+              <div class="tb-row"><span>Fundraising Costs</span><span>2%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="donate-sidebar">
+        <div class="donors-box">
+          <h4><i class="fas fa-heart" style="color:var(--red);margin-right:6px;"></i>Recent Donors</h4>
+          <div class="donor-list" id="donorList">
+            <div class="donor-item">
+              <div class="donor-avatar">J</div>
+              <div class="donor-info">
+                <div class="donor-name">James O.</div>
+                <div class="donor-time">2 mins ago · Ghana</div>
+              </div>
+              <div class="donor-amount">$50</div>
+            </div>
+            <div class="donor-item">
+              <div class="donor-avatar">A</div>
+              <div class="donor-info">
+                <div class="donor-name">Anonymous</div>
+                <div class="donor-time">5 mins ago · UK</div>
+              </div>
+              <div class="donor-amount">$200</div>
+            </div>
+            <div class="donor-item">
+              <div class="donor-avatar">F</div>
+              <div class="donor-info">
+                <div class="donor-name">Funmi A.</div>
+                <div class="donor-time">11 mins ago · Nigeria</div>
+              </div>
+              <div class="donor-amount">$25</div>
+            </div>
+            <div class="donor-item">
+              <div class="donor-avatar">M</div>
+              <div class="donor-info">
+                <div class="donor-name">Marie L.</div>
+                <div class="donor-time">18 mins ago · France</div>
+              </div>
+              <div class="donor-amount">$100</div>
+            </div>
+            <div class="donor-item">
+              <div class="donor-avatar">K</div>
+              <div class="donor-info">
+                <div class="donor-name">Kwame T.</div>
+                <div class="donor-time">24 mins ago · Ghana</div>
+              </div>
+              <div class="donor-amount">$10</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="qr-box">
+          <h4>Scan to Donate</h4>
+          <p>Use your phone camera to donate instantly via QR code</p>
+          <div class="qr-code">🔲</div>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:10px;">hopeforward.org/donate</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery" class="section">
+  <div class="container">
+    <div class="campaigns-header">
+      <div>
+        <div class="section-label">Campaign Gallery</div>
+        <h2 class="section-title">Moments of Change</h2>
+      </div>
+      <button class="btn btn-outline" onclick="showToast('Opening full gallery…')">View All Photos</button>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-img" style="background:linear-gradient(135deg,#3d0f0f,#1a0505);font-size:80px;aspect-ratio:1/1">🌍</div>
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-img" style="background:linear-gradient(135deg,#fce4e4,#ffd4d4)">📚</div>
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-img" style="background:linear-gradient(135deg,#e4ffe4,#d4f0d4)">💧</div>
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-img" style="background:linear-gradient(135deg,#ffe4e4,#ffd8cc)">🏥</div>
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-img" style="background:linear-gradient(135deg,#fff4e4,#ffe8cc)">🍲</div>
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== UPDATES & COMMENTS ===== -->
+<section id="updates" class="section">
+  <div class="container">
+    <div class="section-label">Campaign Updates</div>
+    <h2 class="section-title" style="margin-bottom:36px;">Latest Updates & Community</h2>
+    <div class="updates-grid">
+      <div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:24px;">Timeline</h3>
+        <div class="update-timeline">
+          <div class="update-item">
+            <div class="update-dot active"><i class="fas fa-check" style="font-size:10px;"></i></div>
+            <div class="update-body">
+              <div class="update-date">May 22, 2026</div>
+              <div class="update-title">Medical supplies delivered to 3 villages ✅</div>
+              <div class="update-text">700 vaccine doses and 200 medical kits reached Kpando, Nyame, and Asuboi communities. Thank you for your support.</div>
+            </div>
+          </div>
+          <div class="update-item">
+            <div class="update-dot active"><i class="fas fa-check" style="font-size:10px;"></i></div>
+            <div class="update-body">
+              <div class="update-date">May 10, 2026</div>
+              <div class="update-title">$70,000 milestone reached! 🎉</div>
+              <div class="update-text">We crossed 70% of our goal. The generosity of our donors continues to amaze us. Field teams are fully deployed.</div>
+            </div>
+          </div>
+          <div class="update-item">
+            <div class="update-dot"><i class="fas fa-circle" style="font-size:6px;"></i></div>
+            <div class="update-body">
+              <div class="update-date">April 28, 2026</div>
+              <div class="update-title">Volunteer team training complete</div>
+              <div class="update-text">48 trained health workers are ready for deployment across 12 target communities over the next 3 months.</div>
+            </div>
+          </div>
+          <div class="update-item">
+            <div class="update-dot"><i class="fas fa-circle" style="font-size:6px;"></i></div>
+            <div class="update-body">
+              <div class="update-date">April 14, 2026</div>
+              <div class="update-title">Campaign launched 🚀</div>
+              <div class="update-text">Emergency Medical Relief Campaign officially launched. First $10,000 raised within 48 hours — incredible response!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comment-section">
+        <h3>Community Comments</h3>
+        <div class="comment-form">
+          <input type="text" id="commentName" placeholder="Your name" />
+          <textarea id="commentText" placeholder="Leave a message of support, question, or update…"></textarea>
+          <button class="btn btn-primary" onclick="postComment()"><i class="fas fa-paper-plane"></i> Post Comment</button>
+        </div>
+        <div class="comment-list" id="commentList">
+          <div class="comment-item">
+            <div class="comment-avatar" style="background:#3B82F6;color:#fff;">T</div>
+            <div class="comment-body">
+              <div class="comment-name">Tunde A. <span style="font-size:11px;color:var(--text-muted);font-weight:400;">· 3 hours ago</span></div>
+              <div class="comment-text">Donated $100 today. Keep up the amazing work. These kids deserve the best care. 🙏</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar" style="background:#10B981;color:#fff;">E</div>
+            <div class="comment-body">
+              <div class="comment-name">Emma R. <span style="font-size:11px;color:var(--text-muted);font-weight:400;">· 1 day ago</span></div>
+              <div class="comment-text">Shared this on my social media. My whole church group is donating this weekend. Let's get to 100%!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARTNERS ===== -->
+<section id="partners">
+  <div class="container">
+    <p class="text-center" style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:28px;">Trusted Partners & Sponsors</p>
+    <div class="partners-inner">
+      <div class="partner-logo"><i class="fas fa-globe"></i> UNICEF Partner</div>
+      <div class="partner-logo"><i class="fas fa-hands-helping"></i> WHO Certified</div>
+      <div class="partner-logo"><i class="fas fa-university"></i> World Bank</div>
+      <div class="partner-logo"><i class="fas fa-leaf"></i> GreenGrow Fund</div>
+      <div class="partner-logo"><i class="fas fa-building"></i> AfDB</div>
+      <div class="partner-logo"><i class="fas fa-heart"></i> Red Cross</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section id="newsletter">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="newsletter-text">
+        <h2>Stay Updated on Our Campaigns</h2>
+        <p>Get impact reports, new campaign alerts, and success stories in your inbox.</p>
+      </div>
+      <div class="newsletter-form">
+        <input type="email" id="emailInput" placeholder="Enter your email address…" />
+        <button onclick="subscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="cta">
+  <div class="cta-glow"></div>
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="cta-title">Ready to Change<br>a <em>Life Today?</em></h2>
+      <p class="cta-sub">Every dollar you give reaches someone who truly needs it. Be the reason someone smiles tonight.</p>
+      <div class="cta-btns">
+        <button class="btn btn-primary btn-lg" onclick="document.getElementById('donate-section').scrollIntoView({behavior:'smooth'})">
+          <i class="fas fa-heart"></i> Donate Now
+        </button>
+        <button class="btn btn-white btn-lg" onclick="document.getElementById('campaigns').scrollIntoView({behavior:'smooth'})">
+          <i class="fas fa-th-large"></i> Browse Campaigns
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="display:inline-flex;margin-bottom:14px;">
+          <div class="nav-logo-icon">❤</div>
+          Hope<span>Forward</span>
+        </a>
+        <p class="footer-desc">A transparent, impact-driven NGO connecting compassionate donors with verified campaigns across Africa.</p>
+        <p class="footer-reg">
+          <strong>Reg. No:</strong> NGO-AF-2019-04872 |
+          <strong>Tax ID:</strong> CH-501(c)(3)
+        </p>
+        <div class="footer-socials">
+          <div class="social-btn" onclick="showToast('Opening Facebook…')"><i class="fab fa-facebook-f"></i></div>
+          <div class="social-btn" onclick="showToast('Opening Twitter…')"><i class="fab fa-twitter"></i></div>
+          <div class="social-btn" onclick="showToast('Opening Instagram…')"><i class="fab fa-instagram"></i></div>
+          <div class="social-btn" onclick="showToast('Opening YouTube…')"><i class="fab fa-youtube"></i></div>
+          <div class="social-btn" onclick="showToast('Opening LinkedIn…')"><i class="fab fa-linkedin-in"></i></div>
+          <div class="social-btn" onclick="showToast('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Campaigns</h4>
+        <ul>
+          <li><a href="#">HIV/AIDS Awareness</a></li>
+          <li><a href="#">Orphan Support</a></li>
+          <li><a href="#">Women Empowerment</a></li>
+          <li><a href="#">Medical Assistance</a></li>
+          <li><a href="#">Emergency Relief</a></li>
+          <li><a href="#">Education Support</a></li>
+          <li><a href="#">Food Donation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Organisation</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Transparency Report</a></li>
+          <li><a href="#">Annual Report</a></li>
+          <li><a href="#">Partner With Us</a></li>
+          <li><a href="#">Volunteer</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-contact">
+          <div class="fc-item"><i class="fas fa-map-marker-alt"></i><span>12 Hope Avenue, Accra, Ghana</span></div>
+          <div class="fc-item"><i class="fas fa-phone"></i><span>+233 20 000 0000</span></div>
+          <div class="fc-item"><i class="fas fa-envelope"></i><span>info@hopeforward.org</span></div>
+          <div class="fc-item"><i class="fas fa-clock"></i><span>Mon–Fri 8AM–6PM GMT</span></div>
+        </div>
+        <div style="margin-top:16px;">
+          <button class="btn btn-primary btn-sm" onclick="showToast('Opening contact form…')">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HopeForward Foundation. All rights reserved.</span>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Donation Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+/* ---- Dark Mode ---- */
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('darkIcon').className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+}
+
+/* ---- Nav ---- */
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+window.addEventListener('scroll', () => {
+  const s = document.getElementById('scrollTop');
+  s.classList.toggle('show', window.scrollY > 400);
+});
+
+/* ---- Toast ---- */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+/* ---- Modal ---- */
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click', e => { if (e.target === el) el.classList.remove('open'); });
+});
+
+/* ---- Share ---- */
+const shareURL = 'https://hopeforward.org/campaigns/featured';
+function shareTo(platform) {
+  const msgs = {
+    facebook: `Opening Facebook share…`,
+    twitter:  `Opening Twitter share…`,
+    whatsapp: `Opening WhatsApp share…`,
+    telegram: `Opening Telegram share…`,
+    email:    `Opening Email share…`
+  };
+  showToast(msgs[platform] || 'Sharing…');
+  closeModal('shareModal');
+}
+function copyLink() {
+  navigator.clipboard.writeText(shareURL).then(() => showToast('Link copied to clipboard!')).catch(() => showToast('Copy failed — please copy manually.'));
+  closeModal('shareModal');
+}
+
+/* ---- Animated Counters ---- */
+function animateCounter(el) {
+  const target = parseFloat(el.dataset.target);
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+  const duration = 2000;
+  const start = performance.now();
+  const isDecimal = target < 100 && target % 1 !== 0;
+
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = target * eased;
+    if (isDecimal) {
+      el.textContent = prefix + current.toFixed(1) + suffix;
+    } else if (target >= 10000) {
+      el.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+    } else {
+      el.textContent = prefix + Math.floor(current) + suffix;
+    }
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.count-up[data-target]').forEach(el => {
+        if (!el.dataset.animated) { el.dataset.animated = '1'; animateCounter(el); }
+      });
+      entry.target.querySelectorAll('.card-prog-fill, .hfc-bar-fill').forEach(el => {
+        const w = el.style.width; el.style.width = '0%';
+        setTimeout(() => el.style.width = w, 100);
+      });
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('section, #stats-bar, .hero-inner').forEach(s => observer.observe(s));
+
+// Featured bar animation
+setTimeout(() => {
+  const bar = document.getElementById('featured-bar');
+  if (bar) bar.style.width = '70.3%';
+}, 800);
+
+/* ---- Countdown Timer ---- */
+const deadline = new Date();
+deadline.setDate(deadline.getDate() + 14);
+deadline.setHours(deadline.getHours() + 7);
+deadline.setMinutes(deadline.getMinutes() + 32);
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = deadline - now;
+  if (diff <= 0) return;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+/* ---- Live Donation Counter ---- */
+const names = ['James O.','Aisha B.','Kwame T.','Sara L.','Emeka N.','Priya M.','Chen W.','Marie F.'];
+const amounts = [10,25,50,100,200,500];
+const countries = ['Ghana','Nigeria','UK','USA','France','Germany','India'];
+let liveCount = 247;
+
+setInterval(() => {
+  liveCount += Math.floor(Math.random() * 3);
+  document.getElementById('liveCount').textContent = liveCount;
+
+  const name = names[Math.floor(Math.random() * names.length)];
+  const amt = amounts[Math.floor(Math.random() * amounts.length)];
+  const country = countries[Math.floor(Math.random() * countries.length)];
+  const list = document.getElementById('donorList');
+  const item = document.createElement('div');
+  item.className = 'donor-item';
+  item.style.opacity = '0'; item.style.transform = 'translateY(-10px)';
+  item.style.transition = 'all 0.4s ease';
+  item.innerHTML = `
+    <div class="donor-avatar" style="background:hsl(${Math.random()*360},60%,55%);color:#fff;">${name[0]}</div>
+    <div class="donor-info">
+      <div class="donor-name">${name}</div>
+      <div class="donor-time">just now · ${country}</div>
+    </div>
+    <div class="donor-amount">$${amt}</div>`;
+  list.prepend(item);
+  setTimeout(() => { item.style.opacity='1'; item.style.transform='translateY(0)'; }, 50);
+  if (list.children.length > 6) list.lastElementChild.remove();
+}, 6000);
+
+/* ---- Donation Amount ---- */
+function setAmount(btn, val) {
+  document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('customAmt').value = '';
+}
+function clearAmtBtns() {
+  document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
+}
+function setPM(btn) {
+  document.querySelectorAll('.pm-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function processDonation() {
+  const amt = document.getElementById('customAmt').value || document.querySelector('.amt-btn.active')?.textContent?.replace('$','') || '50';
+  const pm = document.querySelector('.pm-btn.active .pm-name')?.textContent || 'Momo';
+  showToast(`Processing $${amt} via ${pm}… Please wait.`);
+  setTimeout(() => showToast('✅ Donation confirmed! Receipt sent to your email.'), 3500);
+}
+
+/* ---- Search & Filter ---- */
+let activeFilter = 'all';
+function setFilter(btn, cat) {
+  document.querySelectorAll('.chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter = cat;
+  filterCampaigns();
+}
+function filterCampaigns() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  const cards = document.querySelectorAll('#campaignGrid .campaign-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const catMatch = activeFilter === 'all' || card.dataset.category === activeFilter;
+    const titleMatch = !query || card.dataset.title.includes(query);
+    const show = catMatch && titleMatch;
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  document.getElementById('noResults').classList.toggle('hidden', visible > 0);
+}
+
+/* ---- Comments ---- */
+function postComment() {
+  const name = document.getElementById('commentName').value.trim();
+  const text = document.getElementById('commentText').value.trim();
+  if (!name || !text) { showToast('Please fill in your name and comment!'); return; }
+  const list = document.getElementById('commentList');
+  const item = document.createElement('div');
+  item.className = 'comment-item';
+  item.style.opacity = '0'; item.style.transition = 'opacity 0.4s';
+  const colors = ['#E8192C','#3B82F6','#10B981','#F59E0B','#8B5CF6'];
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  item.innerHTML = `
+    <div class="comment-avatar" style="background:${color};color:#fff;">${name[0].toUpperCase()}</div>
+    <div class="comment-body">
+      <div class="comment-name">${name} <span style="font-size:11px;color:var(--text-muted);font-weight:400;">· just now</span></div>
+      <div class="comment-text">${text}</div>
+    </div>`;
+  list.prepend(item);
+  setTimeout(() => item.style.opacity = '1', 50);
+  document.getElementById('commentName').value = '';
+  document.getElementById('commentText').value = '';
+  showToast('Comment posted! Thank you for your support. 💙');
+}
+
+/* ---- Subscribe ---- */
+function subscribe() {
+  const email = document.getElementById('emailInput').value.trim();
+  if (!email || !email.includes('@')) { showToast('Please enter a valid email address.'); return; }
+  showToast(`✅ Subscribed! Welcome to HopeForward, ${email}`);
+  document.getElementById('emailInput').value = '';
+}
+
+/* ---- Progress bars on load ---- */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.card-prog-fill').forEach(el => {
+      const w = el.style.width; el.style.width = '0%';
+      setTimeout(() => { el.style.width = w; }, 300);
+    });
+  }, 500);
+});
+</script>
+</body>
+</html>
