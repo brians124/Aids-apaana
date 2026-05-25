@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Volunteer — Join Our Mission</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #C8102E;
+      --red-dark: #9B0B22;
+      --red-light: #E8314F;
+      --red-pale: #FFF0F2;
+      --white: #FFFFFF;
+      --off-white: #FDF8F8;
+      --gray-100: #F5F0F0;
+      --gray-300: #D4C8C8;
+      --gray-500: #8A7070;
+      --gray-700: #3D2B2B;
+      --black: #1A0A0A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 2px solid var(--red);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 68px;
+      box-shadow: 0 2px 20px rgba(200,16,46,0.08);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 900;
+      color: var(--red);
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--black); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--gray-700);
+      font-size: 0.9rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links a.active { color: var(--red); font-weight: 600; }
+    .nav-cta {
+      background: var(--red); color: var(--white);
+      border: none; padding: 0.55rem 1.4rem;
+      border-radius: 4px; font-size: 0.88rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--red-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      margin-top: 68px;
+      background: var(--red);
+      position: relative; overflow: hidden;
+      padding: 6rem 2.5rem 5rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center;
+      min-height: 560px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -100px; left: 30%;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      color: var(--white);
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem; border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 900; line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.4rem;
+    }
+    .hero h1 em { font-style: italic; }
+    .hero-sub {
+      color: rgba(255,255,255,0.82);
+      font-size: 1.08rem; line-height: 1.7;
+      max-width: 480px; margin-bottom: 2.4rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-white {
+      background: var(--white); color: var(--red);
+      padding: 0.85rem 2rem; border-radius: 4px;
+      font-size: 0.95rem; font-weight: 700;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: inline-block;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+    .btn-outline-white {
+      background: transparent; color: var(--white);
+      padding: 0.85rem 2rem; border-radius: 4px;
+      font-size: 0.95rem; font-weight: 600;
+      text-decoration: none; border: 2px solid rgba(255,255,255,0.6); cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+
+    .hero-stats {
+      display: flex; flex-direction: column; gap: 1.4rem;
+      position: relative; z-index: 1;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px; padding: 1.6rem 2rem;
+      color: var(--white);
+    }
+    .stat-card .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem; font-weight: 900; line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-card .lbl { font-size: 0.88rem; opacity: 0.78; font-weight: 400; }
+
+    /* ── SECTION GENERIC ── */
+    section { padding: 5rem 2.5rem; }
+    .container { max-width: 1140px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      color: var(--red); font-size: 0.78rem;
+      font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 900; color: var(--black);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--gray-500); font-size: 1.05rem;
+      line-height: 1.7; max-width: 600px;
+    }
+
+    /* ── OPPORTUNITIES ── */
+    .opps-section { background: var(--white); }
+    .opps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .opp-card {
+      border: 1.5px solid var(--gray-300);
+      border-radius: 12px; padding: 2rem;
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .opp-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: var(--red); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .opp-card:hover { border-color: var(--red); transform: translateY(-4px); box-shadow: 0 12px 36px rgba(200,16,46,0.1); }
+    .opp-card:hover::before { transform: scaleX(1); }
+
+    .opp-icon {
+      width: 52px; height: 52px; border-radius: 10px;
+      background: var(--red-pale);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.2rem; font-size: 1.5rem;
+    }
+    .opp-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700;
+      margin-bottom: 0.6rem; color: var(--black);
+    }
+    .opp-card p { font-size: 0.92rem; color: var(--gray-500); line-height: 1.65; margin-bottom: 1.4rem; }
+    .opp-meta { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+    .opp-badge {
+      font-size: 0.75rem; font-weight: 600; color: var(--red);
+      background: var(--red-pale); padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+    }
+    .apply-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--red); font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; margin-top: 1.2rem;
+      transition: gap 0.2s;
+    }
+    .apply-link:hover { gap: 0.7rem; }
+    .apply-link::after { content: '→'; }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { background: var(--red-pale); }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; margin-top: 3rem; position: relative; }
+    .steps::before {
+      content: '';
+      position: absolute; top: 36px; left: 10%; right: 10%; height: 2px;
+      background: linear-gradient(90deg, var(--red) 0%, transparent 100%);
+      opacity: 0.2;
+    }
+    .step { text-align: center; padding: 1rem 1.5rem; }
+    .step-num {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--red); color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 6px 24px rgba(200,16,46,0.3);
+    }
+    .step h3 { font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; color: var(--black); }
+    .step p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.6; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background: var(--white); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .testimonial {
+      background: var(--off-white);
+      border-left: 4px solid var(--red);
+      border-radius: 0 12px 12px 0;
+      padding: 2rem;
+    }
+    .testimonial .quote {
+      font-size: 0.95rem; color: var(--gray-700);
+      line-height: 1.75; margin-bottom: 1.4rem;
+      font-style: italic;
+    }
+    .testimonial .author { display: flex; align-items: center; gap: 0.9rem; }
+    .avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--red); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700;
+    }
+    .author-info .name { font-weight: 700; font-size: 0.92rem; color: var(--black); }
+    .author-info .role { font-size: 0.82rem; color: var(--gray-500); }
+
+    /* ── APPLICATION FORM ── */
+    .form-section { background: var(--red); }
+    .form-section .section-tag { color: rgba(255,255,255,0.6); }
+    .form-section .section-title { color: var(--white); }
+    .form-section .section-sub { color: rgba(255,255,255,0.75); }
+
+    .form-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+    .form-perks h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700; color: var(--white);
+      margin-bottom: 1.4rem;
+    }
+    .perk-item { display: flex; gap: 1rem; margin-bottom: 1.4rem; align-items: flex-start; }
+    .perk-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .perk-text .perk-title { color: var(--white); font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .perk-text .perk-desc { color: rgba(255,255,255,0.65); font-size: 0.85rem; line-height: 1.5; }
+
+    .volunteer-form {
+      background: var(--white); border-radius: 16px;
+      padding: 2.4rem; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .volunteer-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700; color: var(--black);
+      margin-bottom: 1.8rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block; font-size: 0.82rem; font-weight: 600;
+      color: var(--gray-700); margin-bottom: 0.45rem; letter-spacing: 0.3px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--gray-300);
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; color: var(--black);
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(200,16,46,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .checkbox-group { display: flex; flex-direction: column; gap: 0.55rem; }
+    .checkbox-item { display: flex; align-items: center; gap: 0.7rem; cursor: pointer; }
+    .checkbox-item input[type="checkbox"] { accent-color: var(--red); width: 16px; height: 16px; cursor: pointer; }
+    .checkbox-item span { font-size: 0.88rem; color: var(--gray-700); }
+    .submit-btn {
+      width: 100%; background: var(--red); color: var(--white);
+      border: none; padding: 1rem; border-radius: 6px;
+      font-size: 1rem; font-weight: 700;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer; margin-top: 1.4rem;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.3px;
+    }
+    .submit-btn:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+    /* ── STATUS TRACKER ── */
+    .tracker-section { background: var(--gray-100); }
+    .tracker-box {
+      background: var(--white); border-radius: 16px;
+      padding: 2.4rem; max-width: 680px; margin: 2.5rem auto 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .tracker-box h3 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem; margin-bottom: 1.6rem; }
+    .tracker-input-row { display: flex; gap: 0.8rem; margin-bottom: 2rem; }
+    .tracker-input-row input {
+      flex: 1; padding: 0.75rem 1rem;
+      border: 1.5px solid var(--gray-300); border-radius: 6px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    .tracker-input-row input:focus { border-color: var(--red); }
+    .tracker-input-row button {
+      background: var(--red); color: var(--white);
+      border: none; padding: 0.75rem 1.6rem;
+      border-radius: 6px; font-weight: 700;
+      font-family: 'DM Sans', sans-serif; cursor: pointer;
+      font-size: 0.9rem; transition: background 0.2s;
+    }
+    .tracker-input-row button:hover { background: var(--red-dark); }
+
+    .progress-timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-step { display: flex; gap: 1.2rem; align-items: flex-start; padding-bottom: 1.6rem; position: relative; }
+    .timeline-step:not(:last-child)::before {
+      content: '';
+      position: absolute; left: 17px; top: 38px;
+      width: 2px; height: calc(100% - 24px);
+      background: var(--gray-300);
+    }
+    .tl-dot {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 0.9rem; font-weight: 700;
+      position: relative; z-index: 1;
+    }
+    .tl-dot.done { background: var(--red); color: var(--white); }
+    .tl-dot.active { background: var(--white); border: 2px solid var(--red); color: var(--red); }
+    .tl-dot.pending { background: var(--gray-100); border: 2px solid var(--gray-300); color: var(--gray-500); }
+    .tl-content .tl-title { font-weight: 600; font-size: 0.92rem; color: var(--black); margin-bottom: 0.2rem; }
+    .tl-content .tl-note { font-size: 0.82rem; color: var(--gray-500); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      color: rgba(255,255,255,0.55);
+      text-align: center; padding: 2rem 2.5rem;
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--red); text-decoration: none; }
+
+    /* ── SUCCESS MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .modal-overlay.visible { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--white); border-radius: 16px;
+      padding: 3rem 2.5rem; text-align: center; max-width: 420px; width: 90%;
+      transform: scale(0.9); transition: transform 0.3s;
+    }
+    .modal-overlay.visible .modal { transform: scale(1); }
+    .modal-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+    .modal h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 700; margin-bottom: 0.6rem;
+    }
+    .modal p { color: var(--gray-500); font-size: 0.95rem; margin-bottom: 1.8rem; line-height: 1.6; }
+    .modal-ref { background: var(--red-pale); color: var(--red); font-weight: 700; font-size: 1.1rem; padding: 0.6rem 1.4rem; border-radius: 6px; margin-bottom: 1.4rem; display: inline-block; }
+    .modal-close {
+      background: var(--red); color: var(--white); border: none;
+      padding: 0.8rem 2rem; border-radius: 6px; font-weight: 700; font-size: 0.95rem;
+      cursor: pointer; font-family: 'DM Sans', sans-serif;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-content > * { animation: fadeUp 0.6s ease both; }
+    .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-content > *:nth-child(2) { animation-delay: 0.22s; }
+    .hero-content > *:nth-child(3) { animation-delay: 0.34s; }
+    .hero-content > *:nth-child(4) { animation-delay: 0.46s; }
+    .hero-stats > * { animation: fadeUp 0.6s ease both; }
+    .hero-stats > *:nth-child(1) { animation-delay: 0.3s; }
+    .hero-stats > *:nth-child(2) { animation-delay: 0.45s; }
+    .hero-stats > *:nth-child(3) { animation-delay: 0.6s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; padding: 4rem 1.5rem 3rem; }
+      .hero-stats { flex-direction: row; flex-wrap: wrap; }
+      .stat-card { flex: 1 1 140px; }
+      .form-layout { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .steps::before { display: none; }
+      nav { padding: 0 1.2rem; }
+      .nav-links { display: none; }
+      section { padding: 3.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Found<span>ation</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Events</a></li>
+    <li><a href="#" class="active">Volunteer</a></li>
+    <li><a href="#">Campaigns</a></li>
+    <li><a href="#">Gallery</a></li>
+    <li><a href="#">Blog</a></li>
+  </ul>
+  <a href="#apply" class="nav-cta">Apply Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Volunteer Program</div>
+    <h1>Make a <em>Real</em><br>Difference</h1>
+    <p class="hero-sub">Join our passionate community of volunteers who are transforming lives and communities every single day. Your time is the greatest gift you can give.</p>
+    <div class="hero-btns">
+      <a href="#apply" class="btn-white">Apply to Volunteer</a>
+      <a href="#opportunities" class="btn-outline-white">View Opportunities</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="num">1,240+</div>
+      <div class="lbl">Active Volunteers</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">48,000</div>
+      <div class="lbl">Hours Contributed</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">32</div>
+      <div class="lbl">Community Programs</div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITIES -->
+<section class="opps-section" id="opportunities">
+  <div class="container">
+    <div class="section-tag">Open Roles</div>
+    <h2 class="section-title">Volunteer Opportunities</h2>
+    <p class="section-sub">Find the role that matches your skills, schedule, and passion. Every position makes a meaningful impact.</p>
+    <div class="opps-grid">
+
+      <div class="opp-card">
+        <div class="opp-icon">🏫</div>
+        <h3>Education Mentor</h3>
+        <p>Support students through tutoring, homework help, and mentorship sessions. Share your knowledge and inspire young minds.</p>
+        <div class="opp-meta">
+          <span class="opp-badge">4–6 hrs/week</span>
+          <span class="opp-badge">Weekends</span>
+          <span class="opp-badge">On-site</span>
+        </div>
+        <a href="#apply" class="apply-link">Apply for this role</a>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-icon">🏥</div>
+        <h3>Health Outreach</h3>
+        <p>Assist in community health drives, wellness campaigns, and medical outreach to underserved areas.</p>
+        <div class="opp-meta">
+          <span class="opp-badge">Monthly</span>
+          <span class="opp-badge">Field Work</span>
+          <span class="opp-badge">Training Provided</span>
+        </div>
+        <a href="#apply" class="apply-link">Apply for this role</a>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-icon">🍱</div>
+        <h3>Food Distribution</h3>
+        <p>Help pack and deliver food parcels to vulnerable families and elderly community members in need.</p>
+        <div class="opp-meta">
+          <span class="opp-badge">2–3 hrs/week</span>
+          <span class="opp-badge">Flexible</span>
+          <span class="opp-badge">Physical</span>
+        </div>
+        <a href="#apply" class="apply-link">Apply for this role</a>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-icon">💻</div>
+        <h3>Digital & Media</h3>
+        <p>Create content, manage social media, design graphics, or write articles to amplify our mission online.</p>
+        <div class="opp-meta">
+          <span class="opp-badge">Remote</span>
+          <span class="opp-badge">Flexible Hours</span>
+          <span class="opp-badge">Creative</span>
+        </div>
+        <a href="#apply" class="apply-link">Apply for this role</a>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-icon">🌱</div>
+        <h3>Environmental Action</h3>
+        <p>Join clean-up drives, tree planting, and environmental education campaigns across the community.</p>
+        <div class="opp-meta">
+          <span class="opp-badge">Bi-weekly</span>
+          <span class="opp-badge">Outdoor</span>
+          <span class="opp-badge">All Ages</span>
+        </div>
+        <a href="#apply" class="apply-link">Apply for this role</a>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-icon">🎉</div>
+        <h3>Events Coordinator</h3>
+        <p>Help plan, organize, and run fundraisers, community gatherings, and awareness campaigns.</p>
+        <div class="opp-meta">
+          <span class="opp-badge">Event-based</span>
+          <span class="opp-badge">Leadership</span>
+          <span class="opp-badge">Social</span>
+        </div>
+        <a href="#apply" class="apply-link">Apply for this role</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="container">
+    <div class="section-tag">Process</div>
+    <h2 class="section-title">How to Get Started</h2>
+    <p class="section-sub">Becoming a volunteer is easy. Here's the simple journey from application to making an impact.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Submit Application</h3>
+        <p>Fill out the form below with your details, interests, and availability.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Review & Match</h3>
+        <p>Our team reviews your application and matches you with the best opportunity.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Orientation</h3>
+        <p>Attend a brief online or in-person orientation to prepare you for your role.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Start Volunteering</h3>
+        <p>You're ready! Begin making an impact alongside our wonderful team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-tag">Stories</div>
+    <h2 class="section-title">What Volunteers Say</h2>
+    <p class="section-sub">Hear from the people already making a difference in our community.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p class="quote">"Volunteering here changed my perspective entirely. I came to give, but I received so much more — purpose, community, and lifelong friendships."</p>
+        <div class="author">
+          <div class="avatar">AM</div>
+          <div class="author-info">
+            <div class="name">Amara Mohammed</div>
+            <div class="role">Education Mentor · 2 years</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="quote">"The organization is incredible. Every weekend I look forward to the food drives — seeing families' faces light up is indescribable. Truly rewarding work."</p>
+        <div class="author">
+          <div class="avatar">JO</div>
+          <div class="author-info">
+            <div class="name">James Okonkwo</div>
+            <div class="role">Food Distribution · 1 year</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="quote">"As a digital volunteer, I get to use my skills for something that truly matters. The team is supportive and the impact is real. Couldn't be prouder."</p>
+        <div class="author">
+          <div class="avatar">FL</div>
+          <div class="author-info">
+            <div class="name">Fatima Lawan</div>
+            <div class="role">Digital & Media · 8 months</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section class="form-section" id="apply">
+  <div class="container">
+    <div class="section-tag">Join Us</div>
+    <h2 class="section-title">Submit Your Application</h2>
+    <p class="section-sub">Ready to make a difference? Complete the form and we'll be in touch within 48 hours.</p>
+
+    <div class="form-layout">
+      <div class="form-perks">
+        <h3>Why Volunteer With Us?</h3>
+        <div class="perk-item">
+          <div class="perk-icon">🏅</div>
+          <div class="perk-text">
+            <div class="perk-title">Certificates & Recognition</div>
+            <div class="perk-desc">Receive official certificates and public recognition for your service hours.</div>
+          </div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-icon">📚</div>
+          <div class="perk-text">
+            <div class="perk-title">Skills & Training</div>
+            <div class="perk-desc">Access free workshops, training materials, and personal development resources.</div>
+          </div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-icon">🤝</div>
+          <div class="perk-text">
+            <div class="perk-title">Community Network</div>
+            <div class="perk-desc">Connect with like-minded people and expand your professional network.</div>
+          </div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-icon">📊</div>
+          <div class="perk-text">
+            <div class="perk-title">Track Your Impact</div>
+            <div class="perk-desc">View dashboards showing the real difference your hours are making.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="volunteer-form">
+        <h3>Volunteer Application Form</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name *</label>
+            <input type="text" id="firstName" placeholder="John" />
+          </div>
+          <div class="form-group">
+            <label>Last Name *</label>
+            <input type="text" id="lastName" placeholder="Doe" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" id="email" placeholder="john@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="+234 800 000 0000" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Age Group</label>
+            <select id="age">
+              <option value="">Select age group</option>
+              <option>16–20</option>
+              <option>21–30</option>
+              <option>31–45</option>
+              <option>46+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Role *</label>
+            <select id="role">
+              <option value="">Choose a role</option>
+              <option>Education Mentor</option>
+              <option>Health Outreach</option>
+              <option>Food Distribution</option>
+              <option>Digital & Media</option>
+              <option>Environmental Action</option>
+              <option>Events Coordinator</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Availability *</label>
+          <div class="checkbox-group">
+            <label class="checkbox-item">
+              <input type="checkbox" /> <span>Weekday mornings</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" /> <span>Weekday evenings</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" /> <span>Saturday</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" /> <span>Sunday</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tell us about yourself & why you want to volunteer</label>
+          <textarea id="bio" placeholder="Share your skills, experience, motivation, and what you hope to contribute..."></textarea>
+        </div>
+        <button class="submit-btn" onclick="submitApplication()">Submit Application →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATUS TRACKER -->
+<section class="tracker-section">
+  <div class="container">
+    <div style="text-align:center">
+      <div class="section-tag">Application Tracker</div>
+      <h2 class="section-title">Track Your Application</h2>
+      <p class="section-sub" style="margin:0 auto">Enter your reference number to check your current application status.</p>
+    </div>
+    <div class="tracker-box">
+      <h3>Application Status Tracker</h3>
+      <div class="tracker-input-row">
+        <input type="text" id="refInput" placeholder="Enter reference number (e.g. VOL-2026-0047)" />
+        <button onclick="trackApplication()">Track</button>
+      </div>
+      <div class="progress-timeline" id="timeline" style="display:none">
+        <div class="timeline-step">
+          <div class="tl-dot done">✓</div>
+          <div class="tl-content">
+            <div class="tl-title">Application Submitted</div>
+            <div class="tl-note">May 18, 2026 · 10:42 AM</div>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="tl-dot done">✓</div>
+          <div class="tl-content">
+            <div class="tl-title">Application Under Review</div>
+            <div class="tl-note">May 19, 2026 · Team notified</div>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="tl-dot active">●</div>
+          <div class="tl-content">
+            <div class="tl-title">Matching & Role Assignment</div>
+            <div class="tl-note">In progress — you'll receive an email soon</div>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="tl-dot pending">○</div>
+          <div class="tl-content">
+            <div class="tl-title">Orientation Scheduled</div>
+            <div class="tl-note">Pending</div>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="tl-dot pending">○</div>
+          <div class="tl-content">
+            <div class="tl-title">Active Volunteer</div>
+            <div class="tl-note">Pending</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Foundation. All rights reserved. · <a href="#">Privacy Policy</a> · <a href="#">Contact Us</a></p>
+</footer>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-icon">🎉</div>
+    <h3>Application Submitted!</h3>
+    <p>Thank you for applying to volunteer with us. We've received your application and will reach out within 48 hours.</p>
+    <div class="modal-ref" id="refNum">VOL-2026-0047</div>
+    <p style="font-size:0.82rem;color:#8A7070;margin-bottom:1.4rem">Save this reference number to track your application status.</p>
+    <button class="modal-close" onclick="closeModal()">Got it, thanks!</button>
+  </div>
+</div>
+
+<script>
+  function submitApplication() {
+    const first = document.getElementById('firstName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const role  = document.getElementById('role').value;
+    if (!first || !email || !role) {
+      alert('Please fill in all required fields (First Name, Email, Role).'); return;
+    }
+    const ref = 'VOL-2026-' + String(Math.floor(Math.random() * 9000) + 1000);
+    document.getElementById('refNum').textContent = ref;
+    document.getElementById('modal').classList.add('visible');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('visible');
+  }
+
+  function trackApplication() {
+    const val = document.getElementById('refInput').value.trim();
+    if (!val) { alert('Please enter a reference number.'); return; }
+    document.getElementById('timeline').style.display = 'flex';
+    document.getElementById('timeline').style.flexDirection = 'column';
+  }
+
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+</script>
+</body>
+</html>
