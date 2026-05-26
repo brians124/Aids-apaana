@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Services – AIDS APAANA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      --red:       #C8102E;
+      --red-deep:  #8B0B1F;
+      --red-light: #FF3356;
+      --white:     #FFFFFF;
+      --off-white: #FFF6F7;
+      --grey:      #F2F2F2;
+      --text:      #1A1A1A;
+      --muted:     #6B6B6B;
+      --shadow:    0 8px 40px rgba(200,16,46,0.12);
+      --rad:       16px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 2px solid rgba(200,16,46,0.1);
+      z-index: 1000;
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+      animation: slideDown .6s ease both;
+    }
+    @keyframes slideDown { from{transform:translateY(-100%);opacity:0} to{transform:none;opacity:1} }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 900;
+      color: var(--red);
+      letter-spacing: -.5px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--text); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-size: .92rem; font-weight: 500;
+      color: var(--text); transition: color .25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content:''; position:absolute; bottom:-4px; left:0;
+      width:0; height:2px; background:var(--red);
+      transition: width .3s ease;
+    }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--red); color: #fff !important;
+      padding: 8px 20px; border-radius: 50px;
+      transition: background .25s, transform .2s !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--red-deep) !important; transform: scale(1.04) !important; }
+
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; }
+    .hamburger span { display:block; width:26px; height:2px; background:var(--red); border-radius:2px; transition:.3s; }
+
+    /* ─── HERO ───────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--red-deep) 0%, var(--red) 45%, #FF3356 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 100px 5% 60px;
+    }
+
+    /* animated circles */
+    .hero::before, .hero::after {
+      content: ''; position: absolute; border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      animation: pulse 6s ease-in-out infinite alternate;
+    }
+    .hero::before { width: 600px; height: 600px; top:-200px; right:-150px; }
+    .hero::after  { width: 400px; height: 400px; bottom:-180px; left:-100px; animation-delay:3s; }
+    @keyframes pulse { from{transform:scale(1);opacity:.06} to{transform:scale(1.15);opacity:.12} }
+
+    .hero-content { max-width: 680px; position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
+      color: #fff; border-radius: 50px; padding: 6px 18px;
+      font-size: .8rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      margin-bottom: 1.4rem;
+      animation: fadeUp .7s .1s both;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      color: #fff; line-height: 1.1; font-weight: 900;
+      margin-bottom: 1rem;
+      animation: fadeUp .7s .25s both;
+    }
+    .hero h1 em { font-style: normal; color: rgba(255,255,255,.7); }
+
+    .hero p {
+      font-size: 1.1rem; color: rgba(255,255,255,.85);
+      line-height: 1.75; max-width: 520px;
+      margin-bottom: 2rem;
+      animation: fadeUp .7s .4s both;
+    }
+
+    .hero-btns {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      animation: fadeUp .7s .55s both;
+    }
+    .btn-white {
+      background: #fff; color: var(--red);
+      padding: 14px 30px; border-radius: 50px;
+      font-weight: 600; font-size: .95rem;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 6px 24px rgba(0,0,0,.15);
+    }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,0,0,.2); }
+    .btn-outline-white {
+      background: transparent; color: #fff;
+      border: 2px solid rgba(255,255,255,.6);
+      padding: 14px 30px; border-radius: 50px;
+      font-weight: 600; font-size: .95rem;
+      text-decoration: none; cursor: pointer;
+      transition: background .25s, border-color .25s, transform .2s;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,.15); border-color: #fff; transform: translateY(-3px); }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3rem; flex-wrap: wrap;
+      animation: fadeUp .7s .7s both;
+    }
+    .stat { color: #fff; }
+    .stat strong { display: block; font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; }
+    .stat span { font-size: .82rem; opacity: .75; text-transform: uppercase; letter-spacing: .06em; }
+
+    @keyframes fadeUp { from{transform:translateY(30px);opacity:0} to{transform:none;opacity:1} }
+
+    .hero-ribbon {
+      position: absolute; bottom: 0; left: 0; width: 100%;
+      height: 60px; background: var(--white);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    /* ─── SEARCH ────────────────────────────────── */
+    .search-bar-wrap {
+      background: var(--white);
+      display: flex; justify-content: center;
+      padding: 2.5rem 5% 0;
+    }
+    .search-inner {
+      display: flex; align-items: center; gap: 0;
+      background: #fff; border: 2px solid rgba(200,16,46,.25);
+      border-radius: 60px; overflow: hidden;
+      width: 100%; max-width: 560px;
+      box-shadow: 0 6px 30px rgba(200,16,46,.1);
+      transition: box-shadow .3s, border-color .3s;
+    }
+    .search-inner:focus-within { border-color: var(--red); box-shadow: 0 6px 36px rgba(200,16,46,.22); }
+    .search-inner i { padding: 0 16px; color: var(--red); font-size: 1rem; }
+    .search-inner input {
+      flex: 1; border: none; outline: none;
+      padding: 14px 0; font-size: .95rem; font-family: 'DM Sans', sans-serif; background: none;
+    }
+    .search-inner button {
+      background: var(--red); color: #fff; border: none;
+      padding: 12px 26px; font-weight: 600; font-size: .9rem;
+      cursor: pointer; transition: background .25s;
+      border-radius: 0 60px 60px 0;
+    }
+    .search-inner button:hover { background: var(--red-deep); }
+
+    /* ─── SECTION COMMON ─────────────────────────── */
+    section { padding: 80px 5%; }
+
+    .section-label {
+      font-size: .78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .12em; color: var(--red); margin-bottom: .6rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900;
+      line-height: 1.2; margin-bottom: .8rem;
+    }
+    .section-sub { color: var(--muted); max-width: 560px; line-height: 1.75; font-size: 1rem; }
+
+    .section-head { margin-bottom: 3rem; }
+
+    /* ─── SERVICES GRID ───────────────────────────── */
+    .services-section { background: var(--off-white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .service-card {
+      background: #fff; border-radius: var(--rad);
+      padding: 2rem; box-shadow: var(--shadow);
+      border: 1.5px solid rgba(200,16,46,0.07);
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(30px);
+      animation: cardIn .6s forwards;
+    }
+    .service-card:nth-child(1)  { animation-delay: .05s }
+    .service-card:nth-child(2)  { animation-delay: .1s }
+    .service-card:nth-child(3)  { animation-delay: .15s }
+    .service-card:nth-child(4)  { animation-delay: .2s }
+    .service-card:nth-child(5)  { animation-delay: .25s }
+    .service-card:nth-child(6)  { animation-delay: .3s }
+    .service-card:nth-child(7)  { animation-delay: .35s }
+    .service-card:nth-child(8)  { animation-delay: .4s }
+    @keyframes cardIn { to{opacity:1;transform:none} }
+
+    .service-card::before {
+      content:''; position:absolute; top:0; left:0;
+      width:100%; height:4px;
+      background: linear-gradient(90deg, var(--red-deep), var(--red-light));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 50px rgba(200,16,46,.18); border-color: rgba(200,16,46,.2); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .card-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: linear-gradient(135deg, #ffe0e5, #ffd0d6);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.1rem;
+      transition: transform .3s;
+    }
+    .service-card:hover .card-icon { transform: scale(1.1) rotate(-5deg); }
+
+    .service-card h3 {
+      font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; color: var(--text);
+    }
+    .service-card p { font-size: .88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
+
+    .card-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.2rem; }
+    .tag {
+      font-size: .72rem; padding: 3px 10px; border-radius: 20px;
+      background: rgba(200,16,46,.08); color: var(--red); font-weight: 600;
+    }
+
+    .card-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: none; border: 1.5px solid var(--red); color: var(--red);
+      padding: 8px 18px; border-radius: 50px; font-size: .85rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: background .25s, color .25s, transform .2s;
+    }
+    .card-btn:hover { background: var(--red); color: #fff; transform: translateX(4px); }
+
+    /* ─── APPOINTMENT ─────────────────────────────── */
+    .appointment-section {
+      background: linear-gradient(135deg, var(--red-deep) 0%, var(--red) 100%);
+      position: relative; overflow: hidden;
+    }
+    .appointment-section::before {
+      content:''; position:absolute;
+      width:500px; height:500px; border-radius:50%;
+      border: 60px solid rgba(255,255,255,.05);
+      right:-150px; top:-150px;
+    }
+    .appointment-section .section-title { color: #fff; }
+    .appointment-section .section-label { color: rgba(255,255,255,.7); }
+    .appointment-section .section-sub { color: rgba(255,255,255,.75); }
+
+    .appt-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2rem; align-items: center;
+    }
+
+    .appt-form {
+      background: rgba(255,255,255,.1); backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(255,255,255,.2);
+      border-radius: var(--rad); padding: 2rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+    .form-group label { font-size: .82rem; font-weight: 600; color: rgba(255,255,255,.8); }
+    .form-group input,
+    .form-group select {
+      background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.25);
+      color: #fff; padding: 11px 14px; border-radius: 10px;
+      font-size: .9rem; font-family: 'DM Sans', sans-serif; outline: none;
+      transition: border-color .25s;
+    }
+    .form-group input::placeholder { color: rgba(255,255,255,.4); }
+    .form-group input:focus, .form-group select:focus { border-color: rgba(255,255,255,.7); }
+    .form-group select option { background: var(--red-deep); }
+
+    .btn-white-filled {
+      width: 100%; padding: 14px; border-radius: 50px;
+      background: #fff; color: var(--red); border: none;
+      font-weight: 700; font-size: 1rem; cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      margin-top: .5rem;
+    }
+    .btn-white-filled:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.2); }
+
+    .appt-info { color: #fff; }
+    .appt-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; margin-bottom: 1.2rem; line-height: 1.3;
+    }
+    .appt-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      margin-bottom: 1.3rem;
+    }
+    .appt-item-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(255,255,255,.15); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    }
+    .appt-item-text strong { display: block; font-size: .95rem; margin-bottom: .2rem; }
+    .appt-item-text span { font-size: .82rem; opacity: .75; line-height: 1.6; }
+
+    /* ─── TESTIMONIALS ─────────────────────────────── */
+    .testimonials-section { background: var(--white); }
+
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.6rem;
+    }
+    .testimonial-card {
+      background: var(--off-white); border-radius: var(--rad);
+      padding: 1.8rem;
+      border: 1.5px solid rgba(200,16,46,0.08);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .testimonial-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+
+    .stars { color: var(--red); font-size: .9rem; margin-bottom: .8rem; letter-spacing: 2px; }
+    .quote-icon { font-size: 2rem; color: rgba(200,16,46,.15); line-height: 1; margin-bottom: .5rem; }
+    .testimonial-card p { font-size: .93rem; color: var(--text); line-height: 1.75; margin-bottom: 1.2rem; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: .8rem; }
+    .author-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--red-deep), var(--red-light));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; color: #fff; font-size: .9rem;
+    }
+    .author-info strong { display: block; font-size: .88rem; font-weight: 700; }
+    .author-info span { font-size: .78rem; color: var(--muted); }
+
+    /* ─── FAQ ─────────────────────────────────────── */
+    .faq-section { background: var(--off-white); }
+
+    .faq-list { max-width: 760px; }
+    .faq-item {
+      background: #fff; border-radius: 12px; overflow: hidden;
+      margin-bottom: 1rem;
+      border: 1.5px solid rgba(200,16,46,0.08);
+      box-shadow: 0 2px 12px rgba(200,16,46,.05);
+    }
+    .faq-question {
+      width: 100%; text-align: left; background: none; border: none;
+      padding: 1.2rem 1.5rem; font-size: .97rem; font-weight: 600;
+      font-family: 'DM Sans', sans-serif; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      color: var(--text); transition: color .25s;
+    }
+    .faq-question:hover { color: var(--red); }
+    .faq-question i { color: var(--red); font-size: .8rem; transition: transform .3s; flex-shrink: 0; }
+    .faq-item.open .faq-question i { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height .4s ease;
+      font-size: .9rem; color: var(--muted); line-height: 1.75;
+    }
+    .faq-answer-inner { padding: 0 1.5rem 1.2rem; }
+    .faq-item.open .faq-answer { max-height: 200px; }
+
+    /* ─── CONTACT ─────────────────────────────────── */
+    .contact-section { background: var(--white); }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.6rem;
+    }
+    .contact-card {
+      border-radius: var(--rad); padding: 2rem; text-align: center;
+      border: 1.5px solid rgba(200,16,46,0.12);
+      transition: transform .3s, box-shadow .3s;
+      background: var(--off-white);
+    }
+    .contact-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .contact-card .icon-wrap {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--red-deep), var(--red));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: #fff; margin: 0 auto 1rem;
+      box-shadow: 0 6px 20px rgba(200,16,46,.3);
+    }
+    .contact-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; }
+    .contact-card p { font-size: .88rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.6; }
+    .contact-card a {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--red); color: #fff; text-decoration: none;
+      padding: 9px 20px; border-radius: 50px; font-size: .85rem; font-weight: 600;
+      transition: background .25s, transform .2s;
+    }
+    .contact-card a:hover { background: var(--red-deep); transform: scale(1.04); }
+
+    /* WhatsApp */
+    .contact-card.whatsapp .icon-wrap { background: linear-gradient(135deg, #075e54, #25d366); box-shadow: 0 6px 20px rgba(37,211,102,.3); }
+    .contact-card.whatsapp a { background: #25d366; }
+    .contact-card.whatsapp a:hover { background: #075e54; }
+
+    /* ─── EMERGENCY BANNER ────────────────────────── */
+    .emergency-banner {
+      background: linear-gradient(90deg, #8B0B1F, var(--red));
+      padding: 1.4rem 5%;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .emergency-banner .left { display: flex; align-items: center; gap: 1rem; }
+    .emergency-banner .pulse-dot {
+      width: 14px; height: 14px; border-radius: 50%; background: #fff;
+      animation: blink 1.2s infinite; flex-shrink: 0;
+    }
+    @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+    .emergency-banner p { color: #fff; font-weight: 600; font-size: .95rem; }
+    .emergency-banner p span { opacity: .8; font-weight: 400; font-size: .85rem; }
+    .btn-emergency {
+      background: #fff; color: var(--red);
+      padding: 10px 24px; border-radius: 50px;
+      font-weight: 700; font-size: .9rem;
+      text-decoration: none; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+      animation: shake 4s infinite;
+    }
+    @keyframes shake { 0%,90%,100%{transform:none} 92%{transform:translateX(-4px)} 94%{transform:translateX(4px)} 96%{transform:translateX(-2px)} }
+
+    /* ─── FOOTER ──────────────────────────────────── */
+    footer {
+      background: #0D0D0D; color: rgba(255,255,255,.75);
+      padding: 60px 5% 30px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 3rem;
+    }
+    .footer-brand .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 900; color: var(--red-light);
+      margin-bottom: .8rem;
+    }
+    .footer-brand p { font-size: .87rem; line-height: 1.75; max-width: 280px; }
+    .footer-social { display: flex; gap: .7rem; margin-top: 1.2rem; }
+    .footer-social a {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,.2);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.7); font-size: .9rem;
+      transition: border-color .25s, color .25s, background .25s;
+    }
+    .footer-social a:hover { border-color: var(--red); color: var(--red); background: rgba(200,16,46,.12); }
+
+    .footer-col h5 {
+      font-size: .82rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .1em; color: #fff; margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: .6rem; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,.6); font-size: .87rem; text-decoration: none;
+      transition: color .25s;
+    }
+    .footer-col ul li a:hover { color: var(--red-light); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+      font-size: .82rem; color: rgba(255,255,255,.35);
+    }
+    .footer-bottom a { color: rgba(255,255,255,.35); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--red-light); }
+
+    /* ─── SCROLL TOP BTN ──────────────────────────── */
+    #scrollTop {
+      position: fixed; bottom: 24px; right: 24px; z-index: 900;
+      background: var(--red); color: #fff;
+      width: 46px; height: 46px; border-radius: 50%; border: none;
+      font-size: 1.1rem; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(200,16,46,.4);
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .3s, transform .3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #scrollTop.visible { opacity: 1; transform: none; }
+    #scrollTop:hover { background: var(--red-deep); }
+
+    /* ─── MOBILE NAV ──────────────────────────────── */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none; flex-direction: column;
+        position: fixed; top: 68px; left: 0; width: 100%;
+        background: #fff; padding: 1.5rem 5% 2rem;
+        box-shadow: 0 8px 24px rgba(0,0,0,.1);
+        gap: 1.2rem; z-index: 999;
+      }
+      .nav-links.open { display: flex; }
+      .appt-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .appt-info { order: -1; }
+    }
+    @media (max-width: 520px) {
+      .hero-stats { gap: 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── SCROLL REVEAL ────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .7s, transform .7s;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a class="nav-logo" href="#"><span>AIDS</span> APAANA</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#">Awareness</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#appointment" class="nav-cta">Book Appointment</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-heart"></i> Trusted HIV/AIDS Care Platform</div>
+    <h1>Our <em>Services</em> for You</h1>
+    <p>Supporting HIV/AIDS awareness, prevention, treatment, and counseling — with compassion, dignity, and expert care at every step.</p>
+    <div class="hero-btns">
+      <a href="#appointment" class="btn-white"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+      <a href="#services" class="btn-outline-white"><i class="fas fa-grid-2"></i> Explore Services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>10K+</strong><span>Lives Supported</span></div>
+      <div class="stat"><strong>50+</strong><span>Expert Counselors</span></div>
+      <div class="stat"><strong>24/7</strong><span>Emergency Helpline</span></div>
+    </div>
+  </div>
+  <div class="hero-ribbon"></div>
+</section>
+
+<!-- SEARCH BAR -->
+<div class="search-bar-wrap">
+  <div class="search-inner">
+    <i class="fas fa-search"></i>
+    <input type="text" id="searchInput" placeholder="Search services… e.g. counseling, testing, ART" oninput="filterCards()" />
+    <button onclick="filterCards()">Search</button>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="section-head reveal">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Our HIV/AIDS Services</h2>
+    <p class="section-sub">Comprehensive, confidential, and compassionate care for every individual and family affected by HIV/AIDS.</p>
+  </div>
+  <div class="services-grid" id="servicesGrid">
+
+    <div class="service-card" data-name="hiv testing information">
+      <div class="card-icon">🩺</div>
+      <h3>HIV Testing Information</h3>
+      <p>Access detailed guidance on HIV testing options, nearby testing centres, and confidential home testing kits.</p>
+      <div class="card-tags"><span class="tag">Testing</span><span class="tag">Nearby Centres</span><span class="tag">Home Testing</span></div>
+      <a class="card-btn" href="#">Get Tested <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="service-card" data-name="counseling mental health family support">
+      <div class="card-icon">💬</div>
+      <h3>Counseling Services</h3>
+      <p>Professional mental health, HIV-specific, and family support counseling sessions with certified counselors.</p>
+      <div class="card-tags"><span class="tag">Mental Health</span><span class="tag">HIV Counseling</span><span class="tag">Family</span></div>
+      <a class="card-btn" href="#">Talk to Counselor <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="service-card" data-name="art antiretroviral treatment medication adherence">
+      <div class="card-icon">💊</div>
+      <h3>ART Treatment Support</h3>
+      <p>Antiretroviral therapy guidance, personalised medication schedules, and adherence support to maintain your health.</p>
+      <div class="card-tags"><span class="tag">ART</span><span class="tag">Medication</span><span class="tag">Adherence</span></div>
+      <a class="card-btn" href="#">Learn More <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="service-card" data-name="awareness education prevention safe living myths facts">
+      <div class="card-icon">📚</div>
+      <h3>Awareness & Education</h3>
+      <p>HIV prevention education, safe living practices, and myth-busting content to empower informed decisions.</p>
+      <div class="card-tags"><span class="tag">Prevention</span><span class="tag">Education</span><span class="tag">Myths vs Facts</span></div>
+      <a class="card-btn" href="#">Learn More <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="service-card" data-name="appointment booking doctor counseling schedule">
+      <div class="card-icon">📅</div>
+      <h3>Appointment Booking</h3>
+      <p>Easily schedule doctor appointments or counseling sessions online at your preferred date and time.</p>
+      <div class="card-tags"><span class="tag">Doctor</span><span class="tag">Counseling</span><span class="tag">Online</span></div>
+      <a class="card-btn" href="#appointment">Book Now <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="service-card" data-name="community support peer groups forums">
+      <div class="card-icon">🤝</div>
+      <h3>Community Support</h3>
+      <p>Join peer support groups and online discussion forums to connect with others on a similar journey.</p>
+      <div class="card-tags"><span class="tag">Peer Groups</span><span class="tag">Forums</span><span class="tag">Community</span></div>
+      <a class="card-btn" href="#">Join Community <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="service-card" data-name="emergency help hotline quick medical assistance">
+      <div class="card-icon">🚨</div>
+      <h3>Emergency Help</h3>
+      <p>24/7 hotline contacts and rapid medical assistance for urgent HIV/AIDS-related situations.</p>
+      <div class="card-tags"><span class="tag">Hotline</span><span class="tag">24/7</span><span class="tag">Urgent Care</span></div>
+      <a class="card-btn" href="tel:+1800APAANA">Call Helpline <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="service-card" data-name="medication reminder daily notifications">
+      <div class="card-icon">⏰</div>
+      <h3>Medication Reminder</h3>
+      <p>Set up personalised daily medicine notifications to ensure you never miss a critical dose of your ART regimen.</p>
+      <div class="card-tags"><span class="tag">Reminders</span><span class="tag">Daily</span><span class="tag">ART</span></div>
+      <a class="card-btn" href="#">Set Reminder <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+  </div>
+  <p id="noResults" style="display:none;color:var(--muted);margin-top:2rem;text-align:center">No services found. Try a different keyword.</p>
+</section>
+
+<!-- APPOINTMENT -->
+<section class="appointment-section" id="appointment">
+  <div class="appt-grid">
+    <div class="appt-info reveal">
+      <div class="section-label" style="color:rgba(255,255,255,.7)">Easy Scheduling</div>
+      <h2 class="section-title" style="color:#fff">Book Your Appointment</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.75);margin-bottom:2rem">Fast, private, and simple — schedule your consultation with a specialist in minutes.</p>
+      <div class="appt-item">
+        <div class="appt-item-icon"><i class="fas fa-lock"></i></div>
+        <div class="appt-item-text">
+          <strong>100% Confidential</strong>
+          <span>All appointments and records are fully private and secure.</span>
+        </div>
+      </div>
+      <div class="appt-item">
+        <div class="appt-item-icon"><i class="fas fa-user-doctor"></i></div>
+        <div class="appt-item-text">
+          <strong>Certified Specialists</strong>
+          <span>Our team includes licensed HIV physicians and counselors.</span>
+        </div>
+      </div>
+      <div class="appt-item">
+        <div class="appt-item-icon"><i class="fas fa-clock"></i></div>
+        <div class="appt-item-text">
+          <strong>Flexible Timings</strong>
+          <span>Morning, afternoon, and evening slots available 7 days a week.</span>
+        </div>
+      </div>
+    </div>
+    <div class="appt-form reveal">
+      <h3 style="color:#fff;font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1.4rem">Schedule a Session</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 xxxxxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Service Type</label>
+        <select>
+          <option>HIV Testing Guidance</option>
+          <option>Counseling Session</option>
+          <option>ART Treatment Support</option>
+          <option>Doctor Consultation</option>
+          <option>Community Support</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Preferred Date</label>
+          <input type="date">
+        </div>
+        <div class="form-group">
+          <label>Preferred Time</label>
+          <input type="time">
+        </div>
+      </div>
+      <button class="btn-white-filled"><i class="fas fa-calendar-check"></i> Confirm Appointment</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-head reveal">
+    <div class="section-label">Real Stories</div>
+    <h2 class="section-title">What Our Users Say</h2>
+    <p class="section-sub">Thousands have found support, care, and hope through AIDS APAANA.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="quote-icon">"</div>
+      <p>AIDS APAANA helped me find counseling support quickly. The counselors are warm, professional, and non-judgmental. I finally felt heard.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">RM</div>
+        <div class="author-info"><strong>Riya M.</strong><span>Counseling Service</span></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="quote-icon">"</div>
+      <p>The ART support feature reminded me about my medication every day. My adherence improved enormously and I feel much healthier now.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">AK</div>
+        <div class="author-info"><strong>Arjun K.</strong><span>ART Treatment Support</span></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="quote-icon">"</div>
+      <p>Booking an appointment was incredibly simple. The platform connected me with a specialist within 24 hours — truly life-changing.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">PS</div>
+        <div class="author-info"><strong>Priya S.</strong><span>Appointment Booking</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-head reveal">
+    <div class="section-label">Common Questions</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Everything you need to know about our services.</p>
+  </div>
+  <div class="faq-list" id="faqList">
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How do I book an appointment? <i class="fas fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Scroll to the "Book Your Appointment" section, fill in your details, select your preferred service and time slot, and click Confirm. You'll receive a confirmation via SMS/email.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Is my counseling session private? <i class="fas fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Absolutely. All sessions and personal data are protected under strict confidentiality policies. Your identity and health information will never be shared without your explicit consent.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Is HIV treatment free on this platform? <i class="fas fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Our informational and guidance services are free. We also connect you to government ART centres where treatment is provided at no cost. Counseling sessions may have a nominal fee — contact us for details.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Can I get a home HIV testing kit? <i class="fas fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Yes. Through our HIV Testing Information service, we guide you to approved home testing kits available online and offline, along with instructions for using them safely and confidentially.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How does the Medication Reminder work? <i class="fas fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">After registering, you can set up daily push notifications or SMS reminders for your ART doses. You choose the time, frequency, and medication name — the app handles the rest.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY BANNER -->
+<div class="emergency-banner">
+  <div class="left">
+    <div class="pulse-dot"></div>
+    <div>
+      <p>Emergency Helpline — Available 24/7 <span>| Free, confidential, immediate support</span></p>
+    </div>
+  </div>
+  <a href="tel:18001234567" class="btn-emergency"><i class="fas fa-phone"></i> Call 1800-123-4567</a>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-head reveal">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Contact Support</h2>
+    <p class="section-sub">We're here to help. Reach us anytime via phone, email, or WhatsApp.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card reveal">
+      <div class="icon-wrap"><i class="fas fa-phone"></i></div>
+      <h4>Call Us</h4>
+      <p>Speak directly with a support specialist, available Monday–Saturday, 8 AM–8 PM.</p>
+      <a href="tel:18001234567"><i class="fas fa-phone"></i> 1800-123-4567</a>
+    </div>
+    <div class="contact-card reveal">
+      <div class="icon-wrap"><i class="fas fa-envelope"></i></div>
+      <h4>Email Us</h4>
+      <p>Send us your queries, feedback, or requests. We respond within 24 hours on working days.</p>
+      <a href="mailto:help@aidsapaana.org"><i class="fas fa-envelope"></i> help@aidsapaana.org</a>
+    </div>
+    <div class="contact-card whatsapp reveal">
+      <div class="icon-wrap"><i class="fab fa-whatsapp"></i></div>
+      <h4>WhatsApp</h4>
+      <p>Chat with us privately on WhatsApp for quick answers and appointment confirmations.</p>
+      <a href="https://wa.me/911234567890" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">AIDS APAANA</div>
+      <p>A trusted platform for HIV/AIDS awareness, testing, counseling, and treatment support — built with compassion for every individual.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#">HIV Testing</a></li>
+        <li><a href="#">Counseling</a></li>
+        <li><a href="#">ART Support</a></li>
+        <li><a href="#">Education</a></li>
+        <li><a href="#">Community</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Awareness</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#">Disclaimer</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 AIDS APAANA. All rights reserved.</span>
+    <span>Made with ❤️ for those who need care</span>
+  </div>
+</footer>
+
+<!-- SCROLL TOP -->
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  // Nav toggle
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // Scroll top button
+  window.addEventListener('scroll', () => {
+    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Search / filter services
+  function filterCards() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const cards = document.querySelectorAll('.service-card');
+    let found = 0;
+    cards.forEach(c => {
+      const match = c.dataset.name.includes(q) || c.innerText.toLowerCase().includes(q);
+      c.style.display = match ? '' : 'none';
+      if (match) found++;
+    });
+    document.getElementById('noResults').style.display = found === 0 ? 'block' : 'none';
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
