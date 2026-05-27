@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Leadership — AIDS APAANA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:        #C0392B;
+      --red-deep:   #922B21;
+      --red-light:  #E74C3C;
+      --white:      #FFFFFF;
+      --off-white:  #FDF5F5;
+      --gray-light: #F9ECEC;
+      --gray-mid:   #D5D8DC;
+      --text:       #1A1A1A;
+      --text-muted: #6C757D;
+      --shadow:     0 4px 24px rgba(192,57,43,0.10);
+      --shadow-lg:  0 12px 48px rgba(192,57,43,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ──────────────── NAVBAR ──────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--red);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 68px;
+      box-shadow: 0 2px 16px rgba(192,57,43,0.08);
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo {
+      width: 40px; height: 40px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 18px;
+    }
+    .nav-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--red-deep);
+      letter-spacing: 0.5px;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--text);
+      font-size: 0.9rem; font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--red); }
+    .nav-cta {
+      background: var(--red); color: white !important;
+      padding: 8px 20px; border-radius: 24px;
+      font-weight: 600 !important;
+      transition: background .2s, transform .2s !important;
+    }
+    .nav-cta:hover { background: var(--red-deep) !important; transform: translateY(-1px); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--red); margin: 5px 0;
+      transition: all .3s;
+    }
+
+    /* ──────────────── HERO ──────────────── */
+    .hero {
+      margin-top: 68px;
+      min-height: 520px;
+      background:
+        linear-gradient(135deg, rgba(192,57,43,0.92) 0%, rgba(146,43,33,0.96) 100%),
+        url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1600&q=80') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 80px 5%;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 740px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.35);
+      color: white; font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 18px; border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900; color: white;
+      line-height: 1.15; margin-bottom: 20px;
+    }
+    .hero h1 span { color: rgba(255,255,255,0.75); }
+    .hero p {
+      color: rgba(255,255,255,0.88);
+      font-size: 1.05rem; line-height: 1.7;
+      max-width: 580px; margin: 0 auto 36px;
+    }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: white; color: var(--red-deep);
+      padding: 13px 30px; border-radius: 30px;
+      font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; border: 2px solid white;
+      transition: all .25s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--off-white); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+    .btn-outline {
+      background: transparent; color: white;
+      padding: 13px 30px; border-radius: 30px;
+      font-weight: 600; font-size: 0.95rem;
+      text-decoration: none; border: 2px solid rgba(255,255,255,0.6);
+      transition: all .25s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: white; transform: translateY(-2px); }
+
+    /* ──────────────── STATS ──────────────── */
+    .stats {
+      background: var(--red-deep);
+      padding: 50px 5%;
+    }
+    .stats-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px; text-align: center;
+    }
+    .stat-item { padding: 10px; }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem; font-weight: 900;
+      color: white; line-height: 1;
+    }
+    .stat-label {
+      color: rgba(255,255,255,0.78);
+      font-size: 0.88rem; margin-top: 6px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .stat-divider { width: 36px; height: 2px; background: rgba(255,255,255,0.3); margin: 10px auto 0; }
+
+    /* ──────────────── SECTION COMMON ──────────────── */
+    .section { padding: 80px 5%; }
+    .section-alt { background: var(--off-white); }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-eyebrow {
+      display: inline-block;
+      color: var(--red); font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 700; color: var(--text);
+      line-height: 1.2; margin-bottom: 14px;
+    }
+    .section-title span { color: var(--red); }
+    .section-subtitle {
+      color: var(--text-muted); font-size: 1rem; max-width: 540px;
+      margin: 0 auto; line-height: 1.65;
+    }
+    .divider {
+      width: 52px; height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--red-light));
+      margin: 18px auto 0; border-radius: 2px;
+    }
+
+    /* ──────────────── FILTER BAR ──────────────── */
+    .filter-bar {
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; flex-wrap: wrap; margin-bottom: 50px;
+    }
+    .filter-btn {
+      padding: 8px 20px; border-radius: 24px;
+      border: 2px solid var(--gray-mid);
+      background: white; color: var(--text-muted);
+      font-size: 0.85rem; font-weight: 600; cursor: pointer;
+      transition: all .22s; white-space: nowrap;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--red); border-color: var(--red); color: white;
+    }
+    .search-wrap {
+      position: relative; margin-bottom: 14px;
+    }
+    .search-wrap input {
+      width: 100%; max-width: 340px;
+      padding: 10px 16px 10px 42px;
+      border: 2px solid var(--gray-mid); border-radius: 30px;
+      font-size: 0.9rem; outline: none;
+      transition: border-color .2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .search-wrap input:focus { border-color: var(--red); }
+    .search-wrap i {
+      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+      color: var(--text-muted); font-size: 0.9rem;
+    }
+    .filter-controls {
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      margin-bottom: 50px;
+    }
+
+    /* ──────────────── LEADERSHIP CARDS ──────────────── */
+    .cards-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 28px;
+    }
+    .card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .28s, box-shadow .28s;
+      cursor: pointer;
+      position: relative;
+      border: 1px solid rgba(192,57,43,0.07);
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .card-accent {
+      height: 5px;
+      background: linear-gradient(90deg, var(--red), var(--red-light));
+    }
+    .card-body { padding: 28px 24px 22px; }
+    .card-photo-wrap {
+      display: flex; justify-content: center; margin-bottom: 18px;
+    }
+    .card-photo {
+      width: 90px; height: 90px; border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--red);
+      background: var(--gray-light);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--red); font-size: 2rem; font-weight: 700;
+      font-family: 'Playfair Display', serif;
+    }
+    .card-dept {
+      display: inline-block;
+      background: var(--gray-light); color: var(--red);
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      padding: 3px 10px; border-radius: 10px;
+      margin-bottom: 8px;
+    }
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--text); margin-bottom: 4px;
+    }
+    .card-title {
+      color: var(--red); font-size: 0.84rem;
+      font-weight: 600; margin-bottom: 12px;
+    }
+    .card-bio {
+      color: var(--text-muted); font-size: 0.85rem;
+      line-height: 1.6; margin-bottom: 18px;
+      display: -webkit-box; -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 14px; border-top: 1px solid var(--gray-light);
+    }
+    .card-socials { display: flex; gap: 8px; }
+    .social-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--gray-light);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); font-size: 0.75rem;
+      text-decoration: none; transition: all .2s;
+    }
+    .social-icon:hover { background: var(--red); color: white; }
+    .card-email-btn {
+      background: var(--red); color: white;
+      border: none; padding: 6px 16px; border-radius: 16px;
+      font-size: 0.8rem; font-weight: 600; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      display: flex; align-items: center; gap: 5px;
+      transition: background .2s;
+      text-decoration: none;
+    }
+    .card-email-btn:hover { background: var(--red-deep); }
+    .card-more {
+      position: absolute; top: 14px; right: 14px;
+      width: 28px; height: 28px;
+      background: var(--gray-light); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); font-size: 0.7rem;
+      transition: all .2s;
+    }
+    .card:hover .card-more { background: var(--red); color: white; }
+    .card[data-hidden="true"] { display: none; }
+
+    /* ──────────────── DIRECTOR MESSAGE ──────────────── */
+    .director-section {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 2fr;
+      gap: 60px; align-items: center;
+    }
+    .director-photo-col { text-align: center; }
+    .director-photo {
+      width: 240px; height: 280px;
+      border-radius: 18px;
+      object-fit: cover;
+      background: var(--gray-light);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem; color: var(--red);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .director-photo-badge {
+      position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--red); color: white;
+      font-size: 0.75rem; font-weight: 700;
+      padding: 5px 16px; border-radius: 12px; white-space: nowrap;
+    }
+    .director-text { }
+    .director-quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem; line-height: 0.7;
+      color: var(--red); opacity: 0.25;
+      margin-bottom: 10px; display: block;
+    }
+    .director-message {
+      font-size: 1.05rem; line-height: 1.8;
+      color: var(--text-muted); margin-bottom: 20px;
+      font-style: italic;
+    }
+    .director-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700; color: var(--text);
+    }
+    .director-role { color: var(--red); font-size: 0.9rem; font-weight: 600; margin-top: 3px; }
+    .director-sig {
+      margin-top: 14px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; color: var(--red);
+      opacity: 0.6; font-style: italic;
+    }
+
+    /* ──────────────── TIMELINE ──────────────── */
+    .timeline {
+      max-width: 800px; margin: 0 auto;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 50%; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--red), var(--red-light));
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      display: flex; justify-content: flex-end;
+      padding-right: calc(50% + 30px);
+      margin-bottom: 40px; position: relative;
+    }
+    .timeline-item:nth-child(even) {
+      justify-content: flex-start;
+      padding-right: 0; padding-left: calc(50% + 30px);
+    }
+    .timeline-dot {
+      position: absolute; left: 50%; top: 18px;
+      transform: translateX(-50%);
+      width: 14px; height: 14px;
+      background: var(--red); border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px var(--red);
+      z-index: 1;
+    }
+    .timeline-card {
+      background: white; border-radius: 12px;
+      padding: 18px 22px; max-width: 320px;
+      box-shadow: var(--shadow);
+      border-left: 3px solid var(--red);
+    }
+    .timeline-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--red); margin-bottom: 4px;
+    }
+    .timeline-desc {
+      font-size: 0.9rem; color: var(--text-muted); line-height: 1.55;
+    }
+
+    /* ──────────────── QUOTES CAROUSEL ──────────────── */
+    .carousel { max-width: 800px; margin: 0 auto; text-align: center; }
+    .carousel-inner { overflow: hidden; }
+    .carousel-slide { display: none; animation: fadeSlide .5s ease; }
+    .carousel-slide.active { display: block; }
+    @keyframes fadeSlide { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
+    .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      color: var(--text); line-height: 1.6;
+      margin-bottom: 20px; font-style: italic;
+    }
+    .quote-text::before { content: '\201C'; color: var(--red); }
+    .quote-text::after  { content: '\201D'; color: var(--red); }
+    .quote-author { color: var(--red); font-weight: 700; font-size: 0.9rem; }
+    .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
+    .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--gray-mid); cursor: pointer; transition: background .2s;
+    }
+    .dot.active { background: var(--red); }
+    .carousel-controls { display: flex; justify-content: center; gap: 12px; margin-top: 18px; }
+    .carousel-btn {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 2px solid var(--red); background: white;
+      color: var(--red); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; transition: all .2s;
+    }
+    .carousel-btn:hover { background: var(--red); color: white; }
+
+    /* ──────────────── CONTACT ──────────────── */
+    .contact-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    }
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700; margin-bottom: 18px;
+    }
+    .contact-info p { color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; }
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px;
+    }
+    .contact-detail-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--gray-light);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--red); font-size: 1rem; flex-shrink: 0;
+    }
+    .contact-detail-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+    .contact-detail-text strong { color: var(--text); display: block; }
+    .contact-socials { display: flex; gap: 10px; margin-top: 28px; }
+    .csoc {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--gray-light); color: var(--text-muted);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; transition: all .2s;
+    }
+    .csoc:hover { background: var(--red); color: white; transform: translateY(-2px); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 11px 14px; border: 2px solid var(--gray-mid);
+      border-radius: 10px; font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; outline: none; transition: border-color .2s;
+      background: white;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--red);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .btn-submit {
+      background: var(--red); color: white; border: none;
+      padding: 13px 30px; border-radius: 28px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+      font-weight: 700; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all .25s; align-self: flex-start;
+    }
+    .btn-submit:hover { background: var(--red-deep); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(192,57,43,0.3); }
+
+    /* ──────────────── MODAL ──────────────── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: white; border-radius: 20px;
+      max-width: 640px; width: 100%; max-height: 90vh;
+      overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      animation: modalIn .3s ease;
+    }
+    @keyframes modalIn { from { opacity:0; transform:scale(0.95) translateY(20px); } to { opacity:1; transform:none; } }
+    .modal-header {
+      background: linear-gradient(135deg, var(--red-deep), var(--red-light));
+      padding: 32px 32px 24px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .modal-photo {
+      width: 80px; height: 80px; border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; color: white; flex-shrink: 0;
+      object-fit: cover;
+    }
+    .modal-header-info { flex: 1; }
+    .modal-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 4px;
+    }
+    .modal-role { color: rgba(255,255,255,0.85); font-size: 0.9rem; font-weight: 500; }
+    .modal-dept-badge {
+      display: inline-block; margin-top: 8px;
+      background: rgba(255,255,255,0.2); color: white;
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      padding: 3px 10px; border-radius: 10px;
+    }
+    .modal-close {
+      background: rgba(255,255,255,0.15); border: none; color: white;
+      width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+      font-size: 1rem; display: flex; align-items: center; justify-content: center;
+      align-self: flex-start; transition: background .2s;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.3); }
+    .modal-body { padding: 28px 32px 32px; }
+    .modal-section { margin-bottom: 22px; }
+    .modal-section-title {
+      font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--red); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .modal-section-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--gray-light);
+    }
+    .modal-text { color: var(--text-muted); font-size: 0.9rem; line-height: 1.75; }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .modal-tag {
+      background: var(--gray-light); color: var(--text-muted);
+      font-size: 0.8rem; font-weight: 500;
+      padding: 4px 12px; border-radius: 12px;
+    }
+    .modal-tag.red { background: #FDEDEC; color: var(--red); }
+    .modal-contact-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .modal-contact-btn {
+      padding: 9px 18px; border-radius: 20px;
+      font-size: 0.85rem; font-weight: 600;
+      text-decoration: none; display: inline-flex;
+      align-items: center; gap: 6px; transition: all .2s;
+    }
+    .modal-contact-btn.email { background: var(--red); color: white; }
+    .modal-contact-btn.email:hover { background: var(--red-deep); }
+    .modal-contact-btn.linkedin { background: var(--gray-light); color: #0077B5; }
+    .modal-contact-btn.linkedin:hover { background: #E3F2FD; }
+
+    /* ──────────────── FOOTER ──────────────── */
+    footer {
+      background: var(--red-deep); color: rgba(255,255,255,0.85);
+      padding: 50px 5% 28px;
+    }
+    .footer-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 50px; margin-bottom: 40px;
+    }
+    .footer-brand h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; color: white; margin-bottom: 12px;
+    }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; margin-bottom: 20px; }
+    .footer-col h4 { color: white; font-size: 0.9rem; font-weight: 700; margin-bottom: 14px; letter-spacing: 1px; text-transform: uppercase; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 0.87rem; transition: color .2s; }
+    .footer-col ul a:hover { color: white; }
+    .footer-bottom {
+      max-width: 1100px; margin: 0 auto;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px; font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    .footer-bottom a:hover { color: white; }
+
+    /* ──────────────── BACK TO TOP ──────────────── */
+    #backToTop {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--red); color: white; border: none;
+      display: none; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1rem;
+      box-shadow: 0 4px 16px rgba(192,57,43,0.4);
+      transition: all .25s; z-index: 999;
+    }
+    #backToTop.visible { display: flex; }
+    #backToTop:hover { background: var(--red-deep); transform: translateY(-3px); }
+
+    /* ──────────────── ANIMATIONS ──────────────── */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ──────────────── MOBILE NAV ──────────────── */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; flex-direction: column;
+        position: fixed; top: 68px; left: 0; right: 0;
+        background: white; padding: 20px 24px 28px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+        gap: 16px; z-index: 999;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 1rem; }
+      .hamburger { display: block; }
+      .director-section { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .director-photo-col { order: 0; }
+      .timeline::before { left: 16px; transform: none; }
+      .timeline-item, .timeline-item:nth-child(even) {
+        padding-left: 48px; padding-right: 0;
+        justify-content: flex-start;
+      }
+      .timeline-dot { left: 16px; transform: translateX(-50%); }
+      .timeline-card { max-width: 100%; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .modal-header { flex-wrap: wrap; }
+      .modal-body { padding: 22px 20px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-logo"><i class="fa-solid fa-ribbon"></i></div>
+    <span class="nav-title">AIDS APAANA</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#" style="color:var(--red);font-weight:700">Leadership</a></li>
+    <li><a href="#">Programs</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-badge"><i class="fa-solid fa-users" style="margin-right:6px"></i>Our Leadership Team</span>
+    <h1>Driven by <span>Purpose,</span><br>Guided by Compassion</h1>
+    <p>Meet the passionate individuals who dedicate their lives to fighting HIV/AIDS, reducing stigma, and bringing hope to communities across the nation.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary"><i class="fa-solid fa-envelope"></i> Contact Leadership</a>
+      <a href="#team" class="btn-outline"><i class="fa-solid fa-arrow-down"></i> Meet the Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ STATS ══════════════ -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-item fade-up">
+      <div class="stat-number" data-target="10000">0</div>
+      <div class="stat-divider"></div>
+      <div class="stat-label">Lives Reached</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-number" data-target="500">0</div>
+      <div class="stat-divider"></div>
+      <div class="stat-label">Volunteers</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-number" data-target="20">0</div>
+      <div class="stat-divider"></div>
+      <div class="stat-label">Health Programs</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-number" data-target="15">0</div>
+      <div class="stat-divider"></div>
+      <div class="stat-label">Years of Service</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ LEADERSHIP CARDS ══════════════ -->
+<section class="section" id="team">
+  <div class="section-header fade-up">
+    <span class="section-eyebrow">Our People</span>
+    <h2 class="section-title">Meet the <span>Team</span></h2>
+    <p class="section-subtitle">Our leadership brings together medical expertise, community advocacy, and organizational excellence.</p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="filter-controls">
+    <div class="search-wrap">
+      <i class="fa-solid fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Search by name or title…" />
+    </div>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="executive">Executive</button>
+      <button class="filter-btn" data-filter="medical">Medical</button>
+      <button class="filter-btn" data-filter="outreach">Outreach</button>
+      <button class="filter-btn" data-filter="board">Board</button>
+      <button class="filter-btn" data-filter="volunteer">Volunteer</button>
+    </div>
+  </div>
+
+  <div class="cards-grid" id="cardsGrid">
+
+    <!-- Card 1 -->
+    <div class="card fade-up" data-dept="executive" data-name="Dr. Amina Osei" data-modal="1">
+      <div class="card-accent"></div>
+      <div class="card-more"><i class="fa-solid fa-expand"></i></div>
+      <div class="card-body">
+        <div class="card-photo-wrap">
+          <div class="card-photo">AO</div>
+        </div>
+        <div style="text-align:center">
+          <span class="card-dept">Executive</span>
+          <div class="card-name">Dr. Amina Osei</div>
+          <div class="card-title">Executive Director</div>
+        </div>
+        <p class="card-bio">Over 18 years of global health experience, championing HIV prevention and community-led care across 12 African nations.</p>
+        <div class="card-footer">
+          <div class="card-socials">
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          </div>
+          <a href="mailto:director@aidsapaana.org" class="card-email-btn"><i class="fa-solid fa-envelope"></i> Email</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card fade-up" data-dept="medical" data-name="Dr. Rajiv Menon" data-modal="2">
+      <div class="card-accent"></div>
+      <div class="card-more"><i class="fa-solid fa-expand"></i></div>
+      <div class="card-body">
+        <div class="card-photo-wrap">
+          <div class="card-photo">RM</div>
+        </div>
+        <div style="text-align:center">
+          <span class="card-dept">Medical</span>
+          <div class="card-name">Dr. Rajiv Menon</div>
+          <div class="card-title">Chief Medical Advisor</div>
+        </div>
+        <p class="card-bio">Infectious disease specialist with a Ph.D. in Virology. Led groundbreaking ARV access programs reaching 40,000+ patients.</p>
+        <div class="card-footer">
+          <div class="card-socials">
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-researchgate"></i></a>
+          </div>
+          <a href="mailto:medical@aidsapaana.org" class="card-email-btn"><i class="fa-solid fa-envelope"></i> Email</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card fade-up" data-dept="outreach" data-name="Fatima Nkosi" data-modal="3">
+      <div class="card-accent"></div>
+      <div class="card-more"><i class="fa-solid fa-expand"></i></div>
+      <div class="card-body">
+        <div class="card-photo-wrap">
+          <div class="card-photo">FN</div>
+        </div>
+        <div style="text-align:center">
+          <span class="card-dept">Outreach</span>
+          <div class="card-name">Fatima Nkosi</div>
+          <div class="card-title">Head of Community Outreach</div>
+        </div>
+        <p class="card-bio">Community mobilizer who has trained 2,500+ peer educators across rural and urban settings to deliver HIV education.</p>
+        <div class="card-footer">
+          <div class="card-socials">
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          </div>
+          <a href="mailto:outreach@aidsapaana.org" class="card-email-btn"><i class="fa-solid fa-envelope"></i> Email</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card fade-up" data-dept="executive" data-name="James Owusu" data-modal="4">
+      <div class="card-accent"></div>
+      <div class="card-more"><i class="fa-solid fa-expand"></i></div>
+      <div class="card-body">
+        <div class="card-photo-wrap">
+          <div class="card-photo">JO</div>
+        </div>
+        <div style="text-align:center">
+          <span class="card-dept">Executive</span>
+          <div class="card-name">James Owusu</div>
+          <div class="card-title">Finance & Operations Officer</div>
+        </div>
+        <p class="card-bio">Certified public accountant with a decade managing NGO budgets. Ensures fiscal transparency and compliant grant management.</p>
+        <div class="card-footer">
+          <div class="card-socials">
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <a href="mailto:finance@aidsapaana.org" class="card-email-btn"><i class="fa-solid fa-envelope"></i> Email</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card fade-up" data-dept="board" data-name="Prof. Sarah Dlamini" data-modal="5">
+      <div class="card-accent"></div>
+      <div class="card-more"><i class="fa-solid fa-expand"></i></div>
+      <div class="card-body">
+        <div class="card-photo-wrap">
+          <div class="card-photo">SD</div>
+        </div>
+        <div style="text-align:center">
+          <span class="card-dept">Board</span>
+          <div class="card-name">Prof. Sarah Dlamini</div>
+          <div class="card-title">Board Chairperson</div>
+        </div>
+        <p class="card-bio">Professor of Public Health at the University of Cape Town. Board governance expert and WHO technical advisor on HIV policy.</p>
+        <div class="card-footer">
+          <div class="card-socials">
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          </div>
+          <a href="mailto:board@aidsapaana.org" class="card-email-btn"><i class="fa-solid fa-envelope"></i> Email</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card fade-up" data-dept="volunteer" data-name="Michael Otieno" data-modal="6">
+      <div class="card-accent"></div>
+      <div class="card-more"><i class="fa-solid fa-expand"></i></div>
+      <div class="card-body">
+        <div class="card-photo-wrap">
+          <div class="card-photo">MO</div>
+        </div>
+        <div style="text-align:center">
+          <span class="card-dept">Volunteer</span>
+          <div class="card-name">Michael Otieno</div>
+          <div class="card-title">Volunteer Coordination Lead</div>
+        </div>
+        <p class="card-bio">Manages and mentors a network of 500+ volunteers across 8 regions, ensuring effective program delivery at the grassroots level.</p>
+        <div class="card-footer">
+          <div class="card-socials">
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <a href="mailto:volunteer@aidsapaana.org" class="card-email-btn"><i class="fa-solid fa-envelope"></i> Email</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="card fade-up" data-dept="medical" data-name="Dr. Priya Sharma" data-modal="7">
+      <div class="card-accent"></div>
+      <div class="card-more"><i class="fa-solid fa-expand"></i></div>
+      <div class="card-body">
+        <div class="card-photo-wrap">
+          <div class="card-photo">PS</div>
+        </div>
+        <div style="text-align:center">
+          <span class="card-dept">Medical</span>
+          <div class="card-name">Dr. Priya Sharma</div>
+          <div class="card-title">Health Programs Director</div>
+        </div>
+        <p class="card-bio">Specialist in maternal HIV transmission prevention. Designed 5 evidence-based health programs currently running in 3 countries.</p>
+        <div class="card-footer">
+          <div class="card-socials">
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          </div>
+          <a href="mailto:programs@aidsapaana.org" class="card-email-btn"><i class="fa-solid fa-envelope"></i> Email</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="card fade-up" data-dept="outreach" data-name="Kwame Asante" data-modal="8">
+      <div class="card-accent"></div>
+      <div class="card-more"><i class="fa-solid fa-expand"></i></div>
+      <div class="card-body">
+        <div class="card-photo-wrap">
+          <div class="card-photo">KA</div>
+        </div>
+        <div style="text-align:center">
+          <span class="card-dept">Outreach</span>
+          <div class="card-name">Kwame Asante</div>
+          <div class="card-title">Digital Health Strategist</div>
+        </div>
+        <p class="card-bio">Leads digital transformation and telemedicine initiatives, expanding healthcare access to remote communities via mobile platforms.</p>
+        <div class="card-footer">
+          <div class="card-socials">
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          </div>
+          <a href="mailto:digital@aidsapaana.org" class="card-email-btn"><i class="fa-solid fa-envelope"></i> Email</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ DIRECTOR MESSAGE ══════════════ -->
+<section class="section section-alt">
+  <div class="section-header fade-up">
+    <span class="section-eyebrow">Leadership Vision</span>
+    <h2 class="section-title">A Message from the <span>Executive Director</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="director-section fade-up">
+    <div class="director-photo-col">
+      <div class="director-photo" style="position:relative">
+        AO
+        <span class="director-photo-badge">Executive Director</span>
+      </div>
+    </div>
+    <div class="director-text">
+      <span class="director-quote-mark">"</span>
+      <p class="director-message">
+        Every life matters. At AIDS APAANA, we believe that access to care, knowledge, and dignity is a fundamental human right — not a privilege. Over the past 15 years, I have witnessed the transformation that happens when communities are empowered with information, compassion, and the right resources.
+        <br><br>
+        Our leadership team is united by one unwavering commitment: to leave no one behind in the fight against HIV/AIDS. Together, we are not just managing a crisis — we are building a future where the next generation grows up free from this disease and its stigma.
+      </p>
+      <div class="director-name">Dr. Amina Osei</div>
+      <div class="director-role">Executive Director, AIDS APAANA</div>
+      <div class="director-sig">Dr. Amina Osei</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ TIMELINE ══════════════ -->
+<section class="section">
+  <div class="section-header fade-up">
+    <span class="section-eyebrow">Our Journey</span>
+    <h2 class="section-title">Leadership <span>Timeline</span></h2>
+    <p class="section-subtitle">From humble beginnings to a nationally recognized force in HIV/AIDS advocacy.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item fade-up">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-year">2010</div>
+        <div class="timeline-desc">Organization founded with a core team of 5 health advocates committed to ending stigma in local communities.</div>
+      </div>
+    </div>
+    <div class="timeline-item fade-up">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-year">2013</div>
+        <div class="timeline-desc">First regional health clinic established, offering free HIV testing and counseling to 3,000+ individuals annually.</div>
+      </div>
+    </div>
+    <div class="timeline-item fade-up">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-year">2015</div>
+        <div class="timeline-desc">Expanded outreach to rural areas with mobile health units, reaching underserved communities across 5 provinces.</div>
+      </div>
+    </div>
+    <div class="timeline-item fade-up">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-year">2018</div>
+        <div class="timeline-desc">Launched partnership with WHO and UNAIDS to implement a national peer-education youth program.</div>
+      </div>
+    </div>
+    <div class="timeline-item fade-up">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-desc">Led National HIV Awareness Campaign reaching 10 million people through media, schools, and community events.</div>
+      </div>
+    </div>
+    <div class="timeline-item fade-up">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-desc">Launched Digital Health Transformation initiative, integrating telemedicine and AI-assisted diagnostics into our programs.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ QUOTES CAROUSEL ══════════════ -->
+<section class="section section-alt">
+  <div class="section-header fade-up">
+    <span class="section-eyebrow">Words of Inspiration</span>
+    <h2 class="section-title">Leadership <span>Voices</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="carousel fade-up">
+    <div class="carousel-inner">
+      <div class="carousel-slide active">
+        <p class="quote-text">Together we can end stigma, create hope, and ensure that every person living with HIV has access to the care and dignity they deserve.</p>
+        <div class="quote-author">Dr. Amina Osei — Executive Director</div>
+      </div>
+      <div class="carousel-slide">
+        <p class="quote-text">Science is our compass, but compassion is our engine. We will not rest until treatment is within reach of every single patient, regardless of where they live.</p>
+        <div class="quote-author">Dr. Rajiv Menon — Chief Medical Advisor</div>
+      </div>
+      <div class="carousel-slide">
+        <p class="quote-text">Change starts in communities. When we empower people with knowledge and respect, we do not just fight disease — we restore dignity and rebuild lives.</p>
+        <div class="quote-author">Fatima Nkosi — Head of Community Outreach</div>
+      </div>
+      <div class="carousel-slide">
+        <p class="quote-text">Good governance and transparent stewardship of resources ensure every donated dollar translates into real impact where it matters most.</p>
+        <div class="quote-author">James Owusu — Finance & Operations Officer</div>
+      </div>
+    </div>
+    <div class="carousel-dots" id="carouselDots"></div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prevBtn"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="carousel-btn" id="nextBtn"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section class="section" id="contact">
+  <div class="section-header fade-up">
+    <span class="section-eyebrow">Get in Touch</span>
+    <h2 class="section-title">Contact <span>Leadership</span></h2>
+    <p class="section-subtitle">Have a question, partnership proposal, or wish to support our work? We'd love to hear from you.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info fade-up">
+      <h3>Reach Out to Us</h3>
+      <p>Our team is available Monday to Friday, 8am – 5pm. For urgent health matters, please contact your nearest health facility.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div class="contact-detail-text">
+          <strong>General Inquiries</strong>
+          info@aidsapaana.org
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><i class="fa-solid fa-phone"></i></div>
+        <div class="contact-detail-text">
+          <strong>Office Line</strong>
+          +1 (800) 000-APAANA
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <div class="contact-detail-text">
+          <strong>Head Office</strong>
+          123 Health Avenue, Community District, Capital City
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><i class="fa-solid fa-clock"></i></div>
+        <div class="contact-detail-text">
+          <strong>Office Hours</strong>
+          Mon – Fri: 8:00 AM – 5:00 PM
+        </div>
+      </div>
+      <div class="contact-socials">
+        <a href="#" class="csoc"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="csoc"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="csoc"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="csoc"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="csoc"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="fade-up">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="John" required />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Doe" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="john.doe@email.com" required />
+        </div>
+        <div class="form-group">
+          <label>Message Subject</label>
+          <select>
+            <option>General Inquiry</option>
+            <option>Partnership Proposal</option>
+            <option>Volunteer Opportunity</option>
+            <option>Media & Press</option>
+            <option>Donation</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Write your message here…" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>AIDS APAANA</h3>
+      <p>Committed to a world free from HIV/AIDS. Empowering communities through education, advocacy, care, and compassion since 2010.</p>
+      <div class="contact-socials">
+        <a href="#" class="csoc" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7)"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="csoc" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7)"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="csoc" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7)"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="csoc" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7)"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Leadership</a></li>
+        <li><a href="#">Programs</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Donate</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Annual Reports</a></li>
+        <li><a href="#">Org Structure (PDF)</a></li>
+        <li><a href="#">Press Kit</a></li>
+        <li><a href="#">HIV Resources</a></li>
+        <li><a href="#">Volunteer Guide</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 AIDS APAANA. All rights reserved.</span>
+    <span><a href="#">Privacy Policy</a> · <a href="#">Terms of Use</a> · <a href="#">Accessibility</a></span>
+  </div>
+</footer>
+
+<!-- ══════════════ MODAL ══════════════ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-photo" id="modalPhoto">AO</div>
+      <div class="modal-header-info">
+        <div class="modal-name" id="modalName"></div>
+        <div class="modal-role" id="modalRole"></div>
+        <span class="modal-dept-badge" id="modalDept"></span>
+      </div>
+      <button class="modal-close" id="modalClose"><i class="fa-solid fa-times"></i></button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script>
+  // ── Leader data for modals ──
+  const leaders = {
+    1: {
+      initials: 'AO', name: 'Dr. Amina Osei', role: 'Executive Director', dept: 'Executive Team',
+      bio: 'Dr. Amina Osei is a globally recognized public health leader with over 18 years of experience in HIV/AIDS prevention, treatment advocacy, and community health systems strengthening. She has led programmes in 12 countries across Sub-Saharan Africa, partnering with UNAIDS, WHO, and the Global Fund.',
+      qualifications: ['Ph.D. Public Health, Johns Hopkins University', 'M.P.H. Epidemiology, London School of Hygiene', 'B.Sc. Nursing, University of Ghana'],
+      achievements: ['UN Women Advocate for Change Award 2022', 'Led $12M HIV grant portfolio', 'Published 30+ peer-reviewed papers', 'Advisor to 3 national HIV task forces'],
+      email: 'director@aidsapaana.org'
+    },
+    2: {
+      initials: 'RM', name: 'Dr. Rajiv Menon', role: 'Chief Medical Advisor', dept: 'Medical Advisory',
+      bio: 'Dr. Rajiv Menon is a board-certified infectious disease specialist who has dedicated his career to HIV virology research and treatment access. He led the design and rollout of one of the continent\'s most successful ARV adherence programs, benefiting over 40,000 patients.',
+      qualifications: ['Ph.D. Virology, University of Edinburgh', 'M.D. Internal Medicine, AIIMS New Delhi', 'Fellowship in Infectious Disease, CDC Atlanta'],
+      achievements: ['Developed ARV program reaching 40,000+ patients', '60+ publications in Lancet & NEJM', 'WHO Technical Expert Panel Member', 'International AIDS Society Award 2019'],
+      email: 'medical@aidsapaana.org'
+    },
+    3: {
+      initials: 'FN', name: 'Fatima Nkosi', role: 'Head of Community Outreach', dept: 'Community Outreach',
+      bio: 'Fatima Nkosi is a seasoned community development practitioner and a passionate HIV activist. Born and raised in a community severely affected by AIDS, she turned personal adversity into professional purpose. She has trained over 2,500 peer educators and led campaigns reaching millions.',
+      qualifications: ['M.A. Community Development, UKZN', 'Certificate in Public Health Communication, WITS', 'Certified HIV Counsellor (PEPFAR)'],
+      achievements: ['Trained 2,500+ peer educators', 'Designed national youth stigma campaign', 'Mandela Community Leadership Award 2021', 'Profiled in TIME Magazine 2023'],
+      email: 'outreach@aidsapaana.org'
+    },
+    4: {
+      initials: 'JO', name: 'James Owusu', role: 'Finance & Operations Officer', dept: 'Executive Team',
+      bio: 'James Owusu is a Certified Public Accountant with a decade of experience managing NGO and international development finances. He oversees a multi-million dollar budget, ensures GAAP compliance, and maintains transparent reporting to all donors and government partners.',
+      qualifications: ['CPA, Institute of Chartered Accountants Ghana', 'MBA Finance, Ashesi University', 'Certificate in NGO Financial Management, MIT OpenCourseWare'],
+      achievements: ['Managed $15M+ annual budget', 'Achieved 5 consecutive clean audit reports', 'Implemented USAID-compliant financial systems', 'Reduced admin costs by 22%'],
+      email: 'finance@aidsapaana.org'
+    },
+    5: {
+      initials: 'SD', name: 'Prof. Sarah Dlamini', role: 'Board Chairperson', dept: 'Board of Directors',
+      bio: 'Professor Sarah Dlamini is a distinguished public health academic and policy advocate. As a WHO Technical Advisor, she has shaped national HIV strategies for six countries. She brings rigorous governance standards and strategic foresight to the AIDS APAANA Board.',
+      qualifications: ['Ph.D. Public Health Policy, UCT', 'MPH Harvard T.H. Chan School', 'Fellow, Academy of Science of South Africa'],
+      achievements: ['WHO Technical Advisory Committee', 'Authored landmark national HIV policy', 'National Order of Merit, Health Sciences', '100+ peer-reviewed publications'],
+      email: 'board@aidsapaana.org'
+    },
+    6: {
+      initials: 'MO', name: 'Michael Otieno', role: 'Volunteer Coordination Lead', dept: 'Volunteer Coordination',
+      bio: 'Michael Otieno built AIDS APAANA\'s volunteer network from the ground up. Managing over 500 active volunteers across 8 regions, he has created robust training systems, recognition programs, and support structures that have made volunteering with APAANA a transformative experience.',
+      qualifications: ['B.A. Social Work, Nairobi University', 'Certificate in NGO Management, KCA University', 'Certified Volunteer Management Professional (CVA)'],
+      achievements: ['Built 500+ volunteer network from 12', 'Volunteer retention rate of 87%', 'Best NGO Volunteer Program Award 2022', 'Mentored 150+ youth volunteers'],
+      email: 'volunteer@aidsapaana.org'
+    },
+    7: {
+      initials: 'PS', name: 'Dr. Priya Sharma', role: 'Health Programs Director', dept: 'Medical Advisory',
+      bio: 'Dr. Priya Sharma is an expert in Prevention of Mother-to-Child Transmission (PMTCT) and pediatric HIV care. She has designed and implemented five evidence-based health programs currently operating across three countries, with a focus on women and children.',
+      qualifications: ['M.D. Pediatrics, PGIMER Chandigarh', 'M.Sc. Global Health, University of Toronto', 'Diploma in HIV Medicine, BHIVA'],
+      achievements: ['Designed 5 active PMTCT programs', 'Reduced pediatric HIV transmission by 34%', 'PEPFAR Program Excellence Award 2023', 'Active in 3 countries'],
+      email: 'programs@aidsapaana.org'
+    },
+    8: {
+      initials: 'KA', name: 'Kwame Asante', role: 'Digital Health Strategist', dept: 'Community Outreach',
+      bio: 'Kwame Asante is driving the digital transformation of AIDS APAANA\'s service delivery. By integrating telemedicine, mobile health apps, and data analytics into our programs, he has dramatically expanded access to HIV services in remote communities with limited physical infrastructure.',
+      qualifications: ['M.Sc. Health Informatics, Makerere University', 'B.Sc. Computer Science, Ashesi University', 'Google Certified Digital Health Professional'],
+      achievements: ['Launched mobile health platform reaching 50K+ users', 'Deployed telemedicine in 12 remote clinics', 'Digital Health Innovation Award 2024', 'Reduced clinic visit barriers by 45%'],
+      email: 'digital@aidsapaana.org'
+    }
+  };
+
+  // ── Hamburger ──
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // ── Stat counters ──
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 1800;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target).toLocaleString() + (target >= 1000 ? '+' : target >= 10 ? '+' : '');
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  let countersStarted = false;
+
+  // ── Intersection Observer ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        if (entry.target.closest('.stats') && !countersStarted) {
+          countersStarted = true;
+          document.querySelectorAll('[data-target]').forEach(animateCounter);
+        }
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── Filter + Search ──
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const searchInput = document.getElementById('searchInput');
+  const cards = document.querySelectorAll('.card');
+
+  function applyFilters() {
+    const active = document.querySelector('.filter-btn.active').dataset.filter;
+    const query = searchInput.value.toLowerCase();
+    cards.forEach(card => {
+      const deptMatch = active === 'all' || card.dataset.dept === active;
+      const nameMatch = card.dataset.name.toLowerCase().includes(query) ||
+                        card.querySelector('.card-title').textContent.toLowerCase().includes(query);
+      card.dataset.hidden = (!deptMatch || !nameMatch).toString();
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilters();
+    });
+  });
+  searchInput.addEventListener('input', applyFilters);
+
+  // ── Modal ──
+  const overlay = document.getElementById('modalOverlay');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const id = parseInt(card.dataset.modal);
+      const l = leaders[id];
+      if (!l) return;
+      document.getElementById('modalPhoto').textContent = l.initials;
+      document.getElementById('modalName').textContent = l.name;
+      document.getElementById('modalRole').textContent = l.role;
+      document.getElementById('modalDept').textContent = l.dept;
+      document.getElementById('modalBody').innerHTML = `
+        <div class="modal-section">
+          <div class="modal-section-title"><i class="fa-solid fa-user"></i> Biography</div>
+          <p class="modal-text">${l.bio}</p>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title"><i class="fa-solid fa-graduation-cap"></i> Qualifications</div>
+          <div class="modal-tags">${l.qualifications.map(q => `<span class="modal-tag">${q}</span>`).join('')}</div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title"><i class="fa-solid fa-trophy"></i> Key Achievements</div>
+          <div class="modal-tags">${l.achievements.map(a => `<span class="modal-tag red">${a}</span>`).join('')}</div>
+        </div>
+        <div class="modal-contact-row">
+          <a href="mailto:${l.email}" class="modal-contact-btn email"><i class="fa-solid fa-envelope"></i> Send Email</a>
+          <a href="#" class="modal-contact-btn linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+        </div>
+      `;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // ── Carousel ──
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dotsContainer = document.getElementById('carouselDots');
+  let current = 0;
+  let autoTimer;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dotsContainer.children[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsContainer.children[current].classList.add('active');
+    resetAuto();
+  }
+  function resetAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 5000);
+  }
+  document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+  resetAuto();
+
+  // ── Back to top ──
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 400);
+  });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ── Contact form ──
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
+    btn.style.background = '#27AE60';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3000);
+  }
+</script>
+</body>
+</html>
