@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADIS APAANA – Annual Report 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root {
+    --red:       #C0392B;
+    --red-dark:  #922B21;
+    --red-deep:  #641E16;
+    --red-light: #E74C3C;
+    --red-pale:  #FDEDEC;
+    --white:     #FFFFFF;
+    --off-white: #FAFAFA;
+    --grey-100:  #F5F5F5;
+    --grey-300:  #E0E0E0;
+    --grey-600:  #757575;
+    --grey-800:  #212121;
+    --gold:      #D4AC0D;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--grey-800);
+    overflow-x: hidden;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--grey-100); }
+  ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+  /* ══════════════════════════════════════════
+     STICKY NAVIGATION
+  ══════════════════════════════════════════ */
+  #topnav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 3px solid var(--red);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+    box-shadow: 0 2px 20px rgba(192,57,43,.12);
+    transition: all .3s;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 900;
+    color: var(--red);
+    letter-spacing: -.5px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-logo span { color: var(--grey-800); }
+  .nav-links {
+    display: flex; gap: 1.8rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: .82rem; font-weight: 600; letter-spacing: .6px; text-transform: uppercase;
+    color: var(--grey-600); text-decoration: none;
+    position: relative; padding-bottom: 2px;
+    transition: color .25s;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+    height: 2px; background: var(--red); transform: scaleX(0);
+    transition: transform .25s;
+  }
+  .nav-links a:hover { color: var(--red); }
+  .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+  .nav-links a.active { color: var(--red); }
+  #hamburger {
+    display: none; background: none; border: none; cursor: pointer;
+    flex-direction: column; gap: 5px; padding: 4px;
+  }
+  #hamburger span {
+    display: block; width: 26px; height: 2px;
+    background: var(--red); border-radius: 2px;
+    transition: all .3s;
+  }
+  #mobile-menu {
+    display: none; position: fixed; top: 64px; left: 0; right: 0;
+    background: var(--white); z-index: 999;
+    padding: 1.5rem 5%; flex-direction: column; gap: 1rem;
+    border-bottom: 3px solid var(--red);
+    box-shadow: 0 8px 30px rgba(0,0,0,.1);
+  }
+  #mobile-menu a {
+    font-size: .9rem; font-weight: 600; color: var(--grey-800);
+    text-decoration: none; padding: .5rem 0;
+    border-bottom: 1px solid var(--grey-300);
+  }
+  #mobile-menu a:hover { color: var(--red); }
+
+  /* ══════════════════════════════════════════
+     HERO
+  ══════════════════════════════════════════ */
+  #hero {
+    min-height: 100vh;
+    background:
+      linear-gradient(135deg, rgba(100,30,22,.92) 0%, rgba(192,57,43,.85) 60%, rgba(146,43,33,.9) 100%),
+      url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=1600&auto=format&fit=crop') center/cover no-repeat;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 5% 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.4);
+    color: #fff; font-size: .75rem; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: .4rem 1.2rem; border-radius: 100px;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(6px);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 5.5rem);
+    font-weight: 900; color: #fff;
+    line-height: 1.08; letter-spacing: -1px;
+    margin-bottom: 1rem;
+  }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero p {
+    font-size: clamp(1rem, 2vw, 1.22rem);
+    color: rgba(255,255,255,.85); max-width: 600px;
+    margin: 0 auto 2.5rem; line-height: 1.7;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .btn-primary {
+    background: var(--white); color: var(--red);
+    font-size: .9rem; font-weight: 700; letter-spacing: .5px;
+    padding: .8rem 2rem; border-radius: 4px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all .3s; display: inline-flex; align-items: center; gap: .5rem;
+  }
+  .btn-primary:hover { background: var(--gold); color: var(--white); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    font-size: .9rem; font-weight: 600;
+    padding: .8rem 2rem; border-radius: 4px;
+    border: 2px solid rgba(255,255,255,.6);
+    text-decoration: none; cursor: pointer;
+    transition: all .3s; display: inline-flex; align-items: center; gap: .5rem;
+  }
+  .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.15); transform: translateY(-2px); }
+  .hero-wave {
+    position: absolute; bottom: -2px; left: 0; right: 0;
+  }
+  /* Floating shapes */
+  .hero-shape {
+    position: absolute; border-radius: 50%;
+    opacity: .08;
+    animation: floatShape 8s ease-in-out infinite alternate;
+  }
+  .hs1 { width: 420px; height: 420px; background: #fff; top: -80px; right: -100px; }
+  .hs2 { width: 220px; height: 220px; background: var(--gold); bottom: 100px; left: -60px; animation-delay: 2s; }
+  @keyframes floatShape {
+    from { transform: translate(0,0) rotate(0deg); }
+    to   { transform: translate(20px,30px) rotate(15deg); }
+  }
+
+  /* ══════════════════════════════════════════
+     SECTION SHARED
+  ══════════════════════════════════════════ */
+  section { padding: 90px 5%; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--red); margin-bottom: 1rem;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 28px; height: 3px;
+    background: var(--red); border-radius: 2px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900; line-height: 1.15;
+    color: var(--grey-800); margin-bottom: .75rem;
+  }
+  .section-title span { color: var(--red); }
+  .section-sub {
+    font-size: 1rem; color: var(--grey-600); max-width: 540px;
+    line-height: 1.7; margin-bottom: 3rem;
+  }
+  .divider {
+    height: 4px; width: 56px; background: var(--red);
+    border-radius: 2px; margin-bottom: 1.5rem;
+  }
+
+  /* ══════════════════════════════════════════
+     EXECUTIVE SUMMARY
+  ══════════════════════════════════════════ */
+  #summary { background: var(--white); }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .ceo-card {
+    background: linear-gradient(135deg, var(--red-deep), var(--red));
+    border-radius: 16px; padding: 2.5rem;
+    color: #fff; position: relative; overflow: hidden;
+  }
+  .ceo-card::before {
+    content: '"'; position: absolute; top: -10px; left: 20px;
+    font-size: 10rem; font-family: 'Playfair Display', serif;
+    color: rgba(255,255,255,.1); line-height: 1;
+  }
+  .ceo-card p { font-size: 1.05rem; line-height: 1.8; opacity: .92; margin-bottom: 1.5rem; position: relative; }
+  .ceo-sig { display: flex; align-items: center; gap: 1rem; position: relative; }
+  .ceo-avatar {
+    width: 54px; height: 54px; border-radius: 50%;
+    border: 3px solid rgba(255,255,255,.4);
+    object-fit: cover;
+    background: rgba(255,255,255,.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; color: #fff;
+  }
+  .ceo-name { font-weight: 700; font-size: 1rem; }
+  .ceo-role { font-size: .8rem; opacity: .75; }
+  .achieve-cards {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .achieve-card {
+    background: var(--off-white);
+    border-radius: 12px; padding: 1.4rem;
+    border-left: 4px solid var(--red);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .achieve-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(192,57,43,.12); }
+  .achieve-card i { font-size: 1.6rem; color: var(--red); margin-bottom: .7rem; display: block; }
+  .achieve-card h4 { font-size: .95rem; font-weight: 700; margin-bottom: .3rem; }
+  .achieve-card p { font-size: .82rem; color: var(--grey-600); line-height: 1.5; }
+
+  /* ══════════════════════════════════════════
+     STATS
+  ══════════════════════════════════════════ */
+  #stats {
+    background: linear-gradient(135deg, var(--red-deep) 0%, var(--red) 100%);
+    color: #fff;
+  }
+  #stats .section-title { color: #fff; }
+  #stats .section-title span { color: var(--gold); }
+  #stats .section-sub { color: rgba(255,255,255,.75); }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+  }
+  .stat-card {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 16px; padding: 2rem 1.2rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: all .35s;
+    cursor: default;
+  }
+  .stat-card:hover {
+    background: rgba(255,255,255,.18);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,.2);
+  }
+  .stat-card i { font-size: 2rem; color: var(--gold); margin-bottom: .8rem; display: block; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem; font-weight: 900; color: #fff;
+    line-height: 1; margin-bottom: .4rem;
+  }
+  .stat-label { font-size: .8rem; font-weight: 500; opacity: .8; letter-spacing: .5px; text-transform: uppercase; }
+
+  /* ══════════════════════════════════════════
+     FINANCIAL
+  ══════════════════════════════════════════ */
+  #financial { background: var(--grey-100); }
+  .fin-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  }
+  .chart-box {
+    background: var(--white); border-radius: 16px;
+    padding: 2rem; box-shadow: 0 4px 24px rgba(0,0,0,.06);
+  }
+  .chart-box h3 {
+    font-size: 1rem; font-weight: 700; margin-bottom: 1.4rem;
+    color: var(--grey-800); letter-spacing: .3px;
+  }
+  .chart-box h3 span { color: var(--red); }
+  .fin-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+  .fin-table th {
+    background: var(--red); color: #fff; text-align: left;
+    padding: .7rem 1rem; font-weight: 600;
+  }
+  .fin-table td { padding: .65rem 1rem; border-bottom: 1px solid var(--grey-300); }
+  .fin-table tr:last-child td { border-bottom: none; }
+  .fin-table tr:nth-child(even) td { background: var(--grey-100); }
+  .fin-table .total td { font-weight: 700; color: var(--red); }
+  .download-audit {
+    display: inline-flex; align-items: center; gap: .6rem;
+    margin-top: 1.2rem; background: var(--red); color: #fff;
+    padding: .6rem 1.4rem; border-radius: 6px; font-size: .85rem; font-weight: 600;
+    text-decoration: none; transition: background .3s;
+  }
+  .download-audit:hover { background: var(--red-dark); }
+
+  /* ══════════════════════════════════════════
+     IMPACT STORIES
+  ══════════════════════════════════════════ */
+  #impact { background: var(--white); }
+  .impact-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+  }
+  .impact-card {
+    border-radius: 16px; overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,.08);
+    transition: transform .35s, box-shadow .35s;
+    background: var(--white);
+  }
+  .impact-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(192,57,43,.15); }
+  .impact-img {
+    height: 200px; position: relative; overflow: hidden;
+  }
+  .impact-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .5s;
+  }
+  .impact-card:hover .impact-img img { transform: scale(1.06); }
+  .impact-tag {
+    position: absolute; top: 14px; left: 14px;
+    background: var(--red); color: #fff;
+    font-size: .7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    padding: .3rem .8rem; border-radius: 100px;
+  }
+  .impact-body { padding: 1.4rem; }
+  .impact-body h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; line-height: 1.4; }
+  .impact-body p { font-size: .86rem; color: var(--grey-600); line-height: 1.65; margin-bottom: 1rem; }
+  .impact-meta {
+    display: flex; align-items: center; gap: .5rem;
+    font-size: .78rem; color: var(--red); font-weight: 600;
+  }
+
+  /* ══════════════════════════════════════════
+     TIMELINE
+  ══════════════════════════════════════════ */
+  #timeline { background: var(--grey-100); }
+  .timeline {
+    position: relative; max-width: 760px; margin: 0 auto;
+    padding-left: 40px;
+  }
+  .timeline::before {
+    content: ''; position: absolute; left: 14px; top: 0; bottom: 0;
+    width: 3px; background: linear-gradient(180deg, var(--red), var(--red-pale));
+    border-radius: 2px;
+  }
+  .tl-item {
+    position: relative; margin-bottom: 2.2rem;
+    animation: fadeInLeft .6s both;
+  }
+  .tl-item:nth-child(1) { animation-delay: .0s; }
+  .tl-item:nth-child(2) { animation-delay: .1s; }
+  .tl-item:nth-child(3) { animation-delay: .2s; }
+  .tl-item:nth-child(4) { animation-delay: .3s; }
+  .tl-item:nth-child(5) { animation-delay: .4s; }
+  .tl-item:nth-child(6) { animation-delay: .5s; }
+  .tl-dot {
+    position: absolute; left: -33px; top: 4px;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--red); border: 3px solid var(--white);
+    box-shadow: 0 0 0 3px var(--red);
+    transition: transform .3s;
+  }
+  .tl-item:hover .tl-dot { transform: scale(1.35); }
+  .tl-month {
+    font-size: .72rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--red); margin-bottom: .25rem;
+  }
+  .tl-card {
+    background: var(--white); border-radius: 12px; padding: 1.2rem 1.5rem;
+    box-shadow: 0 3px 16px rgba(0,0,0,.06);
+    border-left: 3px solid var(--red);
+    transition: box-shadow .3s;
+  }
+  .tl-item:hover .tl-card { box-shadow: 0 8px 30px rgba(192,57,43,.12); }
+  .tl-card h4 { font-size: .95rem; font-weight: 700; margin-bottom: .3rem; }
+  .tl-card p { font-size: .84rem; color: var(--grey-600); line-height: 1.6; }
+
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ══════════════════════════════════════════
+     LEADERSHIP
+  ══════════════════════════════════════════ */
+  #leadership { background: var(--white); }
+  .team-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.8rem;
+  }
+  .team-card {
+    text-align: center; border-radius: 16px;
+    padding: 2rem 1.2rem;
+    background: var(--off-white);
+    transition: all .35s;
+    position: relative; overflow: hidden;
+  }
+  .team-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 4px; background: var(--red);
+    transform: scaleX(0); transition: transform .35s;
+  }
+  .team-card:hover::before { transform: scaleX(1); }
+  .team-card:hover { box-shadow: 0 16px 40px rgba(192,57,43,.12); transform: translateY(-6px); }
+  .team-avatar {
+    width: 88px; height: 88px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--red), var(--red-dark));
+    margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; color: #fff; font-family: 'Playfair Display', serif; font-weight: 700;
+    border: 4px solid var(--white);
+    box-shadow: 0 4px 20px rgba(192,57,43,.25);
+  }
+  .team-name { font-size: 1rem; font-weight: 700; margin-bottom: .2rem; }
+  .team-role { font-size: .8rem; color: var(--red); font-weight: 600; letter-spacing: .5px; }
+  .team-bio { font-size: .8rem; color: var(--grey-600); margin-top: .5rem; line-height: 1.55; }
+
+  /* ══════════════════════════════════════════
+     PARTNERS
+  ══════════════════════════════════════════ */
+  #partners { background: var(--grey-100); }
+  .partners-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.2rem;
+  }
+  .partner-logo {
+    background: var(--white); border-radius: 12px;
+    padding: 1.6rem 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .9rem; font-weight: 700; color: var(--grey-600);
+    letter-spacing: .5px; text-align: center;
+    filter: grayscale(1) opacity(.6);
+    transition: all .3s;
+    box-shadow: 0 2px 12px rgba(0,0,0,.05);
+  }
+  .partner-logo:hover { filter: none; color: var(--red); box-shadow: 0 6px 24px rgba(192,57,43,.1); transform: translateY(-3px); }
+
+  /* ══════════════════════════════════════════
+     DOWNLOADS
+  ══════════════════════════════════════════ */
+  #downloads { background: var(--white); }
+  .dl-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.4rem;
+  }
+  .dl-card {
+    border: 2px solid var(--grey-300);
+    border-radius: 14px; padding: 1.6rem;
+    display: flex; align-items: flex-start; gap: 1.1rem;
+    transition: all .3s; cursor: pointer; text-decoration: none; color: inherit;
+  }
+  .dl-card:hover { border-color: var(--red); box-shadow: 0 8px 30px rgba(192,57,43,.1); transform: translateY(-3px); }
+  .dl-icon {
+    width: 48px; height: 48px; border-radius: 10px;
+    background: var(--red-pale); display: flex; align-items: center; justify-content: center;
+    color: var(--red); font-size: 1.4rem; flex-shrink: 0;
+  }
+  .dl-info h4 { font-size: .95rem; font-weight: 700; margin-bottom: .25rem; }
+  .dl-info p { font-size: .8rem; color: var(--grey-600); }
+  .dl-badge {
+    margin-top: .5rem; display: inline-block;
+    background: var(--red-pale); color: var(--red);
+    font-size: .68rem; font-weight: 700; letter-spacing: .8px;
+    padding: .2rem .6rem; border-radius: 4px; text-transform: uppercase;
+  }
+
+  /* ══════════════════════════════════════════
+     ESG
+  ══════════════════════════════════════════ */
+  #esg { background: linear-gradient(135deg, var(--red-deep), var(--red)); color: #fff; }
+  #esg .section-title { color: #fff; }
+  #esg .section-title span { color: var(--gold); }
+  #esg .section-sub { color: rgba(255,255,255,.75); }
+  .esg-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .esg-card {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 16px; padding: 1.8rem;
+    backdrop-filter: blur(8px);
+    transition: all .3s;
+  }
+  .esg-card:hover { background: rgba(255,255,255,.18); transform: translateY(-5px); }
+  .esg-card i { font-size: 2rem; color: var(--gold); margin-bottom: .8rem; display: block; }
+  .esg-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; color: #fff; }
+  .esg-card p { font-size: .85rem; opacity: .8; line-height: 1.6; }
+  .esg-bar-wrap { margin-top: .8rem; }
+  .esg-bar-label { font-size: .75rem; opacity: .75; display: flex; justify-content: space-between; margin-bottom: .3rem; }
+  .esg-bar-track { height: 6px; background: rgba(255,255,255,.2); border-radius: 3px; overflow: hidden; }
+  .esg-bar-fill { height: 100%; background: var(--gold); border-radius: 3px; transition: width 1.5s ease; }
+
+  /* ══════════════════════════════════════════
+     FOOTER / CTA
+  ══════════════════════════════════════════ */
+  #cta {
+    background: var(--grey-100);
+    text-align: center; padding: 80px 5%;
+  }
+  #cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900; margin-bottom: .8rem;
+  }
+  #cta p { color: var(--grey-600); margin-bottom: 2rem; font-size: 1rem; }
+  .cta-input-row {
+    display: flex; max-width: 440px; margin: 0 auto;
+    border-radius: 8px; overflow: hidden;
+    box-shadow: 0 6px 24px rgba(192,57,43,.15);
+  }
+  .cta-input-row input {
+    flex: 1; padding: .85rem 1.2rem; border: none;
+    font-family: 'DM Sans', sans-serif; font-size: .9rem;
+    outline: none;
+  }
+  .cta-input-row button {
+    background: var(--red); color: #fff;
+    border: none; padding: .85rem 1.4rem;
+    font-weight: 700; font-size: .88rem; cursor: pointer;
+    transition: background .3s;
+    white-space: nowrap;
+  }
+  .cta-input-row button:hover { background: var(--red-dark); }
+
+  footer {
+    background: var(--grey-800); color: rgba(255,255,255,.7);
+    padding: 48px 5% 24px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2.5rem; margin-bottom: 2.5rem;
+  }
+  .footer-brand .nav-logo { font-size: 1.3rem; display: inline-block; margin-bottom: .7rem; color: #fff; }
+  .footer-brand p { font-size: .85rem; line-height: 1.7; max-width: 260px; }
+  .footer-col h5 {
+    color: #fff; font-size: .82rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: .55rem; }
+  .footer-col ul a { font-size: .85rem; color: rgba(255,255,255,.6); text-decoration: none; transition: color .25s; }
+  .footer-col ul a:hover { color: var(--red); }
+  .footer-socials { display: flex; gap: .8rem; margin-top: 1rem; }
+  .footer-socials a {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(255,255,255,.08); color: rgba(255,255,255,.7);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .9rem; text-decoration: none; transition: all .3s;
+  }
+  .footer-socials a:hover { background: var(--red); color: #fff; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding-top: 1.4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: .8rem;
+    font-size: .8rem; color: rgba(255,255,255,.4);
+  }
+  .footer-bottom a { color: rgba(255,255,255,.4); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--red); }
+
+  /* ══════════════════════════════════════════
+     DARK MODE TOGGLE
+  ══════════════════════════════════════════ */
+  #dark-toggle {
+    position: fixed; bottom: 24px; right: 24px; z-index: 999;
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--red); color: #fff; border: none; cursor: pointer;
+    font-size: 1.1rem; box-shadow: 0 4px 20px rgba(192,57,43,.4);
+    transition: all .3s;
+  }
+  #dark-toggle:hover { background: var(--red-dark); transform: scale(1.1); }
+
+  /* Dark mode */
+  body.dark {
+    background: #1a0505; color: #e8e8e8;
+  }
+  body.dark #topnav {
+    background: rgba(26,5,5,.95);
+    border-color: var(--red);
+  }
+  body.dark .nav-links a { color: rgba(255,255,255,.6); }
+  body.dark section { /* handled individually */ }
+  body.dark #summary, body.dark #impact, body.dark #downloads, body.dark #leadership { background: #1a0505; }
+  body.dark #financial, body.dark #timeline, body.dark #partners { background: #200808; }
+  body.dark .achieve-card, body.dark .chart-box, body.dark .team-card, body.dark .tl-card { background: #2a0d0d; }
+  body.dark .dl-card { border-color: #4a1010; }
+  body.dark .partner-logo { background: #2a0d0d; }
+  body.dark .fin-table tr:nth-child(even) td { background: #2a0d0d; }
+  body.dark .fin-table td { border-color: #4a1010; }
+  body.dark #cta { background: #200808; }
+  body.dark .cta-input-row input { background: #2a0d0d; color: #e8e8e8; }
+  body.dark .section-title { color: #f0f0f0; }
+  body.dark .section-sub { color: rgba(255,255,255,.6); }
+  body.dark #mobile-menu { background: #1a0505; }
+  body.dark #mobile-menu a { color: #e8e8e8; border-color: #4a1010; }
+
+  /* ══════════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════════ */
+  @media (max-width: 900px) {
+    .summary-grid, .fin-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    section { padding: 60px 5%; }
+    .nav-links { display: none; }
+    #hamburger { display: flex; }
+    .achieve-cards { grid-template-columns: 1fr; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-outline { width: 100%; max-width: 280px; justify-content: center; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .cta-input-row { flex-direction: column; border-radius: 8px; }
+    .cta-input-row input, .cta-input-row button { border-radius: 8px; }
+    .tl-item { padding-left: 0; }
+  }
+
+  /* Utility */
+  .text-center { text-align: center; }
+  .mb-0 { margin-bottom: 0 !important; }
+</style>
+</head>
+<body>
+
+<!-- ═══ TOP NAVIGATION ═══ -->
+<nav id="topnav">
+  <a class="nav-logo" href="#hero">ADIS <span>APAANA</span></a>
+  <ul class="nav-links">
+    <li><a href="#summary">Overview</a></li>
+    <li><a href="#stats">Stats</a></li>
+    <li><a href="#financial">Financials</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#leadership">Team</a></li>
+    <li><a href="#downloads">Downloads</a></li>
+  </ul>
+  <button id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="mobile-menu">
+  <a href="#summary">Overview</a>
+  <a href="#stats">Statistics</a>
+  <a href="#financial">Financials</a>
+  <a href="#impact">Impact Stories</a>
+  <a href="#timeline">Timeline</a>
+  <a href="#leadership">Leadership</a>
+  <a href="#partners">Partners</a>
+  <a href="#downloads">Downloads</a>
+  <a href="#cta">Contact</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-shape hs1"></div>
+  <div class="hero-shape hs2"></div>
+  <div class="hero-badge"><i class="fas fa-circle" style="font-size:.5rem; margin-right:.4rem"></i> Annual Report 2025</div>
+  <h1>ADIS APAANA<br><em>Annual Report</em></h1>
+  <p>Empowering communities through innovation, education, and sustainability — measuring our impact, celebrating our people, and charting the path forward.</p>
+  <div class="hero-btns">
+    <a href="#" class="btn-primary"><i class="fas fa-download"></i> Download PDF</a>
+    <a href="#stats" class="btn-outline"><i class="fas fa-chart-bar"></i> View Highlights</a>
+    <a href="#downloads" class="btn-outline"><i class="fas fa-history"></i> Previous Reports</a>
+  </div>
+  <svg class="hero-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 72">
+    <path fill="#ffffff" d="M0,40 C360,80 1080,0 1440,40 L1440,72 L0,72 Z"/>
+  </svg>
+</section>
+
+<!-- ═══ EXECUTIVE SUMMARY ═══ -->
+<section id="summary">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label">Executive Summary</p>
+    <h2 class="section-title">A Year of <span>Transformation</span></h2>
+    <p class="section-sub">Reflecting on milestones achieved, communities served, and goals that continue to inspire our mission forward.</p>
+    <div class="summary-grid">
+      <div class="ceo-card">
+        <p>This year marked a defining chapter for ADIS APAANA. We expanded our reach to new districts, deepened our partnerships, and most importantly — we witnessed real, tangible change in the lives of thousands. Our commitment to transparent governance and community-first programming remains the cornerstone of everything we do.</p>
+        <div class="ceo-sig">
+          <div class="ceo-avatar"><i class="fas fa-user"></i></div>
+          <div>
+            <div class="ceo-name">Dr. Amara Diallo</div>
+            <div class="ceo-role">Executive Director, ADIS APAANA</div>
+          </div>
+        </div>
+      </div>
+      <div class="achieve-cards">
+        <div class="achieve-card">
+          <i class="fas fa-users"></i>
+          <h4>12,500+ Beneficiaries</h4>
+          <p>Direct support across all programme areas in 2025.</p>
+        </div>
+        <div class="achieve-card">
+          <i class="fas fa-project-diagram"></i>
+          <h4>34 Projects Completed</h4>
+          <p>Across health, education, water, and livelihoods sectors.</p>
+        </div>
+        <div class="achieve-card">
+          <i class="fas fa-hand-holding-usd"></i>
+          <h4>$2.4M Raised</h4>
+          <p>Through grants, donations, and strategic partnerships.</p>
+        </div>
+        <div class="achieve-card">
+          <i class="fas fa-handshake"></i>
+          <h4>18 New Partnerships</h4>
+          <p>Local, national, and international collaborations forged.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ KEY STATISTICS ═══ -->
+<section id="stats">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label" style="color:rgba(255,255,255,.6);">Impact at a Glance</p>
+    <h2 class="section-title">Our <span>Numbers</span> Tell the Story</h2>
+    <p class="section-sub mb-0">Every figure represents a life touched, a goal achieved, a community strengthened.</p>
+    <div style="height:2.5rem"></div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <i class="fas fa-users"></i>
+        <div class="stat-num" data-target="12500">0</div>
+        <div class="stat-label">People Supported</div>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-seedling"></i>
+        <div class="stat-num" data-target="34">0</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-dollar-sign"></i>
+        <div class="stat-num" data-target="2400000" data-prefix="$">0</div>
+        <div class="stat-label">Funds Raised</div>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-hands-helping"></i>
+        <div class="stat-num" data-target="340">0</div>
+        <div class="stat-label">Volunteers Active</div>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="stat-num" data-target="12">0</div>
+        <div class="stat-label">Districts Reached</div>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-handshake"></i>
+        <div class="stat-num" data-target="18">0</div>
+        <div class="stat-label">Partnerships</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINANCIAL TRANSPARENCY ═══ -->
+<section id="financial">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label">Financial Overview</p>
+    <h2 class="section-title">Transparent <span>Finances</span></h2>
+    <p class="section-sub">We believe accountability begins with visibility. Here is how every dollar was allocated in 2025.</p>
+    <div class="fin-grid">
+      <div class="chart-box">
+        <h3>Revenue <span>Breakdown</span></h3>
+        <canvas id="revenueChart" height="230"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Expenditure <span>Allocation</span></h3>
+        <canvas id="expenseChart" height="230"></canvas>
+      </div>
+      <div class="chart-box" style="grid-column: 1 / -1;">
+        <h3>Year-on-Year <span>Financial Growth</span></h3>
+        <canvas id="growthChart" height="120"></canvas>
+      </div>
+    </div>
+    <div style="margin-top:2rem;">
+      <table class="fin-table">
+        <thead>
+          <tr><th>Category</th><th>2024</th><th>2025</th><th>Change</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Government Grants</td><td>$780,000</td><td>$920,000</td><td style="color:#27ae60;">+18%</td></tr>
+          <tr><td>Private Donations</td><td>$420,000</td><td>$610,000</td><td style="color:#27ae60;">+45%</td></tr>
+          <tr><td>Corporate Partnerships</td><td>$350,000</td><td>$480,000</td><td style="color:#27ae60;">+37%</td></tr>
+          <tr><td>International Funding</td><td>$290,000</td><td>$390,000</td><td style="color:#27ae60;">+34%</td></tr>
+          <tr class="total"><td><strong>Total Revenue</strong></td><td><strong>$1,840,000</strong></td><td><strong>$2,400,000</strong></td><td style="color:#27ae60;"><strong>+30%</strong></td></tr>
+        </tbody>
+      </table>
+      <a href="#" class="download-audit"><i class="fas fa-file-alt"></i> Download Audited Financial Statement</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ IMPACT STORIES ═══ -->
+<section id="impact">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label">Impact Stories</p>
+    <h2 class="section-title">Change We <span>Created Together</span></h2>
+    <p class="section-sub">Beyond the numbers — the human stories that define who we are and why we do what we do.</p>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="impact-img">
+          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&auto=format&fit=crop" alt="Clean Water Initiative">
+          <span class="impact-tag">Water</span>
+        </div>
+        <div class="impact-body">
+          <h3>Community Water Initiative</h3>
+          <p>Provided clean, safe water access to over 3,000 families across 6 rural communities, reducing waterborne disease by 67%.</p>
+          <div class="impact-meta"><i class="fas fa-users"></i> 3,000+ families impacted</div>
+        </div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-img">
+          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop" alt="Education Program">
+          <span class="impact-tag">Education</span>
+        </div>
+        <div class="impact-body">
+          <h3>Girls' Education Scholarship</h3>
+          <p>Awarded 480 scholarships to young women in underserved communities, with a 94% retention rate throughout the academic year.</p>
+          <div class="impact-meta"><i class="fas fa-graduation-cap"></i> 480 scholarships awarded</div>
+        </div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-img">
+          <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&auto=format&fit=crop" alt="Health Program">
+          <span class="impact-tag">Health</span>
+        </div>
+        <div class="impact-body">
+          <h3>Mobile Health Clinics</h3>
+          <p>Deployed 8 mobile health units serving 7,200 patients in remote areas, including maternal care, vaccinations, and chronic disease management.</p>
+          <div class="impact-meta"><i class="fas fa-heartbeat"></i> 7,200 patients served</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TIMELINE ═══ -->
+<section id="timeline">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label">Year in Review</p>
+    <h2 class="section-title">2025 <span>Milestones</span></h2>
+    <p class="section-sub">Key moments and achievements across the year.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-month">January 2025</div>
+        <div class="tl-card">
+          <h4>Strategic Plan Launch</h4>
+          <p>Launched our 3-year strategic framework focusing on health, education, and sustainable livelihoods with community co-design.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-month">March 2025</div>
+        <div class="tl-card">
+          <h4>Water Project Phase II Completion</h4>
+          <p>Successfully completed Phase II of the Community Water Initiative, connecting 12 additional villages to clean water infrastructure.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-month">May 2025</div>
+        <div class="tl-card">
+          <h4>International Partnership Signed</h4>
+          <p>Formalized a 3-year partnership with the Global Health Foundation valued at $850,000 for mobile health expansion.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-month">August 2025</div>
+        <div class="tl-card">
+          <h4>Girls' Scholarship Programme Launch</h4>
+          <p>Opened applications for our expanded scholarship programme with 480 awards — a 60% increase from the previous cycle.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-month">October 2025</div>
+        <div class="tl-card">
+          <h4>Annual Community Summit</h4>
+          <p>Hosted 600+ community leaders, donors, and partners for our largest convening — resulting in 8 new collaboration agreements.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-month">December 2025</div>
+        <div class="tl-card">
+          <h4>Year-End Audit & Report</h4>
+          <p>Completed independent financial audit with clean opinion. Funds utilized at 96.4% efficiency — a new organizational record.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LEADERSHIP ═══ -->
+<section id="leadership">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label">Our People</p>
+    <h2 class="section-title">Leadership <span>Team</span></h2>
+    <p class="section-sub">The dedicated individuals driving our mission with integrity, passion, and purpose.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">AD</div>
+        <div class="team-name">Dr. Amara Diallo</div>
+        <div class="team-role">Executive Director</div>
+        <div class="team-bio">20+ years in community development. Leads organizational strategy and external partnerships.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">FK</div>
+        <div class="team-name">Fatou Konaté</div>
+        <div class="team-role">Director of Programs</div>
+        <div class="team-bio">Oversees all field operations across health, water, and education sectors.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">KS</div>
+        <div class="team-name">Kofi Asante</div>
+        <div class="team-role">Chief Finance Officer</div>
+        <div class="team-bio">CPA with 15 years NGO finance experience. Leads budget, audit, and compliance.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">NB</div>
+        <div class="team-name">Nadia Bakayoko</div>
+        <div class="team-role">Head of Partnerships</div>
+        <div class="team-bio">Manages donor relations and strategic alliances locally and internationally.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">IT</div>
+        <div class="team-name">Ibrahim Touré</div>
+        <div class="team-role">M&E Manager</div>
+        <div class="team-bio">Leads data systems, impact measurement, and learning frameworks across all projects.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PARTNERS ═══ -->
+<section id="partners">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <p class="section-label" style="justify-content:center;">Partnerships</p>
+    <h2 class="section-title">Our <span>Partners & Sponsors</span></h2>
+    <p class="section-sub" style="margin: 0 auto 3rem;">We are grateful to the organizations whose support makes our work possible.</p>
+    <div class="partners-grid">
+      <div class="partner-logo"><i class="fas fa-globe" style="font-size:1.5rem; display:block; margin-bottom:.5rem"></i>Global Health<br>Foundation</div>
+      <div class="partner-logo"><i class="fas fa-university" style="font-size:1.5rem; display:block; margin-bottom:.5rem"></i>UNICEF<br>Regional</div>
+      <div class="partner-logo"><i class="fas fa-leaf" style="font-size:1.5rem; display:block; margin-bottom:.5rem"></i>Green Earth<br>Initiative</div>
+      <div class="partner-logo"><i class="fas fa-building" style="font-size:1.5rem; display:block; margin-bottom:.5rem"></i>National<br>Development Bank</div>
+      <div class="partner-logo"><i class="fas fa-graduation-cap" style="font-size:1.5rem; display:block; margin-bottom:.5rem"></i>Education<br>For All Trust</div>
+      <div class="partner-logo"><i class="fas fa-tint" style="font-size:1.5rem; display:block; margin-bottom:.5rem"></i>WaterAid<br>Africa</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ESG ═══ -->
+<section id="esg">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label" style="color:rgba(255,255,255,.5);">Sustainability</p>
+    <h2 class="section-title">ESG & <span>Sustainability</span></h2>
+    <p class="section-sub">Embedding environmental, social, and governance principles into every decision we make.</p>
+    <div class="esg-grid">
+      <div class="esg-card">
+        <i class="fas fa-leaf"></i>
+        <h3>Environmental</h3>
+        <p>Carbon-neutral operations by 2027. Solar-powered field offices. Zero single-use plastic policy across all programmes.</p>
+        <div class="esg-bar-wrap">
+          <div class="esg-bar-label"><span>Carbon Reduction Goal</span><span>68%</span></div>
+          <div class="esg-bar-track"><div class="esg-bar-fill" style="width:68%"></div></div>
+        </div>
+      </div>
+      <div class="esg-card">
+        <i class="fas fa-users"></i>
+        <h3>Social Impact</h3>
+        <p>Gender equity in all programmes. 52% female leadership. Community-led governance in every project district.</p>
+        <div class="esg-bar-wrap">
+          <div class="esg-bar-label"><span>Gender Equity Target</span><span>82%</span></div>
+          <div class="esg-bar-track"><div class="esg-bar-fill" style="width:82%"></div></div>
+        </div>
+      </div>
+      <div class="esg-card">
+        <i class="fas fa-balance-scale"></i>
+        <h3>Governance</h3>
+        <p>Independent board oversight, annual external audits, and public financial disclosure on all programmes.</p>
+        <div class="esg-bar-wrap">
+          <div class="esg-bar-label"><span>Transparency Score</span><span>96%</span></div>
+          <div class="esg-bar-track"><div class="esg-bar-fill" style="width:96%"></div></div>
+        </div>
+      </div>
+      <div class="esg-card">
+        <i class="fas fa-recycle"></i>
+        <h3>Circular Economy</h3>
+        <p>Community enterprise models reinvest programme savings into local jobs, creating sustainable economic loops.</p>
+        <div class="esg-bar-wrap">
+          <div class="esg-bar-label"><span>Local Reinvestment</span><span>74%</span></div>
+          <div class="esg-bar-track"><div class="esg-bar-fill" style="width:74%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DOWNLOADS ═══ -->
+<section id="downloads">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label">Download Center</p>
+    <h2 class="section-title">Reports & <span>Documents</span></h2>
+    <p class="section-sub">Access the full report, financial statements, and previous years' publications.</p>
+    <div class="dl-grid">
+      <a href="#" class="dl-card">
+        <div class="dl-icon"><i class="fas fa-file-pdf"></i></div>
+        <div class="dl-info">
+          <h4>Annual Report 2025</h4>
+          <p>Full report — 48 pages</p>
+          <span class="dl-badge">PDF · 12.4 MB</span>
+        </div>
+      </a>
+      <a href="#" class="dl-card">
+        <div class="dl-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        <div class="dl-info">
+          <h4>Audited Financial Statements</h4>
+          <p>Independent auditor report</p>
+          <span class="dl-badge">PDF · 3.2 MB</span>
+        </div>
+      </a>
+      <a href="#" class="dl-card">
+        <div class="dl-icon"><i class="fas fa-image"></i></div>
+        <div class="dl-info">
+          <h4>Impact Infographic 2025</h4>
+          <p>Visual summary for sharing</p>
+          <span class="dl-badge">PNG · 2.1 MB</span>
+        </div>
+      </a>
+      <a href="#" class="dl-card">
+        <div class="dl-icon"><i class="fas fa-history"></i></div>
+        <div class="dl-info">
+          <h4>Annual Report 2024</h4>
+          <p>Previous year report</p>
+          <span class="dl-badge">PDF · 10.8 MB</span>
+        </div>
+      </a>
+      <a href="#" class="dl-card">
+        <div class="dl-icon"><i class="fas fa-chart-pie"></i></div>
+        <div class="dl-info">
+          <h4>M&E Results Framework</h4>
+          <p>Data & measurement report</p>
+          <span class="dl-badge">PDF · 5.6 MB</span>
+        </div>
+      </a>
+      <a href="#" class="dl-card">
+        <div class="dl-icon"><i class="fas fa-file-alt"></i></div>
+        <div class="dl-info">
+          <h4>Strategic Plan 2025–2028</h4>
+          <p>3-year organizational roadmap</p>
+          <span class="dl-badge">PDF · 8.3 MB</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA / NEWSLETTER ═══ -->
+<section id="cta">
+  <div style="max-width:640px; margin:0 auto;">
+    <p class="section-label" style="justify-content:center;">Stay Connected</p>
+    <h2>Join Our <span style="color:var(--red);">Community</span></h2>
+    <p>Subscribe to receive updates on our programmes, impact reports, and opportunities to get involved.</p>
+    <div class="cta-input-row">
+      <input type="email" placeholder="Enter your email address…" aria-label="Email address">
+      <button type="button"><i class="fas fa-paper-plane"></i> Subscribe</button>
+    </div>
+    <p style="margin-top:1.2rem; font-size:.82rem; color:var(--grey-600);">We respect your privacy. Unsubscribe at any time.</p>
+    <div style="margin-top:2rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="#" class="btn-primary" style="font-size:.85rem; padding:.65rem 1.4rem;"><i class="fas fa-heart"></i> Donate Now</a>
+      <a href="#" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--red);text-decoration:none;"><i class="fas fa-envelope"></i> Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#">ADIS <span style="color:rgba(255,255,255,.6)">APAANA</span></a>
+      <p>Empowering communities through innovation, education, and sustainability since 2010.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Report</h5>
+      <ul>
+        <li><a href="#summary">Executive Summary</a></li>
+        <li><a href="#stats">Statistics</a></li>
+        <li><a href="#financial">Financials</a></li>
+        <li><a href="#impact">Impact Stories</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Organisation</h5>
+      <ul>
+        <li><a href="#leadership">Our Team</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#esg">Sustainability</a></li>
+        <li><a href="#">Governance</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="#downloads">Download Reports</a></li>
+        <li><a href="#">News & Updates</a></li>
+        <li><a href="#">Press Room</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ADIS APAANA. All rights reserved.</span>
+    <span>Registered NGO · Transparent Finances · <a href="#">Terms</a> · <a href="#">Privacy</a></span>
+  </div>
+</footer>
+
+<!-- Dark mode toggle -->
+<button id="dark-toggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+
+<script>
+// ── Mobile menu ──
+const burger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+burger.addEventListener('click', () => {
+  const open = mobileMenu.style.display === 'flex';
+  mobileMenu.style.display = open ? 'none' : 'flex';
+  burger.querySelectorAll('span')[0].style.transform = open ? '' : 'rotate(45deg) translate(5px,5px)';
+  burger.querySelectorAll('span')[1].style.opacity = open ? '1' : '0';
+  burger.querySelectorAll('span')[2].style.transform = open ? '' : 'rotate(-45deg) translate(5px,-5px)';
+});
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileMenu.style.display = 'none'; }));
+
+// ── Scrollspy ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+  });
+});
+
+// ── Animated counters ──
+function animateCounters() {
+  document.querySelectorAll('.stat-num[data-target]').forEach(el => {
+    const target = +el.dataset.target;
+    const prefix = el.dataset.prefix || '';
+    const dur = 2000;
+    const step = target / (dur / 16);
+    let cur = 0;
+    const timer = setInterval(() => {
+      cur = Math.min(cur + step, target);
+      if (prefix === '$') {
+        el.textContent = prefix + (cur >= 1000000
+          ? (cur / 1000000).toFixed(1) + 'M'
+          : cur >= 1000
+            ? (cur / 1000).toFixed(0) + 'K'
+            : Math.round(cur).toString());
+      } else {
+        el.textContent = (cur >= 1000 ? (Math.round(cur/100)*100).toLocaleString() : Math.round(cur).toLocaleString()) + (target >= 1000 && prefix !== '$' ? '+' : '');
+      }
+      if (cur >= target) clearInterval(timer);
+    }, 16);
+  });
+}
+const statsSection = document.getElementById('stats');
+const statsObserver = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) { animateCounters(); statsObserver.disconnect(); }
+}, { threshold: 0.3 });
+statsObserver.observe(statsSection);
+
+// ── Charts ──
+const redGrad = ctx => {
+  const g = ctx.createLinearGradient(0,0,0,300);
+  g.addColorStop(0,'rgba(192,57,43,0.8)');
+  g.addColorStop(1,'rgba(192,57,43,0.05)');
+  return g;
+};
+
+// Revenue Doughnut
+new Chart(document.getElementById('revenueChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Govt Grants','Private Donations','Corporate Partners','Intl Funding'],
+    datasets: [{
+      data: [920000,610000,480000,390000],
+      backgroundColor: ['#C0392B','#E74C3C','#922B21','#D4AC0D'],
+      borderWidth: 0, hoverOffset: 8
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: '68%',
+    plugins: { legend: { position: 'bottom', labels: { padding: 16, font: { family: 'DM Sans', size: 12 } } } }
+  }
+});
+
+// Expense Bar
+new Chart(document.getElementById('expenseChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Programs','Admin','Advocacy','Research','Comms'],
+    datasets: [{
+      data: [74, 12, 6, 5, 3],
+      backgroundColor: ['#C0392B','#E74C3C','#922B21','#D4AC0D','#641E16'],
+      borderRadius: 6, borderSkipped: false
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: {
+        ticks: { callback: v => v + '%', font: { family:'DM Sans' } },
+        grid: { color: 'rgba(0,0,0,.05)' }
+      },
+      x: { grid: { display: false }, ticks: { font: { family:'DM Sans' } } }
+    }
+  }
+});
+
+// Growth Line
+const growthCtx = document.getElementById('growthChart').getContext('2d');
+new Chart(growthCtx, {
+  type: 'line',
+  data: {
+    labels: ['2021','2022','2023','2024','2025'],
+    datasets: [{
+      label: 'Revenue ($)',
+      data: [980000,1250000,1520000,1840000,2400000],
+      borderColor: '#C0392B', borderWidth: 3,
+      backgroundColor: redGrad(growthCtx),
+      fill: true, tension: 0.4,
+      pointBackgroundColor: '#C0392B', pointRadius: 5
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: {
+        ticks: { callback: v => '$' + (v/1000000).toFixed(1) + 'M', font: { family:'DM Sans' } },
+        grid: { color: 'rgba(0,0,0,.05)' }
+      },
+      x: { grid: { display: false }, ticks: { font: { family:'DM Sans' } } }
+    }
+  }
+});
+
+// ── Dark mode ──
+const toggle = document.getElementById('dark-toggle');
+toggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  toggle.innerHTML = document.body.classList.contains('dark')
+    ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+});
+
+// ── Scroll reveal ──
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.achieve-card, .impact-card, .team-card, .dl-card, .esg-card, .stat-card, .partner-logo').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity .6s ease, transform .6s ease';
+  revealObserver.observe(el);
+});
+</script>
+</body>
+</html>
