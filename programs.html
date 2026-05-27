@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Programs – AIDS APAAN</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+
+  <style>
+    :root{
+      --red:#c0392b;
+      --red-dark:#96281b;
+      --red-light:#e74c3c;
+      --red-soft:#fdf1f0;
+      --white:#ffffff;
+      --off-white:#fafafa;
+      --charcoal:#1a1a1a;
+      --gray:#6b7280;
+      --border:#f0e8e8;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+
+    body{
+      font-family:'DM Sans',sans-serif;
+      background:var(--off-white);
+      color:var(--charcoal);
+    }
+
+    /* ── NAVBAR ── */
+    .navbar{
+      background:var(--white);
+      border-bottom:2px solid var(--border);
+      padding:14px 0;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      box-shadow:0 2px 16px rgba(192,57,43,.08);
+    }
+    .navbar-brand{
+      font-family:'Playfair Display',serif;
+      font-size:1.5rem;
+      font-weight:900;
+      color:var(--red)!important;
+      letter-spacing:-0.5px;
+    }
+    .navbar-brand span{color:var(--charcoal);}
+    .nav-link{
+      font-weight:500;
+      color:var(--charcoal)!important;
+      margin:0 6px;
+      transition:.2s;
+    }
+    .nav-link:hover,.nav-link.active{color:var(--red)!important;}
+    .btn-nav-donate{
+      background:var(--red);
+      color:#fff!important;
+      border-radius:50px;
+      padding:8px 22px!important;
+      font-weight:600;
+      transition:.25s;
+    }
+    .btn-nav-donate:hover{background:var(--red-dark);}
+
+    /* ── HERO ── */
+    .hero{
+      position:relative;
+      min-height:88vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      background:#1a0000;
+    }
+    .hero-bg{
+      position:absolute;inset:0;
+      background:url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1400') center/cover no-repeat;
+      opacity:.22;
+      transform:scale(1.04);
+      animation:bgPan 18s ease-in-out infinite alternate;
+    }
+    @keyframes bgPan{from{transform:scale(1.04) translateX(0);}to{transform:scale(1.08) translateX(-2%)}}
+
+    /* ribbon accent */
+    .hero-ribbon{
+      position:absolute;top:0;left:0;width:6px;height:100%;
+      background:linear-gradient(180deg,var(--red),var(--red-dark));
+    }
+    .hero-content{
+      position:relative;z-index:2;
+      padding:60px 0;
+    }
+    .hero-eyebrow{
+      display:inline-block;
+      background:rgba(192,57,43,.85);
+      color:#fff;
+      font-size:.8rem;
+      font-weight:600;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      padding:6px 16px;
+      border-radius:4px;
+      margin-bottom:22px;
+    }
+    .hero h1{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2.8rem,7vw,5.5rem);
+      font-weight:900;
+      color:#fff;
+      line-height:1.08;
+      margin-bottom:22px;
+    }
+    .hero h1 em{
+      color:var(--red-light);
+      font-style:normal;
+    }
+    .hero-desc{
+      color:rgba(255,255,255,.82);
+      font-size:1.1rem;
+      max-width:560px;
+      line-height:1.7;
+      margin-bottom:36px;
+    }
+    .btn-hero-primary{
+      background:var(--red);
+      color:#fff;
+      border:none;
+      border-radius:50px;
+      padding:14px 34px;
+      font-weight:600;
+      font-size:1rem;
+      transition:.25s;
+    }
+    .btn-hero-primary:hover{background:var(--red-dark);color:#fff;}
+    .btn-hero-outline{
+      background:transparent;
+      color:#fff;
+      border:2px solid rgba(255,255,255,.5);
+      border-radius:50px;
+      padding:13px 30px;
+      font-weight:600;
+      font-size:1rem;
+      transition:.25s;
+      margin-left:12px;
+    }
+    .btn-hero-outline:hover{border-color:#fff;background:rgba(255,255,255,.08);color:#fff;}
+    .hero-stats{
+      display:flex;gap:32px;
+      margin-top:52px;
+      flex-wrap:wrap;
+    }
+    .hstat{color:#fff;}
+    .hstat-num{
+      font-family:'Playfair Display',serif;
+      font-size:2rem;font-weight:900;
+      color:var(--red-light);
+    }
+    .hstat-label{font-size:.82rem;opacity:.7;letter-spacing:.5px;}
+
+    /* ── FILTER BAR ── */
+    .filter-bar{
+      background:var(--white);
+      border-bottom:1px solid var(--border);
+      padding:18px 0;
+      position:sticky;top:69px;z-index:100;
+    }
+    .filter-btn{
+      border:2px solid var(--border);
+      background:#fff;
+      color:var(--gray);
+      border-radius:50px;
+      padding:8px 20px;
+      font-size:.88rem;
+      font-weight:500;
+      cursor:pointer;
+      transition:.2s;
+      margin:4px;
+    }
+    .filter-btn:hover,.filter-btn.active{
+      border-color:var(--red);
+      background:var(--red);
+      color:#fff;
+    }
+
+    /* ── SECTION TITLES ── */
+    .sec-label{
+      display:inline-block;
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:2.5px;
+      text-transform:uppercase;
+      color:var(--red);
+      margin-bottom:10px;
+    }
+    .sec-title{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.9rem,4vw,2.8rem);
+      font-weight:900;
+      color:var(--charcoal);
+      line-height:1.15;
+    }
+    .sec-title span{color:var(--red);}
+    .sec-sub{color:var(--gray);font-size:1rem;max-width:540px;}
+
+    /* ── PROGRAM CARDS ── */
+    .program-card{
+      background:#fff;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 4px 20px rgba(0,0,0,.07);
+      height:100%;
+      display:flex;flex-direction:column;
+      transition:.35s cubic-bezier(.4,0,.2,1);
+    }
+    .program-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 16px 40px rgba(192,57,43,.15);
+    }
+    .program-card-img{
+      position:relative;overflow:hidden;height:220px;
+    }
+    .program-card-img img{
+      width:100%;height:100%;object-fit:cover;
+      transition:.5s;
+    }
+    .program-card:hover .program-card-img img{transform:scale(1.06);}
+    .card-category{
+      position:absolute;top:16px;left:16px;
+      background:var(--red);color:#fff;
+      font-size:.72rem;font-weight:700;
+      letter-spacing:1.5px;text-transform:uppercase;
+      padding:5px 13px;border-radius:50px;
+    }
+    .program-body{padding:26px;flex:1;display:flex;flex-direction:column;}
+    .program-body h4{
+      font-family:'Playfair Display',serif;
+      font-size:1.2rem;font-weight:700;
+      margin-bottom:10px;
+    }
+    .program-body p{color:var(--gray);font-size:.9rem;line-height:1.6;flex:1;}
+
+    /* funding */
+    .funding-label{
+      display:flex;justify-content:space-between;
+      font-size:.8rem;font-weight:600;
+      color:var(--charcoal);margin-top:16px;margin-bottom:6px;
+    }
+    .fund-bar{
+      background:#f3e8e8;border-radius:20px;height:10px;overflow:hidden;
+    }
+    .fund-fill{
+      height:100%;border-radius:20px;
+      background:linear-gradient(90deg,var(--red-light),var(--red));
+      transition:width 1.4s cubic-bezier(.4,0,.2,1);
+    }
+    .fund-amounts{
+      display:flex;justify-content:space-between;
+      font-size:.78rem;color:var(--gray);margin-top:4px;
+    }
+
+    /* impact mini stats in card */
+    .card-stats{
+      display:flex;gap:16px;margin:14px 0;
+    }
+    .cstat{text-align:center;flex:1;}
+    .cstat-num{
+      font-family:'Playfair Display',serif;
+      font-size:1.3rem;font-weight:900;color:var(--red);
+    }
+    .cstat-label{font-size:.7rem;color:var(--gray);letter-spacing:.5px;}
+
+    .card-actions{
+      display:flex;gap:10px;margin-top:16px;
+    }
+    .btn-learn{
+      flex:1;border:2px solid var(--border);background:#fff;
+      color:var(--charcoal);border-radius:50px;
+      font-size:.85rem;font-weight:600;padding:9px 0;
+      transition:.2s;cursor:pointer;
+    }
+    .btn-learn:hover{border-color:var(--charcoal);}
+    .btn-donate-card{
+      flex:1;background:var(--red);color:#fff;border:none;
+      border-radius:50px;font-size:.85rem;font-weight:600;
+      padding:9px 0;transition:.2s;cursor:pointer;
+    }
+    .btn-donate-card:hover{background:var(--red-dark);}
+
+    /* ── IMPACT STRIP ── */
+    .impact-strip{
+      background:linear-gradient(135deg,var(--red-dark) 0%,var(--red) 60%,#e74c3c 100%);
+      padding:70px 0;
+      position:relative;overflow:hidden;
+    }
+    .impact-strip::before{
+      content:'';position:absolute;inset:0;
+      background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .ibox{text-align:center;color:#fff;padding:10px;}
+    .ibox-icon{
+      font-size:2.2rem;margin-bottom:14px;opacity:.9;
+    }
+    .ibox-num{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2.2rem,5vw,3.2rem);
+      font-weight:900;line-height:1;
+    }
+    .ibox-label{font-size:.9rem;opacity:.82;margin-top:6px;font-weight:500;}
+
+    /* ── SUCCESS STORIES ── */
+    .story-card{
+      background:#fff;border-radius:20px;
+      padding:32px;box-shadow:0 4px 20px rgba(0,0,0,.07);
+      position:relative;height:100%;
+    }
+    .story-quote{
+      font-size:3.5rem;color:var(--red);opacity:.15;
+      font-family:'Playfair Display',serif;
+      line-height:1;margin-bottom:-14px;
+    }
+    .story-text{
+      font-style:italic;color:var(--gray);
+      font-size:.95rem;line-height:1.7;margin-bottom:20px;
+    }
+    .story-person{display:flex;align-items:center;gap:14px;}
+    .story-avatar{
+      width:54px;height:54px;border-radius:50%;
+      object-fit:cover;border:3px solid var(--red-soft);
+    }
+    .story-name{font-weight:700;font-size:.95rem;}
+    .story-role{font-size:.78rem;color:var(--gray);}
+    .story-ribbon{
+      position:absolute;top:24px;right:24px;
+      background:var(--red-soft);color:var(--red);
+      font-size:.7rem;font-weight:700;letter-spacing:1px;
+      text-transform:uppercase;padding:4px 12px;border-radius:50px;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      grid-template-rows:auto auto;
+      gap:12px;
+    }
+    .gallery-item{
+      border-radius:16px;overflow:hidden;
+      position:relative;cursor:pointer;
+    }
+    .gallery-item img{
+      width:100%;height:100%;object-fit:cover;
+      transition:.4s;
+    }
+    .gallery-item:hover img{transform:scale(1.06);}
+    .gallery-item:nth-child(1){grid-column:1/3;height:280px;}
+    .gallery-item:nth-child(2){grid-column:3;height:280px;}
+    .gallery-item:nth-child(3),.gallery-item:nth-child(4),.gallery-item:nth-child(5){height:200px;}
+    .gallery-overlay{
+      position:absolute;inset:0;
+      background:rgba(192,57,43,0);
+      display:flex;align-items:center;justify-content:center;
+      transition:.3s;
+    }
+    .gallery-overlay i{color:#fff;font-size:2rem;opacity:0;transition:.3s;}
+    .gallery-item:hover .gallery-overlay{background:rgba(192,57,43,.5);}
+    .gallery-item:hover .gallery-overlay i{opacity:1;}
+
+    /* ── VIDEO ── */
+    .video-wrap{
+      position:relative;border-radius:20px;overflow:hidden;
+      box-shadow:0 10px 40px rgba(0,0,0,.15);
+    }
+    .video-wrap iframe{
+      width:100%;height:380px;border:none;display:block;
+    }
+
+    /* ── VOLUNTEER ── */
+    .volunteer-section{
+      background:var(--red-soft);
+      border-radius:24px;padding:60px 40px;
+    }
+    .vol-icon{
+      width:64px;height:64px;border-radius:16px;
+      background:var(--red);color:#fff;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.5rem;margin-bottom:16px;
+    }
+    .vol-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 4px 12px rgba(0,0,0,.05);}
+
+    /* ── CTA ── */
+    .cta-section{
+      background:linear-gradient(135deg,var(--charcoal) 0%,#2d0a0a 100%);
+      border-radius:24px;
+      padding:80px 60px;
+      text-align:center;
+      position:relative;overflow:hidden;
+    }
+    .cta-section::after{
+      content:'';position:absolute;
+      width:400px;height:400px;border-radius:50%;
+      background:radial-gradient(circle,rgba(192,57,43,.25),transparent 70%);
+      top:-100px;right:-80px;
+    }
+    .cta-section h2{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2rem,4vw,3rem);
+      font-weight:900;color:#fff;margin-bottom:18px;
+    }
+    .cta-section p{color:rgba(255,255,255,.72);font-size:1.05rem;max-width:500px;margin:0 auto 36px;}
+    .btn-cta-primary{
+      background:var(--red);color:#fff;border:none;
+      border-radius:50px;padding:16px 44px;
+      font-size:1rem;font-weight:700;transition:.25s;
+      display:inline-block;text-decoration:none;
+    }
+    .btn-cta-primary:hover{background:var(--red-dark);color:#fff;}
+    .btn-cta-outline{
+      background:transparent;color:#fff;
+      border:2px solid rgba(255,255,255,.4);
+      border-radius:50px;padding:15px 36px;
+      font-size:1rem;font-weight:600;transition:.25s;
+      display:inline-block;text-decoration:none;margin-left:12px;
+    }
+    .btn-cta-outline:hover{border-color:#fff;color:#fff;}
+
+    /* ── NEWSLETTER ── */
+    .newsletter-bar{
+      background:#fff;border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      padding:48px 0;
+    }
+    .newsletter-input-wrap{
+      display:flex;gap:10px;max-width:480px;
+    }
+    .newsletter-input-wrap input{
+      flex:1;border:2px solid var(--border);border-radius:50px;
+      padding:12px 22px;font-size:.9rem;outline:none;
+      transition:.2s;font-family:'DM Sans',sans-serif;
+    }
+    .newsletter-input-wrap input:focus{border-color:var(--red);}
+    .newsletter-input-wrap button{
+      background:var(--red);color:#fff;border:none;
+      border-radius:50px;padding:12px 28px;font-weight:600;
+      font-size:.9rem;cursor:pointer;transition:.2s;white-space:nowrap;
+    }
+    .newsletter-input-wrap button:hover{background:var(--red-dark);}
+
+    /* ── CONTACT / PARTNERSHIP ── */
+    .partner-card{
+      background:#fff;border-radius:20px;
+      padding:32px;box-shadow:0 4px 20px rgba(0,0,0,.07);
+      text-align:center;transition:.3s;
+    }
+    .partner-card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(192,57,43,.12);}
+    .partner-icon{
+      width:72px;height:72px;border-radius:50%;
+      background:var(--red-soft);color:var(--red);
+      font-size:1.7rem;margin:0 auto 16px;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .partner-card h5{font-family:'Playfair Display',serif;font-weight:700;margin-bottom:10px;}
+    .partner-card p{color:var(--gray);font-size:.9rem;line-height:1.6;}
+    .btn-partner{
+      display:inline-block;margin-top:16px;
+      border:2px solid var(--red);color:var(--red);
+      border-radius:50px;padding:8px 24px;
+      font-size:.85rem;font-weight:600;
+      text-decoration:none;transition:.2s;
+    }
+    .btn-partner:hover{background:var(--red);color:#fff;}
+
+    /* ── FOOTER ── */
+    footer{
+      background:var(--charcoal);color:rgba(255,255,255,.75);
+      padding:60px 0 30px;
+    }
+    .footer-brand{
+      font-family:'Playfair Display',serif;
+      font-size:1.8rem;font-weight:900;color:#fff;
+    }
+    .footer-brand span{color:var(--red-light);}
+    .footer-desc{font-size:.88rem;line-height:1.7;margin-top:12px;max-width:300px;}
+    .footer-heading{
+      font-weight:700;color:#fff;font-size:.85rem;
+      letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;
+    }
+    .footer-links{list-style:none;padding:0;}
+    .footer-links li{margin-bottom:10px;}
+    .footer-links a{
+      color:rgba(255,255,255,.65);text-decoration:none;
+      font-size:.88rem;transition:.2s;
+    }
+    .footer-links a:hover{color:var(--red-light);}
+    .social-icons a{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:38px;height:38px;border-radius:50%;
+      background:rgba(255,255,255,.08);color:#fff;
+      text-decoration:none;margin-right:8px;transition:.2s;font-size:.9rem;
+    }
+    .social-icons a:hover{background:var(--red);}
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,.1);
+      margin-top:40px;padding-top:24px;
+      font-size:.82rem;color:rgba(255,255,255,.45);
+    }
+    .ribbon-badge{
+      background:var(--red);color:#fff;
+      font-size:.7rem;font-weight:700;
+      padding:3px 10px;border-radius:50px;
+      letter-spacing:1px;vertical-align:middle;margin-left:8px;
+    }
+
+    /* ── DONATE MODAL ── */
+    .modal-header{background:var(--red);color:#fff;border-radius:16px 16px 0 0!important;}
+    .modal-title{font-family:'Playfair Display',serif;font-weight:700;}
+    .amount-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+    .amount-btn{
+      border:2px solid var(--border);background:#fff;
+      border-radius:12px;padding:14px;text-align:center;
+      font-weight:700;font-size:1rem;cursor:pointer;transition:.2s;
+    }
+    .amount-btn:hover,.amount-btn.selected{
+      border-color:var(--red);background:var(--red-soft);color:var(--red);
+    }
+    .modal-content{border-radius:16px!important;border:none!important;}
+    .btn-confirm-donate{
+      background:var(--red);color:#fff;border:none;
+      border-radius:50px;padding:13px 0;width:100%;
+      font-weight:700;font-size:1rem;transition:.2s;
+    }
+    .btn-confirm-donate:hover{background:var(--red-dark);}
+
+    /* ── MAP PLACEHOLDER ── */
+    .map-wrap{
+      background:#f3e8e8;border-radius:20px;
+      overflow:hidden;height:340px;position:relative;
+      display:flex;align-items:center;justify-content:center;
+      flex-direction:column;
+    }
+    .map-wrap i{font-size:3rem;color:var(--red);margin-bottom:12px;}
+    .map-wrap p{color:var(--gray);font-size:.9rem;}
+
+    /* ── DIVIDER ── */
+    .red-divider{
+      width:60px;height:4px;border-radius:4px;
+      background:var(--red);margin:14px 0 24px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:991px){
+      .gallery-grid{grid-template-columns:1fr 1fr;}
+      .gallery-item:nth-child(1){grid-column:1/3;height:220px;}
+      .gallery-item:nth-child(2){grid-column:1/3;height:180px;}
+    }
+    @media(max-width:767px){
+      .cta-section{padding:50px 24px;}
+      .btn-cta-outline{margin-left:0;margin-top:12px;}
+      .newsletter-input-wrap{flex-direction:column;}
+      .newsletter-input-wrap button{width:100%;}
+      .gallery-grid{grid-template-columns:1fr;}
+      .gallery-item:nth-child(1),.gallery-item:nth-child(2){grid-column:1;}
+      .volunteer-section{padding:40px 20px;}
+      .hero{min-height:70vh;}
+      .hero-stats{gap:20px;}
+    }
+    @media(max-width:480px){
+      .hero h1{font-size:2.4rem;}
+      .btn-hero-outline{margin-left:0;margin-top:10px;display:block;text-align:center;}
+    }
+
+    /* scroll animations */
+    [data-aos]{opacity:0;}
+    [data-aos].aos-animate{opacity:1;}
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">AIDS <span>APAAN</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#">Programs</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Stories</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Get Involved</a></li>
+        <li class="nav-item"><a class="nav-link btn-nav-donate ms-2" href="#donate-modal" data-bs-toggle="modal">Donate Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-ribbon"></div>
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-content col-lg-8">
+      <span class="hero-eyebrow"><i class="fas fa-ribbon me-2"></i>HIV/AIDS Awareness &amp; Support</span>
+      <h1>Programs That <em>Save</em><br>Lives Every Day</h1>
+      <p class="hero-desc">
+        AIDS APAAN delivers healthcare, education, counseling, and community outreach to the most vulnerable—turning compassion into measurable, lasting change.
+      </p>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="#programs" class="btn-hero-primary">Explore Programs</a>
+        <a href="#donate-modal" data-bs-toggle="modal" class="btn-hero-outline">Donate Today</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-num">5K+</div><div class="hstat-label">People Reached</div></div>
+        <div class="hstat"><div class="hstat-num">120</div><div class="hstat-label">Events Held</div></div>
+        <div class="hstat"><div class="hstat-num">350+</div><div class="hstat-label">Youth Supported</div></div>
+        <div class="hstat"><div class="hstat-num">95%</div><div class="hstat-label">Positive Impact</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FILTER BAR ══ -->
+<div class="filter-bar" id="programs">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center gap-1">
+      <span class="me-2 text-muted small fw-600">Filter:</span>
+      <button class="filter-btn active" onclick="filterPrograms('all',this)">All Programs</button>
+      <button class="filter-btn" onclick="filterPrograms('health',this)">Health</button>
+      <button class="filter-btn" onclick="filterPrograms('education',this)">Education</button>
+      <button class="filter-btn" onclick="filterPrograms('outreach',this)">Outreach</button>
+      <button class="filter-btn" onclick="filterPrograms('support',this)">Support Services</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ PROGRAMS ══ -->
+<section class="container py-5">
+  <div class="row align-items-end mb-5">
+    <div class="col-lg-7" data-aos="fade-right">
+      <span class="sec-label">What We Do</span>
+      <h2 class="sec-title">Programs Making <span>Impact</span></h2>
+      <div class="red-divider"></div>
+      <p class="sec-sub">Every program is built around community voices, evidence-based practice, and transparent accountability.</p>
+    </div>
+    <div class="col-lg-5 text-lg-end mt-3 mt-lg-0" data-aos="fade-left">
+      <a href="#donate-modal" data-bs-toggle="modal" class="btn-cta-primary text-decoration-none">
+        <i class="fas fa-heart me-2"></i>Support Our Work
+      </a>
+    </div>
+  </div>
+
+  <div class="row g-4" id="programGrid">
+
+    <!-- 1 HIV Awareness -->
+    <div class="col-md-6 col-lg-4 program-item" data-cat="health" data-aos="fade-up" data-aos-delay="0">
+      <div class="program-card">
+        <div class="program-card-img">
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=900" alt="HIV Awareness">
+          <span class="card-category">Health</span>
+        </div>
+        <div class="program-body">
+          <h4>HIV Awareness Campaign</h4>
+          <p>Educating communities about HIV prevention, early testing, and access to treatment through workshops, mobile units, and peer educators.</p>
+          <div class="card-stats">
+            <div class="cstat"><div class="cstat-num">2,400</div><div class="cstat-label">Tested</div></div>
+            <div class="cstat"><div class="cstat-num">80</div><div class="cstat-label">Events</div></div>
+            <div class="cstat"><div class="cstat-num">92%</div><div class="cstat-label">Awareness</div></div>
+          </div>
+          <div class="funding-label"><span>Funding Progress</span><span>75%</span></div>
+          <div class="fund-bar"><div class="fund-fill" style="width:0" data-width="75%"></div></div>
+          <div class="fund-amounts"><span>Raised: $7,500</span><span>Goal: $10,000</span></div>
+          <div class="card-actions">
+            <button class="btn-learn" onclick="openLearnMore('HIV Awareness Campaign')">Learn More</button>
+            <button class="btn-donate-card" onclick="openDonate('HIV Awareness Campaign')">Donate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 Youth Empowerment -->
+    <div class="col-md-6 col-lg-4 program-item" data-cat="education" data-aos="fade-up" data-aos-delay="80">
+      <div class="program-card">
+        <div class="program-card-img">
+          <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=900" alt="Youth Empowerment">
+          <span class="card-category">Education</span>
+        </div>
+        <div class="program-body">
+          <h4>Youth Empowerment</h4>
+          <p>Life skills training, HIV literacy, and mentorship programs for young people aged 13–24 to reduce vulnerability and build resilient futures.</p>
+          <div class="card-stats">
+            <div class="cstat"><div class="cstat-num">350+</div><div class="cstat-label">Youth</div></div>
+            <div class="cstat"><div class="cstat-num">24</div><div class="cstat-label">Schools</div></div>
+            <div class="cstat"><div class="cstat-num">88%</div><div class="cstat-label">Retention</div></div>
+          </div>
+          <div class="funding-label"><span>Funding Progress</span><span>60%</span></div>
+          <div class="fund-bar"><div class="fund-fill" style="width:0" data-width="60%"></div></div>
+          <div class="fund-amounts"><span>Raised: $4,800</span><span>Goal: $8,000</span></div>
+          <div class="card-actions">
+            <button class="btn-learn" onclick="openLearnMore('Youth Empowerment')">Learn More</button>
+            <button class="btn-donate-card" onclick="openDonate('Youth Empowerment')">Donate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 Mental Health -->
+    <div class="col-md-6 col-lg-4 program-item" data-cat="support" data-aos="fade-up" data-aos-delay="160">
+      <div class="program-card">
+        <div class="program-card-img">
+          <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=900" alt="Mental Health">
+          <span class="card-category">Support</span>
+        </div>
+        <div class="program-body">
+          <h4>Mental Health Support</h4>
+          <p>Individual and group counseling, crisis support, and peer-led support groups for people and families living with or affected by HIV/AIDS.</p>
+          <div class="card-stats">
+            <div class="cstat"><div class="cstat-num">600</div><div class="cstat-label">Sessions</div></div>
+            <div class="cstat"><div class="cstat-num">15</div><div class="cstat-label">Counselors</div></div>
+            <div class="cstat"><div class="cstat-num">96%</div><div class="cstat-label">Satisfaction</div></div>
+          </div>
+          <div class="funding-label"><span>Funding Progress</span><span>85%</span></div>
+          <div class="fund-bar"><div class="fund-fill" style="width:0" data-width="85%"></div></div>
+          <div class="fund-amounts"><span>Raised: $8,500</span><span>Goal: $10,000</span></div>
+          <div class="card-actions">
+            <button class="btn-learn" onclick="openLearnMore('Mental Health Support')">Learn More</button>
+            <button class="btn-donate-card" onclick="openDonate('Mental Health Support')">Donate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 ARV Treatment -->
+    <div class="col-md-6 col-lg-4 program-item" data-cat="health" data-aos="fade-up" data-aos-delay="0">
+      <div class="program-card">
+        <div class="program-card-img">
+          <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=900" alt="ARV Treatment">
+          <span class="card-category">Health</span>
+        </div>
+        <div class="program-body">
+          <h4>Antiretroviral Treatment Support</h4>
+          <p>Subsidizing and facilitating access to ARV medication, treatment adherence counseling, and follow-up care for HIV-positive individuals.</p>
+          <div class="card-stats">
+            <div class="cstat"><div class="cstat-num">480</div><div class="cstat-label">Patients</div></div>
+            <div class="cstat"><div class="cstat-num">100%</div><div class="cstat-label">Free ARV</div></div>
+            <div class="cstat"><div class="cstat-num">91%</div><div class="cstat-label">Adherence</div></div>
+          </div>
+          <div class="funding-label"><span>Funding Progress</span><span>55%</span></div>
+          <div class="fund-bar"><div class="fund-fill" style="width:0" data-width="55%"></div></div>
+          <div class="fund-amounts"><span>Raised: $11,000</span><span>Goal: $20,000</span></div>
+          <div class="card-actions">
+            <button class="btn-learn" onclick="openLearnMore('Antiretroviral Treatment Support')">Learn More</button>
+            <button class="btn-donate-card" onclick="openDonate('Antiretroviral Treatment Support')">Donate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 Orphan & Family -->
+    <div class="col-md-6 col-lg-4 program-item" data-cat="support" data-aos="fade-up" data-aos-delay="80">
+      <div class="program-card">
+        <div class="program-card-img">
+          <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=900" alt="Family Assistance">
+          <span class="card-category">Support</span>
+        </div>
+        <div class="program-body">
+          <h4>Orphan &amp; Family Assistance</h4>
+          <p>Providing food, school fees, shelter support, and psychosocial care to children orphaned by AIDS and vulnerable families in crisis.</p>
+          <div class="card-stats">
+            <div class="cstat"><div class="cstat-num">300</div><div class="cstat-label">Families</div></div>
+            <div class="cstat"><div class="cstat-num">150</div><div class="cstat-label">Children</div></div>
+            <div class="cstat"><div class="cstat-num">100%</div><div class="cstat-label">In School</div></div>
+          </div>
+          <div class="funding-label"><span>Funding Progress</span><span>48%</span></div>
+          <div class="fund-bar"><div class="fund-fill" style="width:0" data-width="48%"></div></div>
+          <div class="fund-amounts"><span>Raised: $7,200</span><span>Goal: $15,000</span></div>
+          <div class="card-actions">
+            <button class="btn-learn" onclick="openLearnMore('Orphan & Family Assistance')">Learn More</button>
+            <button class="btn-donate-card" onclick="openDonate('Orphan & Family Assistance')">Donate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 Community Testing -->
+    <div class="col-md-6 col-lg-4 program-item" data-cat="outreach" data-aos="fade-up" data-aos-delay="160">
+      <div class="program-card">
+        <div class="program-card-img">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=900" alt="Community Outreach">
+          <span class="card-category">Outreach</span>
+        </div>
+        <div class="program-body">
+          <h4>Community Testing Outreach</h4>
+          <p>Mobile HIV testing clinics, door-to-door campaigns, and market outreach to make free testing accessible in underserved rural and urban areas.</p>
+          <div class="card-stats">
+            <div class="cstat"><div class="cstat-num">1,200</div><div class="cstat-label">Tested</div></div>
+            <div class="cstat"><div class="cstat-num">40</div><div class="cstat-label">Sites</div></div>
+            <div class="cstat"><div class="cstat-num">Free</div><div class="cstat-label">All Tests</div></div>
+          </div>
+          <div class="funding-label"><span>Funding Progress</span><span>70%</span></div>
+          <div class="fund-bar"><div class="fund-fill" style="width:0" data-width="70%"></div></div>
+          <div class="fund-amounts"><span>Raised: $5,600</span><span>Goal: $8,000</span></div>
+          <div class="card-actions">
+            <button class="btn-learn" onclick="openLearnMore('Community Testing Outreach')">Learn More</button>
+            <button class="btn-donate-card" onclick="openDonate('Community Testing Outreach')">Donate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /row -->
+</section>
+
+
+<!-- ══ IMPACT STRIP ══ -->
+<section class="impact-strip">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="sec-label" style="color:rgba(255,255,255,.7)">Our Reach</span>
+      <h2 class="sec-title" style="color:#fff">Numbers That <span style="color:rgba(255,255,255,.6)">Tell Our Story</span></h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="0">
+        <div class="ibox">
+          <div class="ibox-icon"><i class="fas fa-users"></i></div>
+          <div class="ibox-num" data-count="5000">0</div>
+          <div class="ibox-label">People Reached</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+        <div class="ibox">
+          <div class="ibox-icon"><i class="fas fa-calendar-check"></i></div>
+          <div class="ibox-num" data-count="120">0</div>
+          <div class="ibox-label">Community Events</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+        <div class="ibox">
+          <div class="ibox-icon"><i class="fas fa-pills"></i></div>
+          <div class="ibox-num" data-count="480">0</div>
+          <div class="ibox-label">Patients on ARV</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+        <div class="ibox">
+          <div class="ibox-icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <div class="ibox-num" data-count="300">0</div>
+          <div class="ibox-label">Families Supported</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SUCCESS STORIES ══ -->
+<section class="container py-5">
+  <div class="row align-items-end mb-5">
+    <div class="col-lg-7" data-aos="fade-right">
+      <span class="sec-label">Real Stories</span>
+      <h2 class="sec-title">Lives <span>Changed</span></h2>
+      <div class="red-divider"></div>
+      <p class="sec-sub">Every statistic is a person. Here are some of the voices behind our work.</p>
+    </div>
+  </div>
+  <div class="row g-4">
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+      <div class="story-card">
+        <div class="story-ribbon">HIV Awareness</div>
+        <div class="story-quote">"</div>
+        <p class="story-text">The mobile testing clinic came to our village. I had no idea I was positive. Because of AIDS APAAN, I started treatment early and today my viral load is undetectable.</p>
+        <div class="story-person">
+          <img src="https://randomuser.me/api/portraits/women/45.jpg" class="story-avatar" alt="Maria">
+          <div>
+            <div class="story-name">Maria K.</div>
+            <div class="story-role">Program Beneficiary, 34</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="story-card">
+        <div class="story-ribbon">Youth Empowerment</div>
+        <div class="story-quote">"</div>
+        <p class="story-text">I joined the youth program at 16. The mentors taught me about protecting myself and my future. I now volunteer as a peer educator in my school—it feels amazing to give back.</p>
+        <div class="story-person">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="story-avatar" alt="James">
+          <div>
+            <div class="story-name">James O.</div>
+            <div class="story-role">Peer Educator, 19</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+      <div class="story-card">
+        <div class="story-ribbon">Family Support</div>
+        <div class="story-quote">"</div>
+        <p class="story-text">After losing my husband to AIDS, I didn't know how I would keep my children in school. The family assistance program paid their fees and gave us food. We have hope again.</p>
+        <div class="story-person">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" class="story-avatar" alt="Grace">
+          <div>
+            <div class="story-name">Grace N.</div>
+            <div class="story-role">Single Mother, Beneficiary</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ PHOTO GALLERY ══ -->
+<section class="container py-4">
+  <div class="row align-items-end mb-4">
+    <div class="col-lg-7" data-aos="fade-right">
+      <span class="sec-label">Gallery</span>
+      <h2 class="sec-title">Our Work in <span>Action</span></h2>
+      <div class="red-divider"></div>
+    </div>
+  </div>
+  <div class="gallery-grid" data-aos="fade-up">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=900" alt="Community outreach">
+      <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=900" alt="Medical camp">
+      <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?q=80&w=900" alt="Workshop">
+      <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=900" alt="Youth program">
+      <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=900" alt="Counseling">
+      <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ VIDEO ══ -->
+<section class="container py-5">
+  <div class="row align-items-center g-5">
+    <div class="col-lg-6" data-aos="fade-right">
+      <span class="sec-label">Watch &amp; Learn</span>
+      <h2 class="sec-title">See Our <span>Impact</span></h2>
+      <div class="red-divider"></div>
+      <p class="sec-sub mb-4">From community testimonials to program highlights, our videos show the real difference your support makes.</p>
+      <ul class="list-unstyled" style="color:var(--gray);font-size:.92rem;">
+        <li class="mb-2"><i class="fas fa-circle-check text-danger me-2"></i>HIV prevention education</li>
+        <li class="mb-2"><i class="fas fa-circle-check text-danger me-2"></i>Treatment success stories</li>
+        <li class="mb-2"><i class="fas fa-circle-check text-danger me-2"></i>Community event coverage</li>
+        <li><i class="fas fa-circle-check text-danger me-2"></i>How donations are used</li>
+      </ul>
+    </div>
+    <div class="col-lg-6" data-aos="fade-left">
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/0kL6nhutjQ8"
+          title="AIDS APAAN Program Overview"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ VOLUNTEER ══ -->
+<section class="container py-4">
+  <div class="volunteer-section" data-aos="fade-up">
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-7">
+        <span class="sec-label">Get Involved</span>
+        <h2 class="sec-title">Volunteer <span>Opportunities</span></h2>
+        <div class="red-divider"></div>
+        <p class="sec-sub">Your time and skills are just as valuable as financial support.</p>
+      </div>
+      <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
+        <a href="#volunteer-form" class="btn-cta-primary text-decoration-none">
+          <i class="fas fa-hands-helping me-2"></i>Sign Up to Volunteer
+        </a>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="vol-card">
+          <div class="vol-icon"><i class="fas fa-bullhorn"></i></div>
+          <h5 style="font-weight:700;margin-bottom:8px;">Outreach Volunteer</h5>
+          <p style="color:var(--gray);font-size:.88rem;line-height:1.6;">Join mobile testing campaigns, community workshops, and awareness walks in your area.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="vol-card">
+          <div class="vol-icon"><i class="fas fa-user-md"></i></div>
+          <h5 style="font-weight:700;margin-bottom:8px;">Counselor / Mentor</h5>
+          <p style="color:var(--gray);font-size:.88rem;line-height:1.6;">Support individuals in treatment or youth participants as a trained counselor or mentor.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="vol-card">
+          <div class="vol-icon"><i class="fas fa-laptop-code"></i></div>
+          <h5 style="font-weight:700;margin-bottom:8px;">Skills Volunteer</h5>
+          <p style="color:var(--gray);font-size:.88rem;line-height:1.6;">Contribute graphic design, IT, social media, photography, or legal skills to our mission.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Volunteer Form -->
+    <div class="row mt-5" id="volunteer-form">
+      <div class="col-lg-8 mx-auto">
+        <div class="vol-card">
+          <h5 class="text-center mb-4" style="font-family:'Playfair Display',serif;font-size:1.3rem;">Join Our Volunteer Team</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Your Full Name" style="border-radius:10px;border:2px solid var(--border);">
+            </div>
+            <div class="col-md-6">
+              <input type="email" class="form-control" placeholder="Email Address" style="border-radius:10px;border:2px solid var(--border);">
+            </div>
+            <div class="col-md-6">
+              <input type="tel" class="form-control" placeholder="Phone Number" style="border-radius:10px;border:2px solid var(--border);">
+            </div>
+            <div class="col-md-6">
+              <select class="form-select" style="border-radius:10px;border:2px solid var(--border);">
+                <option value="">Select Volunteer Role</option>
+                <option>Outreach Volunteer</option>
+                <option>Counselor / Mentor</option>
+                <option>Skills Volunteer</option>
+                <option>Peer Educator</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <textarea class="form-control" rows="3" placeholder="Tell us a bit about yourself and your availability..." style="border-radius:10px;border:2px solid var(--border);"></textarea>
+            </div>
+            <div class="col-12 text-center">
+              <button class="btn-confirm-donate" style="border-radius:50px;padding:13px 40px;width:auto;">
+                <i class="fas fa-paper-plane me-2"></i>Submit Application
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ MAP ══ -->
+<section class="container py-5">
+  <div class="row align-items-center g-5">
+    <div class="col-lg-5" data-aos="fade-right">
+      <span class="sec-label">Where We Operate</span>
+      <h2 class="sec-title">Program <span>Locations</span></h2>
+      <div class="red-divider"></div>
+      <p class="sec-sub mb-4">Our programs reach communities across multiple regions. Each pin represents lives being changed.</p>
+      <ul class="list-unstyled" style="color:var(--gray);font-size:.92rem;">
+        <li class="mb-2"><i class="fas fa-map-marker-alt text-danger me-2"></i>Urban community centers</li>
+        <li class="mb-2"><i class="fas fa-map-marker-alt text-danger me-2"></i>Rural clinics &amp; villages</li>
+        <li class="mb-2"><i class="fas fa-map-marker-alt text-danger me-2"></i>Schools &amp; youth centers</li>
+        <li><i class="fas fa-map-marker-alt text-danger me-2"></i>Mobile testing sites</li>
+      </ul>
+    </div>
+    <div class="col-lg-7" data-aos="fade-left">
+      <div class="map-wrap">
+        <i class="fas fa-map-marked-alt"></i>
+        <p>Interactive map — embed your Google Maps or Leaflet map here</p>
+        <small style="color:var(--red);font-size:.78rem;">Replace this placeholder with: &lt;iframe src="YOUR_GOOGLE_MAPS_URL"&gt;&lt;/iframe&gt;</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ PARTNERSHIP ══ -->
+<section class="container py-4">
+  <div class="text-center mb-5" data-aos="fade-up">
+    <span class="sec-label">Work With Us</span>
+    <h2 class="sec-title">Partner &amp; <span>Collaborate</span></h2>
+    <div class="red-divider mx-auto"></div>
+    <p class="sec-sub mx-auto">We welcome NGOs, corporates, and institutions who share our vision.</p>
+  </div>
+  <div class="row g-4">
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+      <div class="partner-card">
+        <div class="partner-icon"><i class="fas fa-building"></i></div>
+        <h5>Corporate Sponsorship</h5>
+        <p>Align your brand with life-saving work. We offer CSR packages, co-branding on events, and impact reports.</p>
+        <a href="mailto:partnerships@aidsapaan.org" class="btn-partner">Get in Touch</a>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="partner-card">
+        <div class="partner-icon"><i class="fas fa-handshake"></i></div>
+        <h5>NGO Collaboration</h5>
+        <p>Partner with us on joint programs, research, advocacy, or shared outreach activities in your communities.</p>
+        <a href="mailto:partnerships@aidsapaan.org" class="btn-partner">Collaborate</a>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+      <div class="partner-card">
+        <div class="partner-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h5>Academic &amp; Research</h5>
+        <p>We partner with universities and researchers to generate evidence, improve programs, and publish outcomes.</p>
+        <a href="mailto:research@aidsapaan.org" class="btn-partner">Start Research</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CTA ══ -->
+<section class="container py-5">
+  <div class="cta-section" data-aos="fade-up">
+    <div style="position:relative;z-index:2;">
+      <span class="sec-label" style="color:rgba(255,255,255,.6)">Take Action</span>
+      <h2>Help Us Continue <em style="color:var(--red-light);font-style:normal;">Saving Lives</em></h2>
+      <p>Your donation—however small—funds testing, treatment, counseling, and education for people who have nowhere else to turn.</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a href="#donate-modal" data-bs-toggle="modal" class="btn-cta-primary">
+          <i class="fas fa-heart me-2"></i>Donate Now
+        </a>
+        <a href="#programs" class="btn-cta-outline">Sponsor a Program</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ NEWSLETTER ══ -->
+<div class="newsletter-bar">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-6" data-aos="fade-right">
+        <span class="sec-label">Stay Updated</span>
+        <h3 style="font-family:'Playfair Display',serif;font-weight:700;font-size:1.5rem;margin-bottom:6px;">Get Program &amp; Impact Updates</h3>
+        <p style="color:var(--gray);font-size:.9rem;">No spam. Just real stories and updates about how your support is changing lives.</p>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="newsletter-input-wrap">
+          <input type="email" placeholder="Enter your email address">
+          <button><i class="fas fa-paper-plane me-2"></i>Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="footer-brand">AIDS <span>APAAN</span> <span class="ribbon-badge">NGO</span></div>
+        <p class="footer-desc">Empowering communities through healthcare, awareness, and compassion. Every life matters.</p>
+        <div class="social-icons mt-4">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-heading">Programs</div>
+        <ul class="footer-links">
+          <li><a href="#">HIV Awareness</a></li>
+          <li><a href="#">Youth Empowerment</a></li>
+          <li><a href="#">Mental Health</a></li>
+          <li><a href="#">ARV Treatment</a></li>
+          <li><a href="#">Family Support</a></li>
+          <li><a href="#">Testing Outreach</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-heading">Organization</div>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Reports</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Partners</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-heading">Get Involved</div>
+        <ul class="footer-links">
+          <li><a href="#">Donate</a></li>
+          <li><a href="#volunteer-form">Volunteer</a></li>
+          <li><a href="#">Sponsor</a></li>
+          <li><a href="#">Fundraise</a></li>
+          <li><a href="#">Corporate</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="footer-heading">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:info@aidsapaan.org">info@aidsapaan.org</a></li>
+          <li><a href="tel:+1234567890">+123 456 7890</a></li>
+          <li><a href="#">Find Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center">
+      <span>&copy; 2025 AIDS APAAN. All rights reserved.</span>
+      <span>Registered NGO &nbsp;|&nbsp; Transparent &nbsp;|&nbsp; Accountable</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══ DONATE MODAL ══ -->
+<div class="modal fade" id="donate-modal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-heart me-2"></i>Make a Donation</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-4">
+        <p class="text-muted mb-3" id="donateProgLabel">Your donation directly funds our life-saving programs.</p>
+        <div class="mb-4">
+          <label style="font-weight:600;font-size:.88rem;margin-bottom:10px;display:block;">Choose Program</label>
+          <select class="form-select" id="donateProgramSelect" style="border-radius:10px;border:2px solid var(--border);">
+            <option>HIV Awareness Campaign</option>
+            <option>Youth Empowerment</option>
+            <option>Mental Health Support</option>
+            <option>Antiretroviral Treatment Support</option>
+            <option>Orphan &amp; Family Assistance</option>
+            <option>Community Testing Outreach</option>
+            <option>Where Needed Most</option>
+          </select>
+        </div>
+        <label style="font-weight:600;font-size:.88rem;margin-bottom:10px;display:block;">Select Amount</label>
+        <div class="amount-grid">
+          <button class="amount-btn selected" onclick="selectAmount(this,'$10')">$10</button>
+          <button class="amount-btn" onclick="selectAmount(this,'$25')">$25</button>
+          <button class="amount-btn" onclick="selectAmount(this,'$50')">$50</button>
+          <button class="amount-btn" onclick="selectAmount(this,'$100')">$100</button>
+          <button class="amount-btn" onclick="selectAmount(this,'$250')">$250</button>
+          <button class="amount-btn" onclick="selectAmount(this,'Custom')">Custom</button>
+        </div>
+        <div id="customAmountWrap" style="display:none;margin-bottom:14px;">
+          <input type="number" class="form-control" placeholder="Enter amount ($)" style="border-radius:10px;border:2px solid var(--border);">
+        </div>
+        <div class="mb-3">
+          <label style="font-weight:600;font-size:.88rem;margin-bottom:8px;display:block;">Frequency</label>
+          <div class="d-flex gap-2">
+            <button class="filter-btn active" onclick="this.parentElement.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">One-time</button>
+            <button class="filter-btn" onclick="this.parentElement.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">Monthly</button>
+            <button class="filter-btn" onclick="this.parentElement.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">Annually</button>
+          </div>
+        </div>
+        <button class="btn-confirm-donate mt-2">
+          <i class="fas fa-lock me-2"></i>Donate Securely
+        </button>
+        <p class="text-center text-muted mt-3" style="font-size:.78rem;">
+          <i class="fas fa-shield-alt me-1"></i>Secure payment &nbsp;|&nbsp; <i class="fas fa-receipt me-1"></i>Tax-deductible &nbsp;|&nbsp; <i class="fas fa-chart-pie me-1"></i>100% transparency
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+  // ── AOS init
+  AOS.init({duration:700,once:true,offset:60});
+
+  // ── Animated fund bars on scroll
+  const fundBars = document.querySelectorAll('.fund-fill');
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.width = e.target.dataset.width;
+        observer.unobserve(e.target);
+      }
+    });
+  },{threshold:.3});
+  fundBars.forEach(b=>observer.observe(b));
+
+  // ── Counter animation
+  const counters = document.querySelectorAll('.ibox-num[data-count]');
+  const counterObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const el = e.target;
+        const target = +el.dataset.count;
+        let start = 0;
+        const step = Math.ceil(target/60);
+        const tick = ()=>{
+          start = Math.min(start+step,target);
+          el.textContent = start>=1000 ? (start/1000).toFixed(1)+'K+' : start+(target>=100?'+':'');
+          if(start<target) requestAnimationFrame(tick);
+        };
+        tick();
+        counterObs.unobserve(el);
+      }
+    });
+  },{threshold:.5});
+  counters.forEach(c=>counterObs.observe(c));
+
+  // ── Filter programs
+  function filterPrograms(cat,btn){
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.program-item').forEach(item=>{
+      if(cat==='all'||item.dataset.cat===cat){
+        item.style.display='';
+      } else {
+        item.style.display='none';
+      }
+    });
+  }
+
+  // ── Open donate modal for specific program
+  function openDonate(programName){
+    const sel = document.getElementById('donateProgramSelect');
+    for(let i=0;i<sel.options.length;i++){
+      if(sel.options[i].text.trim()===programName){sel.selectedIndex=i;break;}
+    }
+    new bootstrap.Modal(document.getElementById('donate-modal')).show();
+  }
+
+  // ── Learn more (could open a modal or navigate)
+  function openLearnMore(name){
+    alert('Learn more about: '+name+'\n\n(Replace this with a modal or dedicated page.)');
+  }
+
+  // ── Amount selection
+  function selectAmount(btn,val){
+    document.querySelectorAll('.amount-btn').forEach(b=>b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById('customAmountWrap').style.display = val==='Custom' ? 'block' : 'none';
+  }
+</script>
+</body>
+</html>
