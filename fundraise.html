@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIDS APAANA – Together We Fight, Together We Heal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C0152A;
+    --red-dark: #8B0F1F;
+    --red-light: #E8192F;
+    --red-pale: #FFF0F1;
+    --white: #FFFFFF;
+    --off-white: #FAF8F8;
+    --gray: #6B7280;
+    --dark: #1A0508;
+    --border: #F0DADA;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── STICKY DONATE BAR ── */
+  .sticky-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    padding: 12px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 2px 20px rgba(192,21,42,.08);
+  }
+  .sticky-bar .logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; font-size: 1.3rem;
+    color: var(--red);
+    letter-spacing: -0.5px;
+  }
+  .sticky-bar .logo span { color: var(--dark); }
+  .btn-sm {
+    background: var(--red);
+    color: var(--white);
+    border: none; cursor: pointer;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: background .2s, transform .15s;
+  }
+  .btn-sm:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    margin-top: 60px;
+    background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 50%, #E8192F 100%);
+    min-height: 92vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 60px 24px 80px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(255,255,255,.07) 0%, transparent 60%);
+  }
+  .hero-ribbon {
+    position: absolute; top: 0; right: 0;
+    width: 40vw; max-width: 500px; height: 100%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 400'%3E%3Cpath fill='rgba(255,255,255,0.04)' d='M200 0 L80 0 Q0 200 80 400 L200 400Z'/%3E%3C/svg%3E") no-repeat center/cover;
+  }
+  .hero-content { max-width: 1100px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    color: var(--white);
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero-badge span { width: 8px; height: 8px; border-radius: 50%; background: #FF6B7A; animation: pulse 1.4s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 6vw, 4.2rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    max-width: 720px;
+    margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: normal; color: #FFB3BB; }
+  .hero p {
+    color: rgba(255,255,255,.85);
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    max-width: 580px;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+  .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
+  .btn-primary {
+    background: var(--white);
+    color: var(--red);
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-weight: 700; font-size: 1rem;
+    text-decoration: none; display: inline-block;
+    transition: all .2s;
+    border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    box-shadow: 0 8px 30px rgba(0,0,0,.2);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.3); }
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    padding: 15px 32px;
+    border-radius: 50px;
+    font-weight: 600; font-size: 1rem;
+    text-decoration: none; display: inline-block;
+    border: 2px solid rgba(255,255,255,.5);
+    transition: all .2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,.1); border-color: var(--white); }
+
+  /* ── STATS BAND ── */
+  .stats-band {
+    background: var(--dark);
+    padding: 50px 24px;
+  }
+  .stats-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px; text-align: center;
+  }
+  .stat-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 900;
+    color: var(--red-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-item p { color: rgba(255,255,255,.65); font-size: 0.9rem; font-weight: 500; letter-spacing: .5px; }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 80px 24px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--red);
+    font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .section-label::before { content: ''; width: 24px; height: 2px; background: var(--red); }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900; line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .lead { font-size: 1.05rem; color: var(--gray); max-width: 560px; }
+
+  /* ── DONATION FORM ── */
+  .donate-section { background: var(--red-pale); }
+  .donate-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: start;
+  }
+  @media (max-width: 768px) { .donate-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  .donate-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 10px 60px rgba(192,21,42,.12);
+  }
+  .donate-type-tabs {
+    display: flex; background: var(--red-pale);
+    border-radius: 50px; padding: 4px; margin-bottom: 28px;
+  }
+  .tab-btn {
+    flex: 1; padding: 10px;
+    border: none; cursor: pointer;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    background: transparent; color: var(--gray);
+    transition: all .2s;
+  }
+  .tab-btn.active { background: var(--red); color: var(--white); }
+
+  .amounts-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 10px; margin-bottom: 16px;
+  }
+  .amount-btn {
+    border: 2px solid var(--border);
+    background: var(--white);
+    border-radius: 12px;
+    padding: 14px 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: all .2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .amount-btn:hover, .amount-btn.active {
+    border-color: var(--red); background: var(--red-pale);
+  }
+  .amount-btn strong { display: block; font-size: 1.15rem; font-weight: 700; color: var(--dark); }
+  .amount-btn span { font-size: 0.72rem; color: var(--gray); }
+
+  .custom-input {
+    width: 100%; padding: 14px 18px;
+    border: 2px solid var(--border); border-radius: 12px;
+    font-family: 'DM Sans', sans-serif; font-size: 1rem;
+    color: var(--dark); margin-bottom: 20px;
+    outline: none; transition: border .2s;
+  }
+  .custom-input:focus { border-color: var(--red); }
+
+  .donate-btn {
+    width: 100%; background: var(--red);
+    color: var(--white); border: none; cursor: pointer;
+    padding: 18px; border-radius: 50px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    transition: all .2s;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .donate-btn:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(192,21,42,.3); }
+
+  .secure-badges {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 0.75rem; color: var(--gray); font-weight: 500;
+  }
+  .badge svg { width: 14px; height: 14px; }
+
+  /* PROGRESS */
+  .progress-card {
+    background: var(--white); border-radius: 24px; padding: 32px;
+    box-shadow: 0 4px 30px rgba(192,21,42,.08);
+  }
+  .progress-header { display: flex; justify-content: space-between; margin-bottom: 14px; }
+  .progress-header span { font-size: 0.9rem; font-weight: 600; }
+  .progress-bar { background: var(--border); border-radius: 50px; height: 14px; overflow: hidden; margin-bottom: 12px; }
+  .progress-fill {
+    background: linear-gradient(90deg, var(--red) 0%, var(--red-light) 100%);
+    height: 100%; border-radius: 50px; width: 42%;
+    animation: fillBar 2s ease forwards;
+  }
+  @keyframes fillBar { from{width:0} to{width:42%} }
+  .progress-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .meta-item { }
+  .meta-item strong { display: block; font-size: 1.3rem; font-weight: 700; color: var(--red); }
+  .meta-item span { font-size: 0.8rem; color: var(--gray); }
+
+  .impact-list { margin-top: 24px; }
+  .impact-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+  }
+  .impact-item:last-child { border-bottom: none; }
+  .impact-icon {
+    width: 42px; height: 42px; flex-shrink: 0;
+    background: var(--red-pale); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+  }
+  .impact-item h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; }
+  .impact-item p { font-size: 0.82rem; color: var(--gray); }
+
+  /* ── STORIES ── */
+  .stories-section { background: var(--off-white); }
+  .stories-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 28px; margin-top: 50px;
+  }
+  .story-card {
+    background: var(--white); border-radius: 20px;
+    padding: 32px; position: relative;
+    border: 1px solid var(--border);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .story-card:hover { transform: translateY(-4px); box-shadow: 0 16px 50px rgba(192,21,42,.1); }
+  .story-card::before {
+    content: '"';
+    position: absolute; top: 20px; right: 28px;
+    font-size: 5rem; font-family: 'Playfair Display', serif;
+    color: var(--red-pale); line-height: 1;
+  }
+  .story-avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--red), var(--red-dark));
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); font-weight: 700; font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+  .story-card p { font-size: 0.95rem; color: #444; line-height: 1.7; margin-bottom: 20px; }
+  .story-name { font-weight: 700; font-size: 0.9rem; color: var(--dark); }
+  .story-role { font-size: 0.8rem; color: var(--red); font-weight: 500; }
+
+  /* ── WHERE MONEY GOES ── */
+  .breakdown-section { }
+  .breakdown-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center; margin-top: 50px;
+  }
+  @media (max-width: 768px) { .breakdown-grid { grid-template-columns: 1fr; } }
+
+  .breakdown-item {
+    margin-bottom: 20px;
+  }
+  .breakdown-label {
+    display: flex; justify-content: space-between;
+    margin-bottom: 8px; font-weight: 600; font-size: 0.95rem;
+  }
+  .breakdown-track { background: var(--border); border-radius: 50px; height: 10px; overflow: hidden; }
+  .breakdown-fill {
+    height: 100%; border-radius: 50px;
+    background: linear-gradient(90deg, var(--red), var(--red-light));
+    transition: width 1.5s ease;
+  }
+
+  .pie-visual {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .pie-legend-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 18px;
+    background: var(--red-pale); border-radius: 12px;
+  }
+  .pie-dot {
+    width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
+  }
+  .pie-legend-item span { font-size: 0.9rem; font-weight: 600; flex: 1; }
+  .pie-legend-item strong { color: var(--red); font-weight: 700; }
+
+  /* ── FAQ ── */
+  .faq-section { background: var(--red-pale); }
+  .faq-list { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item {
+    background: var(--white); border-radius: 16px;
+    border: 1px solid var(--border); overflow: hidden;
+  }
+  .faq-q {
+    padding: 20px 24px; display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; font-weight: 600; font-size: 0.97rem;
+    user-select: none;
+  }
+  .faq-q .arrow {
+    width: 28px; height: 28px; background: var(--red-pale); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: transform .3s;
+    color: var(--red); font-size: 1.1rem; line-height: 1;
+  }
+  .faq-item.open .faq-q .arrow { transform: rotate(45deg); background: var(--red); color: var(--white); }
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s;
+    padding: 0 24px; color: var(--gray); font-size: 0.92rem; line-height: 1.75;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
+
+  /* ── VOLUNTEER / CTA ── */
+  .volunteer-section { }
+  .volunteer-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px; margin-top: 50px;
+  }
+  .vol-card {
+    border: 2px solid var(--border); border-radius: 20px; padding: 30px;
+    text-align: center; transition: all .2s;
+    cursor: pointer;
+  }
+  .vol-card:hover { border-color: var(--red); background: var(--red-pale); transform: translateY(-3px); }
+  .vol-icon { font-size: 2.4rem; margin-bottom: 14px; }
+  .vol-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+  .vol-card p { font-size: 0.88rem; color: var(--gray); margin-bottom: 18px; }
+  .vol-link {
+    color: var(--red); font-weight: 700; font-size: 0.9rem;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+  }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--red-dark), var(--red));
+    padding: 80px 24px; text-align: center;
+  }
+  .cta-banner h2 { color: var(--white); font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 16px; }
+  .cta-banner p { color: rgba(255,255,255,.8); margin-bottom: 36px; font-size: 1.05rem; max-width: 500px; margin-inline: auto; }
+  .cta-banner .btn-primary { margin: 0 auto; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    padding: 60px 24px 30px;
+    color: rgba(255,255,255,.65);
+  }
+  .footer-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr repeat(3, 1fr);
+    gap: 40px; margin-bottom: 50px;
+  }
+  @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 900; color: var(--white); margin-bottom: 14px;
+  }
+  .footer-logo span { color: var(--red-light); }
+  footer p { font-size: 0.88rem; line-height: 1.7; max-width: 280px; }
+  footer h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: .5px; }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  footer a { color: rgba(255,255,255,.55); text-decoration: none; font-size: 0.88rem; transition: color .2s; }
+  footer a:hover { color: var(--red-light); }
+  .footer-bottom {
+    max-width: 1100px; margin: 0 auto;
+    padding-top: 24px; border-top: 1px solid rgba(255,255,255,.08);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    font-size: 0.8rem;
+  }
+  .social-links { display: flex; gap: 12px; margin-top: 20px; }
+  .social-link {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-size: 1rem; transition: background .2s;
+  }
+  .social-link:hover { background: var(--red); }
+
+  /* ── TICKER ── */
+  .ticker-bar {
+    background: var(--red); color: var(--white); padding: 10px 0;
+    overflow: hidden; white-space: nowrap;
+  }
+  .ticker-content {
+    display: inline-block;
+    animation: ticker 28s linear infinite;
+    font-size: 0.85rem; font-weight: 500;
+  }
+  @keyframes ticker { from{transform:translateX(100vw)} to{transform:translateX(-100%)} }
+
+  /* ── UTIL ── */
+  .text-center { text-align: center; }
+  .mt-4 { margin-top: 40px; }
+  .red-text { color: var(--red); }
+  .divider { height: 2px; background: var(--border); margin: 60px auto; max-width: 200px; border-radius: 50px; }
+
+  /* ── ANIMATION HELPERS ── */
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ADJUSTMENTS ── */
+  @media (max-width: 600px) {
+    .amounts-grid { grid-template-columns: repeat(2, 1fr); }
+    .sticky-bar .nav-links { display: none; }
+    .hero { min-height: 80vh; }
+    .donate-card { padding: 28px 20px; }
+    section { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav class="sticky-bar">
+  <div class="logo">AIDS <span>APAANA</span></div>
+  <a href="#donate" class="btn-sm">Donate Now ♥</a>
+</nav>
+
+<!-- LIVE TICKER -->
+<div class="ticker-bar" style="margin-top:60px;">
+  <span class="ticker-content">
+    ❤️ James donated $50 &nbsp;•&nbsp; Sarah became a Monthly Supporter &nbsp;•&nbsp; Together we've helped 5,000+ lives &nbsp;•&nbsp; New campaign: HIV Testing Drive – Join Us &nbsp;•&nbsp; Grace donated $100 &nbsp;•&nbsp; Thank you to all our Hope Partners &nbsp;•&nbsp; ❤️ James donated $50 &nbsp;•&nbsp; Sarah became a Monthly Supporter
+  </span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ribbon"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span></span> Uganda's HIV/AIDS Response Network</div>
+    <h1>Together We Can End <em>HIV/AIDS</em> in Our Communities</h1>
+    <p>AIDS APAANA provides life-saving HIV/AIDS care, education, and hope to vulnerable communities across Uganda. Every donation changes a life.</p>
+    <div class="hero-btns">
+      <a href="#donate" class="btn-primary">❤ Donate Now</a>
+      <a href="#stories" class="btn-outline">Hear Their Stories</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stats-grid">
+    <div class="stat-item fade-up">
+      <h3>5,000+</h3>
+      <p>People Reached</p>
+    </div>
+    <div class="stat-item fade-up">
+      <h3>1,200</h3>
+      <p>Families Supported</p>
+    </div>
+    <div class="stat-item fade-up">
+      <h3>300</h3>
+      <p>Youth Educated</p>
+    </div>
+    <div class="stat-item fade-up">
+      <h3>50</h3>
+      <p>Health Campaigns</p>
+    </div>
+  </div>
+</div>
+
+<!-- DONATION FORM -->
+<section class="donate-section" id="donate">
+  <div class="container">
+    <div class="donate-grid">
+      <div>
+        <div class="section-label">Make a Difference</div>
+        <h2>Your Gift Saves <span class="red-text">Lives Today</span></h2>
+        <p class="lead">Every contribution, big or small, goes directly to those who need it most. Choose how you'd like to help.</p>
+
+        <div class="progress-card mt-4 fade-up">
+          <div class="progress-header">
+            <span>🎯 2025 Campaign Goal</span>
+            <span class="red-text">42%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill"></div></div>
+          <div class="progress-meta">
+            <div class="meta-item">
+              <strong>$8,450</strong>
+              <span>Raised so far</span>
+            </div>
+            <div class="meta-item">
+              <strong>$20,000</strong>
+              <span>Our goal</span>
+            </div>
+            <div class="meta-item">
+              <strong>143</strong>
+              <span>Donors</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="impact-list mt-4">
+          <div class="impact-item">
+            <div class="impact-icon">🧪</div>
+            <div>
+              <h4>HIV Testing Kits – $10</h4>
+              <p>Funds one rapid HIV testing kit for a community member.</p>
+            </div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon">💊</div>
+            <div>
+              <h4>Medication Support – $25</h4>
+              <p>Covers ART medication access for a patient in need.</p>
+            </div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon">🏥</div>
+            <div>
+              <h4>Patient Care – $100</h4>
+              <p>Provides one month of comprehensive patient care support.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="donate-card fade-up">
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; margin-bottom:20px;">Make Your Donation</h3>
+        <div class="donate-type-tabs">
+          <button class="tab-btn active" onclick="setTab(this,'one-time')">One-Time</button>
+          <button class="tab-btn" onclick="setTab(this,'monthly')">Monthly</button>
+        </div>
+
+        <div class="amounts-grid">
+          <div class="amount-btn active" onclick="setAmount(this,'$10')">
+            <strong>$10</strong>
+            <span>Testing kit</span>
+          </div>
+          <div class="amount-btn" onclick="setAmount(this,'$25')">
+            <strong>$25</strong>
+            <span>Medication</span>
+          </div>
+          <div class="amount-btn" onclick="setAmount(this,'$50')">
+            <strong>$50</strong>
+            <span>Outreach</span>
+          </div>
+          <div class="amount-btn" onclick="setAmount(this,'$100')">
+            <strong>$100</strong>
+            <span>Patient care</span>
+          </div>
+          <div class="amount-btn" onclick="setAmount(this,'$250')">
+            <strong>$250</strong>
+            <span>Campaign</span>
+          </div>
+          <div class="amount-btn" onclick="setAmount(this,'custom')">
+            <strong>Other</strong>
+            <span>Custom</span>
+          </div>
+        </div>
+
+        <input class="custom-input" type="number" id="customAmount" placeholder="Enter custom amount (USD)" style="display:none;" />
+        <input class="custom-input" type="text" placeholder="Your full name" />
+        <input class="custom-input" type="email" placeholder="Email address" />
+
+        <button class="donate-btn" onclick="handleDonate()">
+          ❤ Donate <span id="donateAmt">$10</span> Now
+        </button>
+
+        <div class="secure-badges">
+          <div class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            SSL Secured
+          </div>
+          <div class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            Visa / Mastercard
+          </div>
+          <div class="badge">📱 Mobile Money</div>
+        </div>
+        <p style="text-align:center; font-size:0.78rem; color:var(--gray); margin-top:12px;">Your donation is 100% secure and tax-deductible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORIES -->
+<section class="stories-section" id="stories">
+  <div class="container">
+    <div class="section-label">Real Stories</div>
+    <h2>Lives Changed by <span class="red-text">Your Support</span></h2>
+    <p class="lead">Behind every statistic is a real person. Here are a few of their stories.</p>
+    <div class="stories-grid">
+      <div class="story-card fade-up">
+        <div class="story-avatar">A</div>
+        <p>I was diagnosed at 22 and thought my life was over. AIDS APAANA gave me medication, counselling, and most importantly — hope. Today I am healthy and working.</p>
+        <div class="story-name">Amara N.</div>
+        <div class="story-role">Beneficiary, Kampala</div>
+      </div>
+      <div class="story-card fade-up">
+        <div class="story-avatar">J</div>
+        <p>As a volunteer, I've seen firsthand how your donations fund real change — testing kits reaching rural villages, families getting support they never had before.</p>
+        <div class="story-name">Julius K.</div>
+        <div class="story-role">Community Volunteer</div>
+      </div>
+      <div class="story-card fade-up">
+        <div class="story-avatar">P</div>
+        <p>I became a monthly donor after hearing about the youth education program. Knowing $25 a month protects a child from HIV gives me real purpose.</p>
+        <div class="story-name">Patricia M.</div>
+        <div class="story-role">Monthly Supporter</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE DONATIONS GO -->
+<section class="breakdown-section">
+  <div class="container">
+    <div class="breakdown-grid">
+      <div>
+        <div class="section-label">Full Transparency</div>
+        <h2>Where Your <span class="red-text">Money Goes</span></h2>
+        <p class="lead" style="margin-bottom:36px;">We believe in radical transparency. Every dollar is accounted for.</p>
+        <div class="breakdown-item">
+          <div class="breakdown-label"><span>Patient Support</span><span>45%</span></div>
+          <div class="breakdown-track"><div class="breakdown-fill" style="width:45%"></div></div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-label"><span>HIV Awareness</span><span>25%</span></div>
+          <div class="breakdown-track"><div class="breakdown-fill" style="width:25%"></div></div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-label"><span>Medication Access</span><span>20%</span></div>
+          <div class="breakdown-track"><div class="breakdown-fill" style="width:20%"></div></div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-label"><span>Operations</span><span>10%</span></div>
+          <div class="breakdown-track"><div class="breakdown-fill" style="width:10%"></div></div>
+        </div>
+      </div>
+      <div class="pie-visual fade-up">
+        <div class="pie-legend-item"><div class="pie-dot" style="background:var(--red)"></div><span>Patient Support</span><strong>45%</strong></div>
+        <div class="pie-legend-item"><div class="pie-dot" style="background:#E85A6A"></div><span>HIV Awareness</span><strong>25%</strong></div>
+        <div class="pie-legend-item"><div class="pie-dot" style="background:#F08090"></div><span>Medication Access</span><strong>20%</strong></div>
+        <div class="pie-legend-item"><div class="pie-dot" style="background:#F5B0BA"></div><span>Operations</span><strong>10%</strong></div>
+        <a href="#" style="display:inline-flex;align-items:center;gap:6px;color:var(--red);font-weight:700;font-size:0.9rem;text-decoration:none;margin-top:10px;">
+          📄 Download Annual Report →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTEER -->
+<section class="volunteer-section">
+  <div class="container">
+    <div class="section-label">Get Involved</div>
+    <h2>More Ways to <span class="red-text">Make Impact</span></h2>
+    <p class="lead">Not ready to donate? There are many ways to support our mission.</p>
+    <div class="volunteer-grid">
+      <div class="vol-card fade-up">
+        <div class="vol-icon">🙋</div>
+        <h3>Volunteer</h3>
+        <p>Join our community health team and help deliver care where it's needed most.</p>
+        <a href="#" class="vol-link">Sign Up →</a>
+      </div>
+      <div class="vol-card fade-up">
+        <div class="vol-icon">🤝</div>
+        <h3>Corporate Partner</h3>
+        <p>Partner with us for CSR impact, employee giving programs, and branded campaigns.</p>
+        <a href="#" class="vol-link">Partner With Us →</a>
+      </div>
+      <div class="vol-card fade-up">
+        <div class="vol-icon">👩‍👧</div>
+        <h3>Sponsor a Patient</h3>
+        <p>Sponsor an HIV+ patient's full care for as little as $150 per month.</p>
+        <a href="#donate" class="vol-link">Sponsor Now →</a>
+      </div>
+      <div class="vol-card fade-up">
+        <div class="vol-icon">📣</div>
+        <h3>Spread the Word</h3>
+        <p>Share our mission on social media and help us reach more supporters.</p>
+        <a href="#" class="vol-link">Share →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container" style="max-width:720px;">
+    <div class="section-label">Got Questions?</div>
+    <h2>Frequently Asked <span class="red-text">Questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is my donation tax-deductible? <span class="arrow">+</span></div>
+        <div class="faq-a">Yes. AIDS APAANA is a registered nonprofit NGO. All donations are eligible for tax deductions. You will receive a receipt by email after your donation.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How are funds used? <span class="arrow">+</span></div>
+        <div class="faq-a">45% goes to direct patient support, 25% to HIV awareness campaigns, 20% to medication access programs, and only 10% to operational costs. We publish annual impact reports for full transparency.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I make a monthly recurring donation? <span class="arrow">+</span></div>
+        <div class="faq-a">Absolutely! Simply select "Monthly" on the donation form. Monthly supporters receive exclusive impact updates and a special donor recognition certificate.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is my payment information secure? <span class="arrow">+</span></div>
+        <div class="faq-a">Yes. All transactions are encrypted with 256-bit SSL security. We accept Visa, Mastercard, PayPal, and mobile money. We never store your card details.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I volunteer with AIDS APAANA? <span class="arrow">+</span></div>
+        <div class="faq-a">Visit our volunteer page or email us at volunteer@aidsapaana.org. We welcome medical professionals, educators, counsellors, and community advocates.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="container text-center">
+    <h2>Be a Hope Partner Today</h2>
+    <p>Join over 143 donors who are already saving lives. Every gift matters — no amount is too small.</p>
+    <a href="#donate" class="btn-primary">❤ Donate Now</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">AIDS <span>APAANA</span></div>
+      <p>A registered nonprofit dedicated to providing HIV/AIDS care, education, and hope across Uganda since 2010.</p>
+      <div class="social-links">
+        <a class="social-link" href="#">𝕏</a>
+        <a class="social-link" href="#">f</a>
+        <a class="social-link" href="#">in</a>
+        <a class="social-link" href="#">📷</a>
+      </div>
+    </div>
+    <div>
+      <h4>Our Work</h4>
+      <ul>
+        <li><a href="#">Patient Support</a></li>
+        <li><a href="#">HIV Education</a></li>
+        <li><a href="#">Medication Access</a></li>
+        <li><a href="#">Youth Programs</a></li>
+        <li><a href="#">Community Health</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="#donate">Donate</a></li>
+        <li><a href="#">Volunteer</a></li>
+        <li><a href="#">Partner With Us</a></li>
+        <li><a href="#">Sponsor a Patient</a></li>
+        <li><a href="#">Newsletter</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a href="#">📍 Kampala, Uganda</a></li>
+        <li><a href="#">📞 +256 700 000 000</a></li>
+        <li><a href="#">✉ info@aidsapaana.org</a></li>
+        <li><a href="#">NGO Reg: UG/2010/00X</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 AIDS APAANA. All rights reserved.</span>
+    <span>Privacy Policy · Terms · Transparency Report</span>
+  </div>
+</footer>
+
+<script>
+  // Amount selection
+  let selectedAmt = '$10';
+  function setAmount(el, val) {
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    selectedAmt = val;
+    const custom = document.getElementById('customAmount');
+    if (val === 'custom') {
+      custom.style.display = 'block';
+      document.getElementById('donateAmt').textContent = 'Custom';
+    } else {
+      custom.style.display = 'none';
+      document.getElementById('donateAmt').textContent = val;
+    }
+  }
+
+  document.getElementById('customAmount').addEventListener('input', function() {
+    document.getElementById('donateAmt').textContent = this.value ? '$' + this.value : 'Custom';
+  });
+
+  // Tab switching
+  function setTab(el) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // Donate handler
+  function handleDonate() {
+    const amt = selectedAmt === 'custom'
+      ? '$' + (document.getElementById('customAmount').value || '0')
+      : selectedAmt;
+    alert('Thank you for your generous donation of ' + amt + '! Redirecting to secure payment...');
+  }
+
+  // FAQ toggle
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  // Scroll animation
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
