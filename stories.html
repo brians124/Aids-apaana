@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stories | AIDS APAANA Foundation — Uganda</title>
+<meta name="description" content="Human stories and experiences from the AIDS APAANA Foundation community in Uganda, shared with consent and respect.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#C8102E; --red-dark:#8B0000; --red-light:#E8324F;
+  --blue:#0B3A8C; --blue-dark:#06235A; --blue-light:#2F80ED; --blue-soft:#EAF2FF;
+  --white:#fff; --off:#F7F9FD; --gray:#6B7280; --text:#0F1A33;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
+a{color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 5%}
+:focus-visible{outline:3px solid var(--blue-light);outline-offset:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(11,58,140,.12);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 30px rgba(11,58,140,.14)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:40px;height:40px;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(200,16,46,.25);display:flex;align-items:center;justify-content:center}
+.logo-icon img{width:100%;height:100%;object-fit:cover}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--red)}
+.logo-sub{font-size:.65rem;color:var(--blue);letter-spacing:2px;text-transform:uppercase}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;font-weight:500;font-size:.9rem;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--red)}
+.nav-cta{background:var(--red);color:#fff;padding:10px 24px;border-radius:50px;font-weight:600;font-size:.9rem;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(200,16,46,.4)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;min-width:44px;min-height:44px;align-items:center;justify-content:center;background:none;border:none}
+.hamburger span{width:24px;height:2px;background:var(--blue);border-radius:2px}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(255,255,255,.98);z-index:1001;flex-direction:column;align-items:center;justify-content:center;gap:26px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:1.4rem;font-weight:600;text-decoration:none}
+.mobile-menu a:hover{color:var(--red)}
+.mobile-close{position:absolute;top:22px;right:22px;font-size:1.6rem;cursor:pointer;color:var(--gray);background:none;border:none}
+
+/* HERO */
+.hero{padding:150px 0 80px;background:linear-gradient(135deg,var(--blue-dark),var(--blue) 60%,#14509f);color:#fff;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-90px;top:-90px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(200,16,46,.55),transparent 70%)}
+.hero .container{position:relative;z-index:1}
+.crumb{font-size:.85rem;opacity:.8;margin-bottom:18px}
+.crumb a{text-decoration:none}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,4rem);font-weight:900;line-height:1.1;max-width:780px}
+.hero h1 span{color:#ff8da1}
+.hero p{max-width:580px;margin-top:18px;line-height:1.7;opacity:.9}
+.hero .btns{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+
+.btn{display:inline-block;background:var(--red);color:#fff;border:2px solid var(--red);padding:12px 28px;border-radius:50px;font:600 .9rem 'DM Sans',sans-serif;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(200,16,46,.35)}
+.btn.ghost{background:transparent;border-color:#fff;color:#fff}
+.btn.blue{background:var(--blue);border-color:var(--blue)}
+.btn.blue:hover{background:var(--red);border-color:var(--red)}
+
+/* SECTIONS */
+section{position:relative;z-index:1;padding:80px 0}
+section.alt{background:var(--off)}
+.section-label{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:var(--red);margin-bottom:10px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.7rem);font-weight:900;line-height:1.15;color:var(--blue-dark)}
+.section-title span{color:var(--red)}
+.section-sub{color:var(--gray);line-height:1.7;margin-top:12px;max-width:600px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+
+/* placeholder notice + badge */
+.notice{background:var(--blue-soft);border-left:4px solid var(--red);padding:14px 18px;border-radius:8px;font-size:.88rem;line-height:1.6;color:#2a3a5e;margin-bottom:34px}
+.notice b{color:var(--red-dark)}
+.ph{display:inline-block;background:#fff;color:var(--red);border:1.5px dashed var(--red);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.5px}
+
+/* image placeholder */
+.img{background:linear-gradient(135deg,var(--blue-dark),var(--blue-light));position:relative;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.85);font-size:.8rem;overflow:hidden}
+.img.r{background:linear-gradient(135deg,var(--red-dark),var(--red-light))}
+.img.m{background:linear-gradient(135deg,var(--blue),var(--red))}
+.img svg{opacity:.8}
+.img span{position:absolute;bottom:10px;left:12px;font-size:.72rem;background:rgba(0,0,0,.35);padding:3px 10px;border-radius:50px}
+
+/* FEATURED */
+.featured{display:grid;grid-template-columns:1.1fr 1fr;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 12px 50px rgba(11,58,140,.16)}
+.featured .img{min-height:380px}
+.featured .body{padding:44px 40px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.featured h3{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.6vw,2.1rem);color:var(--blue-dark);line-height:1.2}
+.featured p{color:#44506b;line-height:1.75}
+.meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:.8rem;color:var(--gray)}
+.cat{background:var(--blue);color:#fff;font-size:.7rem;font-weight:600;padding:4px 12px;border-radius:50px}
+.cat.community{background:var(--blue)}.cat.youth{background:var(--blue-light)}.cat.volunteer{background:var(--red-dark)}.cat.success{background:var(--red)}
+
+/* FILTERS + CARDS */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:32px 0 28px}
+.chip{border:2px solid var(--blue);background:#fff;color:var(--blue);padding:9px 20px;border-radius:50px;font:600 .85rem 'DM Sans',sans-serif;cursor:pointer;transition:.2s}
+.chip:hover{background:var(--blue-soft)}
+.chip.active{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 6px 18px rgba(200,16,46,.3)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 22px rgba(11,58,140,.12);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(11,58,140,.22)}
+.card .img{height:180px}
+.card .cb{padding:22px;display:flex;flex-direction:column;gap:11px;flex:1}
+.card h3{font-size:1.08rem;color:var(--blue-dark);line-height:1.35}
+.card p{font-size:.9rem;color:#4a5570;line-height:1.65;flex:1}
+.card .by{font-size:.8rem;color:var(--gray)}
+.more{align-self:flex-start;background:none;border:2px solid var(--red);color:var(--red);padding:8px 20px;border-radius:50px;font:600 .85rem 'DM Sans',sans-serif;cursor:pointer;transition:.2s}
+.more:hover{background:var(--red);color:#fff}
+.card.hide{display:none}
+
+/* DETAIL (in-page overlay) */
+#detail{position:fixed;inset:0;z-index:2000;background:rgba(4,20,52,.7);display:none;overflow-y:auto;padding:30px 16px}
+#detail.open{display:block}
+.sheet{max-width:860px;margin:0 auto;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.4)}
+.sheet .img{height:300px}
+.sheet .inner{display:grid;grid-template-columns:1fr 250px;gap:40px;padding:40px}
+.sheet h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.3rem);color:var(--blue-dark);line-height:1.2;margin:12px 0 18px}
+.sheet .text p{line-height:1.85;color:#38455f;margin-bottom:16px}
+.pull{border-left:4px solid var(--red);padding:6px 0 6px 20px;margin:24px 0;font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--blue);line-height:1.5}
+.aside{display:grid;gap:16px;align-content:start}
+.box{background:var(--off);border-radius:14px;padding:18px;font-size:.85rem;line-height:1.6;color:#44506b}
+.box h4{color:var(--blue-dark);margin-bottom:6px;font-size:.9rem}
+.box.consent{border:2px dashed var(--red);background:#fff}
+.close{position:sticky;top:0;float:right;margin:14px 14px 0 0;z-index:3;width:42px;height:42px;border-radius:50%;border:none;background:var(--red);color:#fff;font-size:1.2rem;cursor:pointer}
+.close:hover{background:var(--blue)}
+.sheet .nav2{display:flex;justify-content:space-between;gap:10px;padding:0 40px 36px}
+
+/* GUIDELINES */
+.gl{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px}
+.gl div{background:#fff;border-radius:16px;padding:26px;box-shadow:0 4px 20px rgba(11,58,140,.1);border-top:4px solid var(--blue)}
+.gl div:nth-child(even){border-top-color:var(--red)}
+.gl h3{color:var(--blue-dark);font-size:1.02rem;margin-bottom:8px}
+.gl p{font-size:.9rem;color:#4a5570;line-height:1.65}
+
+/* SUBMIT */
+.submit{display:grid;grid-template-columns:1fr 1.15fr;gap:46px;align-items:start}
+.panel{background:#fff;border-radius:20px;padding:30px;box-shadow:0 10px 40px rgba(11,58,140,.14)}
+.row{display:grid;gap:6px;margin-bottom:16px}
+.row label{font-size:.82rem;font-weight:600;color:var(--blue)}
+.row input,.row select,.row textarea{padding:12px 14px;border:1.5px solid #cfd8ea;border-radius:10px;font:inherit;width:100%;background:#fff}
+.row textarea{min-height:140px;resize:vertical}
+.row input:disabled{background:#eef2fa;opacity:.7}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;line-height:1.55;color:#33415f;margin-bottom:12px}
+.check input{margin-top:4px;accent-color:var(--red);width:18px;height:18px;flex-shrink:0}
+.tog{display:flex;gap:8px;margin-bottom:18px}
+.tog button{flex:1;padding:11px;border:2px solid var(--blue);background:#fff;color:var(--blue);border-radius:12px;font:600 .85rem 'DM Sans',sans-serif;cursor:pointer}
+.tog button.on{background:var(--blue);color:#fff}
+.tog button.on.anon{background:var(--red);border-color:var(--red)}
+.small{font-size:.8rem;color:var(--gray);line-height:1.6;margin-top:12px}
+.steps{list-style:none;margin-top:20px;display:grid;gap:12px}
+.steps li{padding-left:30px;position:relative;font-size:.92rem;line-height:1.55;color:#33415f}
+.steps li::before{content:"";position:absolute;left:0;top:6px;width:14px;height:14px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(200,16,46,.15)}
+
+/* CTA + FOOTER */
+.cta{background:linear-gradient(135deg,var(--red-dark),var(--red));color:#fff;text-align:center;padding:70px 0}
+.cta h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3.5vw,2.5rem)}
+.cta p{opacity:.9;margin:12px auto 26px;max-width:520px;line-height:1.7}
+.cta .btn{background:#fff;color:var(--red);border-color:#fff;margin:5px}
+.cta .btn.ghost{background:transparent;color:#fff}
+footer{background:var(--blue-dark);color:rgba(255,255,255,.72);padding:70px 0 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:46px;margin-bottom:46px}
+.footer-grid .logo-text{color:#fff}.footer-grid .logo-sub{color:rgba(255,255,255,.5)}
+.footer-grid p{font-size:.85rem;line-height:1.7;margin-top:14px}
+.footer-col h4{color:#fff;font-size:.9rem;margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.6);text-decoration:none;font-size:.85rem;margin-bottom:10px;transition:color .2s}
+.footer-col a:hover{color:#ff8da1}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:26px;font-size:.8rem;color:rgba(255,255,255,.45)}
+
+@media(max-width:960px){
+  .featured{grid-template-columns:1fr}.featured .img{min-height:240px}
+  .cards{grid-template-columns:1fr 1fr}
+  .gl{grid-template-columns:1fr 1fr}
+  .submit{grid-template-columns:1fr}
+  .sheet .inner{grid-template-columns:1fr;padding:28px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:680px){
+  .nav-links,.nav-cta{display:none}.hamburger{display:flex}
+  .hero{padding:120px 0 64px}section{padding:60px 0}
+  .cards,.gl{grid-template-columns:1fr}
+  .featured .body{padding:28px 22px}
+  .sheet .img{height:200px}.sheet .nav2{padding:0 28px 28px;flex-direction:column}
+  .footer-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+<style id="site-unify">
+/* ===== Site-wide navigation + mobile hardening (shared by every page) ===== */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:clip}
+img,video,iframe,canvas{max-width:100%}
+.nav-links{gap:22px!important;flex-wrap:nowrap}
+.nav-links a{white-space:nowrap}
+.nav-links a.active,.nav-links a[aria-current="page"]{color:var(--red,#C8102E)!important;border-bottom:2px solid var(--red,#C8102E);padding-bottom:4px}
+.nav-cta{text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap}
+.hamburger{background:none;border:0;padding:8px;-webkit-appearance:none;appearance:none}
+.mobile-menu{background:#fff!important;overflow-y:auto;-webkit-overflow-scrolling:touch;justify-content:flex-start!important;align-items:center!important;gap:4px!important;padding:84px 24px calc(32px + env(safe-area-inset-bottom,0px))!important}
+.mobile-menu a{font-size:1.15rem!important;font-weight:600;color:var(--text,#1B2A41);padding:10px 16px;min-height:44px;display:flex;align-items:center;justify-content:center;width:100%;max-width:340px;border-radius:10px;text-decoration:none}
+.mobile-menu a.active{color:var(--red,#C8102E);background:rgba(200,16,46,.07)}
+.mobile-menu a.mobile-donate{background:var(--red,#C8102E);color:#fff!important;margin-top:12px;font-weight:700}
+.mobile-menu .mobile-close{position:fixed!important;top:12px;right:12px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.05);border:0;border-radius:50%;font-size:1.25rem;line-height:1;cursor:pointer;color:var(--text,#1B2A41);z-index:2}
+@media (max-width:1180px){.nav-links,.nav-cta{display:none!important}.hamburger{display:flex!important}}
+@media (max-width:768px){
+  input,select,textarea{font-size:16px!important}
+  table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  button,.btn,.btn-red,.btn-primary,.btn-outline,.btn-secondary{min-height:44px}
+  .footer-grid{grid-template-columns:1fr 1fr!important;gap:28px 20px!important}
+  .footer-grid>:first-child{grid-column:1/-1}
+  .footer-col{gap:0!important}
+  .footer-col a{display:flex;align-items:center;min-height:40px;padding:4px 0;overflow-wrap:anywhere}
+  .social-btn{width:44px!important;height:44px!important;min-width:44px}
+  .tag,.ph,.cat,.badge,.chip,.tag-placeholder,.lbl,.camp-meta,.hero-badge,.pay-btn,.badge-soon,.cr,.splash-tagline{font-size:12px!important}
+  .logo-sub{font-size:11px!important}
+  .footer-bottom{flex-direction:column!important;align-items:center!important;text-align:center;gap:12px!important}
+  .trust-badges{flex-wrap:wrap;justify-content:center}
+}
+@media (max-width:480px){.footer-grid{grid-template-columns:1fr!important}}
+</style>
+</head>
+<body>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Site menu">
+  <button class="mobile-close" type="button" data-close-menu aria-label="Close menu">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="leadership.html">Leadership</a>
+  <a href="programs.html">Programs</a>
+  <a href="campaign.html">Campaigns</a>
+  <a href="impact.html">Impact</a>
+  <a href="stories.html" class="active" aria-current="page">Stories</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="AnnualReport.html">Annual Reports</a>
+  <a href="volunteer.html">Volunteer</a>
+  <a href="fundraise.html">Fundraise</a>
+  <a href="newsletter.html">Newsletter</a>
+  <a href="contact.html">Contact</a>
+  <a class="mobile-donate" href="donate.html">♥ Donate Now</a>
+</div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">
+    <div class="logo-icon"><img src="favicon.png" alt="AIDS APAANA logo"></div>
+    <div><div class="logo-text">AIDS</div><div class="logo-sub">APAANA</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="campaign.html">Campaigns</a></li>
+    <li><a href="impact.html">Impact</a></li>
+    <li><a href="stories.html" class="active" aria-current="page">Stories</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="volunteer.html">Volunteer</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="donate.html">Donate Now</a>
+  <button class="hamburger" onclick="menu(true)" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <p class="crumb"><a href="index.html">Home</a> / Stories</p>
+    <h1>Behind every number is a <span>person</span></h1>
+    <p>Stories from the people and communities AIDS APAANA Foundation serves in Uganda. Each one is shared with the storyteller's consent and told with dignity.</p>
+    <div class="btns">
+      <a class="btn" href="#community">Read stories</a>
+      <a class="btn ghost" href="#share">Share your story</a>
+    </div>
+  </div>
+</header>
+
+<section id="featured">
+  <div class="container">
+    <p class="section-label">Featured Story</p>
+    <h2 class="section-title" style="margin-bottom:34px">A story that <span>matters</span></h2>
+    <div class="notice"><b>Sample content.</b> Every story on this page is a placeholder. Nothing here describes a real person, event or medical situation. Replace each one with a story only after the storyteller has given written consent.</div>
+    <article class="featured">
+      <div class="img"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg><span>Photo placeholder</span></div>
+      <div class="body">
+        <div class="meta"><span class="ph">PLACEHOLDER STORY</span><span class="cat success">Success</span></div>
+        <h3>Featured story title goes here</h3>
+        <p>This space is reserved for one featured story. Add a short summary of two or three sentences that tells readers what the story is about, using only what the storyteller has agreed to share.</p>
+        <div class="meta">Told by: [Name or "Shared anonymously"] · Date: [Add date]</div>
+        <button class="more" data-open="0" style="align-self:flex-start">Read More</button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="alt" id="community">
+  <div class="container">
+    <div class="head">
+      <div>
+        <p class="section-label">All Stories</p>
+        <h2 class="section-title">Community, youth, volunteer and <span>success</span> stories</h2>
+      </div>
+    </div>
+    <div class="filters" id="filters" role="tablist" aria-label="Story categories"></div>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<section id="guidelines">
+  <div class="container">
+    <p class="section-label">Respectful Storytelling</p>
+    <h2 class="section-title">How we <span>tell</span> stories</h2>
+    <p class="section-sub">People living with or affected by HIV/AIDS often face stigma. These guidelines protect the people who trust us with their stories.</p>
+    <div class="gl">
+      <div><h3>Consent first</h3><p>No story is published without the storyteller's clear, written consent. They can withdraw it at any time.</p></div>
+      <div><h3>Their words, their choice</h3><p>Storytellers decide what to share, how they are named, and whether to use a photo. Anyone may stay anonymous.</p></div>
+      <div><h3>Privacy and safety</h3><p>We never publish health details, locations or names of other people without their permission.</p></div>
+      <div><h3>Dignity, not pity</h3><p>We show people as whole individuals with strengths and goals, not only as people in need.</p></div>
+      <div><h3>Truth only</h3><p>Stories are never invented, exaggerated or combined. Sample stories are always labelled as placeholders.</p></div>
+      <div><h3>Care for children</h3><p>Stories involving anyone under 18 need a parent or guardian's consent and extra care with identity.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="share">
+  <div class="container submit">
+    <div>
+      <p class="section-label">Share Your Story</p>
+      <h2 class="section-title">Your story, <span>your</span> terms</h2>
+      <p class="section-sub">You can share with your name or anonymously. You decide what to include. We will contact you before anything is published.</p>
+      <ul class="steps">
+        <li>Write your story, or a short note saying you would like to share.</li>
+        <li>Choose whether to use your name or stay anonymous.</li>
+        <li>Our team replies to confirm what can be published and how.</li>
+        <li>You can ask us to change or remove your story at any time.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <div class="tog" role="group" aria-label="Sharing option">
+        <button type="button" class="on" id="tNamed">Share with my name</button>
+        <button type="button" id="tAnon">Share anonymously</button>
+      </div>
+      <div class="row"><label for="fName">Name</label><input type="text" id="fName" placeholder="Your name"></div>
+      <div class="row"><label for="fContact">Phone or email (kept private)</label><input type="text" id="fContact" placeholder="So we can reach you"></div>
+      <div class="row"><label for="fCat">Story type</label>
+        <select id="fCat"><option>Community</option><option>Youth</option><option>Volunteer</option><option>Success</option></select></div>
+      <div class="row"><label for="fStory">Your story</label><textarea id="fStory" placeholder="Share only what you are comfortable with. You do not need to include health details or other people's names."></textarea></div>
+      <label class="check"><input type="checkbox" id="c1"> I understand my story will only be published after AIDS APAANA confirms it with me.</label>
+      <label class="check"><input type="checkbox" id="c2"> I am sharing my own story, or I have permission to share it.</label>
+      <button class="btn blue" type="button" id="send">Prepare my email</button>
+      <p class="small" id="msg">This opens a draft email to info@apaana.org. Nothing is sent or stored by this page.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Stand with the people behind the stories</h2>
+    <p>Your support helps AIDS APAANA Foundation keep reaching communities across Uganda.</p>
+    <a class="btn" href="donate.html">Donate Now</a><a class="btn ghost" href="volunteer.html">Volunteer</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo"><div class="logo-icon"><img src="favicon.png" alt=""></div><div><div class="logo-text">Apaana</div><div class="logo-sub">AIDS Foundation</div></div></a>
+        <p>Fighting HIV/AIDS with compassion, education, and direct care across Uganda. Every life deserves hope, dignity, and support.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Organization</h4>
+        <a href="about.html">About Us</a>
+        <a href="leadership.html">Leadership</a>
+        <a href="programs.html">Our Programs</a>
+        <a href="impact.html">Our Impact</a>
+        <a href="AnnualReport.html">Annual Reports</a>
+        <a href="stories.html">Stories</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="maindashboard.html">Dashboard</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get Involved</h4>
+        <a href="donate.html">Donate Now</a>
+        <a href="volunteer.html">Volunteer</a>
+        <a href="campaign.html">Campaigns</a>
+        <a href="fundraise.html">Fundraise</a>
+        <a href="newsletter.html">Newsletter</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="footer-col"><h4>Contact Us</h4><a href="contact.html">Kampala, Uganda</a><a href="tel:+256784729944">+256 784729944</a><a href="mailto:info@apaana.org">info@apaana.org</a><a href="privacy.html">Privacy Policy</a><a href="donation-policy.html">Donation Policy</a></div>
+    </div>
+    <div class="footer-bottom">© 2025 Apaana AIDS Foundation. All rights reserved. Registered NGO Uganda.</div>
+  </div>
+</footer>
+
+<!-- STORY DETAIL -->
+<div id="detail" role="dialog" aria-modal="true" aria-label="Story">
+  <div class="sheet">
+    <button class="close" id="dclose" aria-label="Close story">✕</button>
+    <div class="img" id="dimg"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg><span>Photo placeholder</span></div>
+    <div class="inner">
+      <div class="text">
+        <div class="meta"><span class="ph">PLACEHOLDER STORY</span><span class="cat" id="dcat"></span></div>
+        <h2 id="dtitle"></h2>
+        <p>[Opening paragraph. Introduce the storyteller in the way they chose, and explain what this story is about.]</p>
+        <p>[Main story. Use the storyteller's own words wherever possible. Include only what they agreed to share.]</p>
+        <div class="pull">"[A short quote chosen by the storyteller goes here.]"</div>
+        <p>[Closing paragraph. Describe what has changed, what they hope for, or what message they want to share.]</p>
+      </div>
+      <div class="aside">
+        <div class="box"><h4>Told by</h4>[Name, or "Shared anonymously"]</div>
+        <div class="box"><h4>Date shared</h4>[Add date]</div>
+        <div class="box"><h4>Related program</h4>[Link to campaign or program]</div>
+        <div class="box consent"><h4>Consent</h4>Publish only with written consent from the storyteller. This is a placeholder and not a real story.</div>
+      </div>
+    </div>
+    <div class="nav2"><button class="more" id="dprev">‹ Previous story</button><button class="more" id="dnext">Next story ›</button></div>
+  </div>
+</div>
+
+<script>
+/* Replace each placeholder with a real, consented story. Never publish names, health details or events without permission. */
+const CATS=['community','youth','volunteer','success'];
+const LABEL={community:'Community',youth:'Youth',volunteer:'Volunteer',success:'Success'};
+const TINT={community:'',youth:'m',volunteer:'r',success:'r'};
+const STORIES=[{cat:'success',title:'Featured story title goes here'}];
+CATS.forEach(c=>{for(let i=1;i<=3;i++)STORIES.push({cat:c,title:LABEL[c]+' story title '+i});});
+
+const $=s=>document.querySelector(s);
+let active='all',cur=0;
+
+function filters(){
+  const f=$('#filters');f.innerHTML='';
+  [['all','All stories']].concat(CATS.map(c=>[c,LABEL[c]+' stories'])).forEach(([k,l])=>{
+    const b=document.createElement('button');b.className='chip'+(k===active?' active':'');b.textContent=l;b.setAttribute('role','tab');
+    b.onclick=()=>{active=k;filters();cards()};f.appendChild(b);
+  });
+}
+function cards(){
+  const w=$('#cards');w.innerHTML='';
+  STORIES.forEach((s,i)=>{
+    if(i===0)return;
+    if(active!=='all'&&s.cat!==active)return;
+    const a=document.createElement('article');a.className='card';
+    a.innerHTML='<div class="img '+TINT[s.cat]+'"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg><span>Photo placeholder</span></div>'+
+    '<div class="cb"><div class="meta"><span class="cat '+s.cat+'">'+LABEL[s.cat]+'</span><span class="ph">PLACEHOLDER</span></div>'+
+    '<h3>'+s.title+'</h3><p>Short summary goes here. Write two or three sentences using only what the storyteller agreed to share.</p>'+
+    '<div class="by">Told by: [Name or "Shared anonymously"]</div><button class="more" data-open="'+i+'">Read More</button></div>';
+    w.appendChild(a);
+  });
+}
+function open(i){
+  cur=i;const s=STORIES[i];
+  $('#dtitle').textContent=s.title;
+  const c=$('#dcat');c.textContent=LABEL[s.cat];c.className='cat '+s.cat;
+  $('#dimg').className='img '+TINT[s.cat];
+  $('#detail').classList.add('open');$('#detail').scrollTop=0;document.body.style.overflow='hidden';$('#dclose').focus();
+}
+function close(){$('#detail').classList.remove('open');document.body.style.overflow=''}
+function step(d){open((cur+d+STORIES.length)%STORIES.length)}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(b)open(+b.dataset.open)});
+$('#dclose').onclick=close;$('#dprev').onclick=()=>step(-1);$('#dnext').onclick=()=>step(1);
+$('#detail').addEventListener('click',e=>{if(e.target.id==='detail')close()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+
+/* anonymous option */
+let anon=false;
+function setAnon(v){
+  anon=v;
+  $('#tAnon').className=v?'on anon':'';$('#tNamed').className=v?'':'on';
+  const n=$('#fName');n.disabled=v;if(v)n.value='';n.placeholder=v?'Not needed for anonymous stories':'Your name';
+}
+$('#tNamed').onclick=()=>setAnon(false);$('#tAnon').onclick=()=>setAnon(true);
+$('#send').onclick=()=>{
+  const m=$('#msg'),story=$('#fStory').value.trim();
+  if(!story){m.textContent='Please write a few words about your story first.';return}
+  if(!$('#c1').checked||!$('#c2').checked){m.textContent='Please tick both boxes to confirm consent.';return}
+  const body='Sharing: '+(anon?'Anonymous (please do not publish my name)':'With my name: '+($('#fName').value.trim()||'[not given]'))+
+    '\nContact (private): '+($('#fContact').value.trim()||'[not given]')+'\nStory type: '+$('#fCat').value+'\n\n'+story;
+  location.href='mailto:info@apaana.org?subject='+encodeURIComponent('Story submission')+'&body='+encodeURIComponent(body);
+  m.textContent='Your email app should open with a draft. Review it, then send.';
+};
+
+function menu(o){$('#mobileMenu').classList.toggle('open',o)}
+window.addEventListener('scroll',()=>$('#nav').classList.toggle('scrolled',scrollY>50));
+filters();cards();
+</script>
+<script id="site-menu-js">
+(function(){
+  var m=document.getElementById('mobileMenu'); if(!m) return;
+  function lock(){ document.body.style.overflow = m.classList.contains('open') ? 'hidden' : ''; }
+  new MutationObserver(lock).observe(m,{attributes:true,attributeFilter:['class']});
+  function close(){ m.classList.remove('open'); lock(); }
+  document.addEventListener('click',function(e){
+    if(e.target.closest('[data-close-menu]')||e.target.closest('#mobileMenu a')) close();
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+  window.addEventListener('resize',function(){ if(window.innerWidth>1180) close(); });
+})();
+</script>
+</body>
+</html>
